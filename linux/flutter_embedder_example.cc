@@ -58,12 +58,19 @@ int main(int argc, char **argv) {
   std::vector<std::string> arguments;
 
   flutter::FlutterWindowController flutter_controller(icu_data_path);
+  flutter::WindowFrame frame;
+  frame.top = 0;
+  frame.left = 0;
+  frame.width = 400;
+  frame.height = 800;
 
   // Start the engine.
-  if (!flutter_controller.CreateWindow(300, 600, "Yala",
+  if (!flutter_controller.CreateWindow(frame.width, frame.height, "Yala",
                                        assets_path, arguments)) {
+
     return EXIT_FAILURE;
   }
+  flutter_controller.window()->SetFrame(frame);
 
   // Run until the window is closed.
   flutter_controller.RunEventLoop();

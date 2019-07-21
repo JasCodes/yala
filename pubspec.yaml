@@ -71,3 +71,28 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+      - family: Roboto
+        fonts:
+          - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+            weight: 100
+          - asset: assets/fonts/Roboto/Roboto-Light.ttf
+            weight: 300
+          - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+            weight: 500
+          - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+            weight: 700
+          - asset: assets/fonts/Roboto/Roboto-Black.ttf
+            weight: 900
+      - family: DINNextRoundedLTPro
+        fonts:
+          - asset: assets/fonts/DINNextRoundedLTPro/DINNextRoundedLTPro-Light.otf
+            weight: 300
+          - asset: assets/fonts/DINNextRoundedLTPro/DINNextRoundedLTPro-Regular.otf
+            weight: 400
+          - asset: assets/fonts/DINNextRoundedLTPro/DINNextRoundedLTPro-Medium.otf
+            weight: 500
+          - asset: assets/fonts/DINNextRoundedLTPro/DINNextRoundedLTPro-Bold.otf
+            weight: 700
