@@ -5,11 +5,13 @@ github.com/go-flutter-desktop/go-flutter v0.27.0 h1:XYhKiRjwX/Z73Hpe+TJDBbutFL1m
 github.com/go-flutter-desktop/go-flutter v0.27.0/go.mod h1:GZYxHYp7lRnt3imJV1d8EWleMv5q9J4S2ONNEqpPOfo=
 github.com/go-gl/glfw v0.0.0-20190519095719-e6da0acd62b1 h1:noz9OnjV5PMOZWNOI+y1cS5rnxuJfpY6leIgQEEdBQw=
 github.com/go-gl/glfw v0.0.0-20190519095719-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
-github.com/jascodes/yala v0.0.0-20190721070426-0b5f329e9428 h1:IE8xoTM+7OLgv6YrhkLGoj40IPZJtY8z5o6pyAArJVE=
+github.com/jascodes/yala v0.0.0-20190725014002-237eb448f3a8 h1:GhHvLviHNVL+bZAvBngbIy5WFM9owJySY4f7bQqZW8E=
+github.com/jascodes/yala v0.0.0-20190725014002-237eb448f3a8/go.mod h1:4XYhiwupQnINcD2Y3h7ZqYQVsDZtaYkowfpOLp8NbQ8=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/objx v0.2.0/go.mod h1:qt09Ya8vawLte6SNmTgCsAVtYtaKzEcn8ATUoHMkEqE=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=

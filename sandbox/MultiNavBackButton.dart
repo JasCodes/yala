@@ -184,6 +184,8 @@ class _DestinationViewState extends State<DestinationView> {
                 return ListPage(destination: widget.destination);
               case '/text':
                 return TextPage(destination: widget.destination);
+              default:
+                return RootPage(destination: widget.destination);
             }
           },
         );

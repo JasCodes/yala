@@ -3,10 +3,14 @@
 - meeting with malta guy after we done with yala
 
 # Third Party Integrations
-- Yodlee
 - Open Banking
 - https://www.gupshup.io
 - https://dialogflow.com/
 
 # Ideas
 - Contracts for SMEs
+
+# Immigration
+immigrationdo.com
+
+hardware wallet(apple watch)
