@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:yala/animated/iconx.dart';
-import 'package:yala/animated/text.dart';
 import 'package:yala/static/stores.dart';
+import 'package:yala/static/style.dart';
 import 'package:yala/stores/bottom_nav.dart';
+import 'package:yala/widgets/animated/iconx.dart';
+import 'package:yala/widgets/animated/text.dart';
 
-class BottomNavItem extends StatelessWidget {
-  BottomNavItem({
+class BottomNavButton extends StatelessWidget {
+  BottomNavButton({
     Key key,
     @required this.id,
     @required this.icon,
     @required this.title,
+    this.isMenu = false,
   }) : super(key: key);
 
   final EBottomNav id;
   final IconData icon;
   final String title;
+  final bool isMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +29,16 @@ class BottomNavItem extends StatelessWidget {
           type: MaterialType.transparency,
           child: Observer(
             builder: (_) {
-              Color color =
-                  Stores.BottomNav.id == id ? Colors.green : Colors.blue;
+              Color color = Stores.BottomNav.id == id
+                  ? Style.appPrimaryColor
+                  : Style.inactive;
               return InkWell(
                 // radius: 20,
                 customBorder: CircleBorder(),
-                onTap: () => {Stores.BottomNav.id = id},
+                onTap: () {
+                  if (!isMenu) Stores.BottomNav.id = id;
+                  Stores.BottomNav.isExchange = false;
+                },
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(
@@ -42,7 +49,7 @@ class BottomNavItem extends StatelessWidget {
                         icon,
                         duration: Duration(milliseconds: 300),
                         color: color,
-                        size: 25,
+                        size: 18.7,
                       ),
                       SizedBox(
                         height: 6,
@@ -50,7 +57,11 @@ class BottomNavItem extends StatelessWidget {
                       AnimatedText(
                         title,
                         duration: Duration(milliseconds: 300),
-                        style: TextStyle(color: color, fontSize: 12),
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 12.7,
+                          fontWeight: FontWeight.w500,
+                        ),
                       )
                     ],
                   ),

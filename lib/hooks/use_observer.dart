@@ -12,9 +12,9 @@ void useObserver({ReactiveContext context}) {
 
 @visibleForTesting
 class ObserverHook extends Hook<void> {
-  const ObserverHook({ReactiveContext context}): _context = context;
+  const ObserverHook({ReactiveContext context}) : _context = context;
 
-  // TODO(rrousselGit): scoped constructor
+  // TODOx (rrousselGit): scoped constructor
 
   final ReactiveContext _context;
   ReactiveContext get context => _context ?? mainContext;
@@ -27,7 +27,6 @@ class ObserverHook extends Hook<void> {
 class ObserverHookState extends HookState<void, ObserverHook> {
   ReactionImpl reaction;
   Derivation prevDerivation;
-
 
   @override
   void initHook() {

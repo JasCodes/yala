@@ -1,7 +1,7 @@
 // Refer: http://www.bytebau.com/implicitlyanimatedwidget-the-simple-way-to-animate-widgets/
 
 import 'package:flutter/material.dart';
-import 'package:yala/widgets/patch/iconx.dart';
+import 'package:yala/widgets/primitive/iconx.dart';
 
 class AnimatedIconX extends ImplicitlyAnimatedWidget {
   AnimatedIconX(

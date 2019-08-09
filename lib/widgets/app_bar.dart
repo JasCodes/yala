@@ -19,7 +19,7 @@ class AppBarX extends StatelessWidget with PreferredSizeWidget {
         style: TextStyle(
           fontWeight: FontWeight.w500,
           letterSpacing: 2 / 3,
-          fontSize: 52 / 3,
+          fontSize: 17.3,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yala/layout/app_bar.dart';
+import 'package:yala/widgets/app_bar.dart';
 
 class ViewDashbord extends StatelessWidget {
   const ViewDashbord({Key key}) : super(key: key);

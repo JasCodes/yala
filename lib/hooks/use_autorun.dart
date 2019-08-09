@@ -64,7 +64,7 @@ class _AutorunHookState extends HookState<void, AutorunHook> {
       disposer();
       _run();
     }
-    // TODO(rrousselGit): hot reload name/delay/onError
+    // TODOx(rrousselGit): hot reload name/delay/onError
   }
 
   void _run() {

@@ -11,6 +11,9 @@ enum EBottomNav {
   invoices,
   payroll,
   more,
+  transfer,
+  billpayment,
+  request
 }
 
 // The store-class
@@ -18,6 +21,11 @@ abstract class _StoreBottomNav with Store {
   @observable
   EBottomNav id = EBottomNav.accounts;
 
+  @observable
+  bool isExchange = false;
+
+  // @observable
+  // Animation
   // @action
   // void updateIndex(int val) {
   //   index = val;

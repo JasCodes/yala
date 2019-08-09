@@ -1,12 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_mobx/flutter_mobx.dart';
-// import 'package:yala/layout/app_bar.dart';
 import 'package:yala/layout/bottom_nav/nav.dart';
-// import 'package:yala/layout/screen.dart';
-import 'package:yala/screens/account.dart';
-import 'package:yala/screens/invoices.dart';
+import 'package:yala/layout/screens.dart';
 import 'package:yala/static/style.dart';
 
 main() {
@@ -34,12 +30,7 @@ class Home extends StatelessWidget {
         ),
         child: Stack(
           children: <Widget>[
-            Stack(
-              children: [
-                ScreenAccount(),
-                ScreenInvoices(),
-              ],
-            ),
+            Screens(),
             BottomNav(),
           ],
         ),

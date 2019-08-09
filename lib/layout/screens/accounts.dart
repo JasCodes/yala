@@ -5,8 +5,8 @@ import 'package:yala/views/dashboard.dart';
 import 'package:yala/views/detail.dart';
 import 'package:yala/widgets/routes/transparent.dart';
 
-class ScreenAccount extends StatelessWidget {
-  const ScreenAccount({Key key}) : super(key: key);
+class ScreenAccounts extends StatelessWidget {
+  const ScreenAccounts({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

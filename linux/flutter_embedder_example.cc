@@ -61,8 +61,9 @@ int main(int argc, char **argv) {
   flutter::WindowFrame frame;
   frame.top = 0;
   frame.left = 0;
-  frame.width = 400;
-  frame.height = 800;
+  frame.width = 400*2;
+  frame.height = 800*2;
+
 
   // Start the engine.
   if (!flutter_controller.CreateWindow(frame.width, frame.height, "Yala",
