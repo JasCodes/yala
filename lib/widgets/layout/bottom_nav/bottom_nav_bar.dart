@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yala/layout/bottom_nav/button.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_button.dart';
 import 'package:yala/static/icons.dart';
-import 'package:yala/stores/bottom_nav.dart';
+import 'package:yala/widgets/layout/screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key key}) : super(key: key);
@@ -16,10 +16,11 @@ class BottomNavBar extends StatelessWidget {
           decoration: new BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  color: Color(0x19000000),
-                  offset: Offset(0, -40),
-                  blurRadius: 100,
-                  spreadRadius: 0)
+                color: Color(0x19000000),
+                offset: Offset(0, -40),
+                blurRadius: 100,
+                spreadRadius: 0,
+              )
             ],
           ),
           child: Padding(
@@ -28,12 +29,12 @@ class BottomNavBar extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 BottomNavButton(
-                  id: EBottomNav.accounts,
+                  screen: Screen.accounts,
                   icon: AppIcons.accounts,
                   title: "Accounts",
                 ),
                 BottomNavButton(
-                  id: EBottomNav.invoices,
+                  screen: Screen.invoices,
                   icon: AppIcons.invoices,
                   title: "Invoices",
                 ),
@@ -41,12 +42,12 @@ class BottomNavBar extends StatelessWidget {
                   width: 60,
                 ),
                 BottomNavButton(
-                  id: EBottomNav.payroll,
+                  screen: Screen.payroll,
                   icon: AppIcons.payroll,
                   title: "Payroll",
                 ),
                 BottomNavButton(
-                  id: EBottomNav.more,
+                  screen: Screen.more,
                   icon: AppIcons.more,
                   title: "More",
                   isMenu: true,

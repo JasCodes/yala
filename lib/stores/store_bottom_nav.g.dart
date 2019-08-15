@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'bottom_nav.dart';
+part of 'store_bottom_nav.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -9,21 +9,21 @@ part of 'bottom_nav.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$StoreBottomNav on _StoreBottomNav, Store {
-  final _$idAtom = Atom(name: '_StoreBottomNav.id');
+  final _$screenAtom = Atom(name: '_StoreBottomNav.screen');
 
   @override
-  EBottomNav get id {
-    _$idAtom.context.enforceReadPolicy(_$idAtom);
-    _$idAtom.reportObserved();
-    return super.id;
+  Screen get screen {
+    _$screenAtom.context.enforceReadPolicy(_$screenAtom);
+    _$screenAtom.reportObserved();
+    return super.screen;
   }
 
   @override
-  set id(EBottomNav value) {
-    _$idAtom.context.conditionallyRunInAction(() {
-      super.id = value;
-      _$idAtom.reportChanged();
-    }, _$idAtom, name: '${_$idAtom.name}_set');
+  set screen(Screen value) {
+    _$screenAtom.context.conditionallyRunInAction(() {
+      super.screen = value;
+      _$screenAtom.reportChanged();
+    }, _$screenAtom, name: '${_$screenAtom.name}_set');
   }
 
   final _$isExchangeAtom = Atom(name: '_StoreBottomNav.isExchange');

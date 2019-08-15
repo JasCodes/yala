@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/stores/bottom_nav.dart';
+import 'package:yala/widgets/layout/screen.dart';
 
-class TransactionButton extends StatelessWidget {
-  const TransactionButton({
+class BottomNavSheetButton extends StatelessWidget {
+  const BottomNavSheetButton({
     Key key,
-    @required this.id,
+    @required this.screen,
     @required this.icon,
     @required this.title,
   }) : super(key: key);
 
-  final EBottomNav id;
+  final Screen screen;
   final IconData icon;
   final String title;
 
@@ -39,7 +39,7 @@ class TransactionButton extends StatelessWidget {
             type: MaterialType.transparency,
             child: InkWell(
               onTap: () {
-                Stores.BottomNav.id = id;
+                Stores.BottomNav.screen = screen;
                 Stores.BottomNav.isExchange = false;
               },
               customBorder: CircleBorder(),

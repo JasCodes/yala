@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yala/layout/bottom_nav/nav.dart';
-import 'package:yala/layout/screens.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_stack.dart';
+import 'package:yala/widgets/layout/screen_stack.dart';
 import 'package:yala/static/style.dart';
 
 main() {
@@ -30,8 +30,8 @@ class Home extends StatelessWidget {
         ),
         child: Stack(
           children: <Widget>[
-            Screens(),
-            BottomNav(),
+            ScreenStack(),
+            BottomNavStack(),
           ],
         ),
       ),

@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/stores/bottom_nav.dart';
 import 'package:yala/widgets/animated/iconx.dart';
-import 'package:yala/widgets/animated/text.dart';
+import 'package:yala/widgets/layout/screen.dart';
+// import 'package:yala/widgets/animated/text.dart';
 
 class BottomNavButton extends StatelessWidget {
   BottomNavButton({
     Key key,
-    @required this.id,
+    @required this.screen,
     @required this.icon,
     @required this.title,
     this.isMenu = false,
   }) : super(key: key);
 
-  final EBottomNav id;
+  final Screen screen;
   final IconData icon;
   final String title;
   final bool isMenu;
@@ -23,20 +23,21 @@ class BottomNavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: 1,
       child: SizedBox(
         height: 70,
         child: Material(
           type: MaterialType.transparency,
           child: Observer(
             builder: (_) {
-              Color color = Stores.BottomNav.id == id
+              Color color = Stores.BottomNav.screen == screen
                   ? Style.appPrimaryColor
                   : Style.inactive;
               return InkWell(
                 // radius: 20,
                 customBorder: CircleBorder(),
                 onTap: () {
-                  if (!isMenu) Stores.BottomNav.id = id;
+                  if (!isMenu) Stores.BottomNav.screen = screen;
                   Stores.BottomNav.isExchange = false;
                 },
                 child: Padding(
@@ -54,15 +55,18 @@ class BottomNavButton extends StatelessWidget {
                       SizedBox(
                         height: 6,
                       ),
-                      AnimatedText(
-                        title,
-                        duration: Duration(milliseconds: 300),
+                      AnimatedDefaultTextStyle(
                         style: TextStyle(
+                          fontFamily: 'DINNextRoundedLTPro',
                           color: color,
                           fontSize: 12.7,
                           fontWeight: FontWeight.w500,
                         ),
-                      )
+                        duration: Duration(milliseconds: 300),
+                        child: Text(
+                          title,
+                        ),
+                      ),
                     ],
                   ),
                 ),

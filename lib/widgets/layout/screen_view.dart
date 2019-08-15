@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/static/stores.dart';
-import 'package:yala/stores/bottom_nav.dart';
+import 'package:yala/widgets/layout/screen.dart';
 
-class Screen extends HookWidget {
-  Screen({
+class ScreenView extends HookWidget {
+  ScreenView({
     Key key,
-    @required this.screenId,
+    @required this.screen,
     @required this.child,
   }) : super(key: key);
 
   // final GlobalKey gk;
-  final EBottomNav screenId;
+  final Screen screen;
   final Widget child;
   final gk = GlobalKey();
 
@@ -26,13 +26,13 @@ class Screen extends HookWidget {
 
     return Observer(
       builder: (_) {
-        final id = Stores.BottomNav.id;
+        final id = Stores.BottomNav.screen;
         final isAnimating = _fader.isAnimating || _scaler.isAnimating;
-        final isActive = id == screenId;
+        final isActive = id == screen;
         final isIgnorePointer = isAnimating && !isActive;
         final isOffstage = !isAnimating && !isActive;
 
-        if (id == screenId) {
+        if (id == screen) {
           _fader.forward();
           _scaler.forward();
         } else {
