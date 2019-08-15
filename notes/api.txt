@@ -1,0 +1,21 @@
+yapily.com
+
+openbankproject.com
+
+Thanks for registering your consumer with the Open Bank API! Here is your developer information. Please save it in a secure location.
+
+Consumer ID                     6821
+Application Type                Web
+Application Name                yala
+User redirect URL       
+Developer Email                 account@jas.bio
+App Description                 yala test app
+Consumer Key                    xl40suld5awcrnwd3kba5abxijs4dzte1le01ycz
+Consumer Secret                 w20fneiz5n1b4g0ttr1k3mlyif0e50ltmfymq4yk
+OAuth Endpoint                  https://apisandbox.openbankproject.com/oauth/initiate
+OAuth Documentation             How to use OAuth for OpenBankProject
+Get Direct Login Token      
+Direct Login Endpoint           https://apisandbox.openbankproject.com/my/logins/direct
+Direct Login Documentation      How to use Direct Login
+
+Please tell us more your Application and / or Startup using this link.

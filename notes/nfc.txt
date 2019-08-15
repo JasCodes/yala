@@ -1,0 +1,11 @@
+https://en.wikipedia.org/wiki/Biometric_passport#Data_protection
+https://security.stackexchange.com/questions/30772/what-nfc-protocol-is-used-to-read-information-on-a-passport
+MRZ
+https://github.com/konstantint/PassportEye
+
+https://github.com/italia/cie-mrtd-dotnet-sdk
+
+https://github.com/rubund/mrtdreader
+
+https://github.com/Glamdring/epassport-reader
+https://jmrtd.org/
