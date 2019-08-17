@@ -17,7 +17,7 @@ class BottomNavFAB extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Style.appPrimarySwatchColor,
+            color: Style.secondaryColor,
           ),
           child: Material(
             type: MaterialType.transparency,

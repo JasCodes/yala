@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RouteRight extends PageRoute<void> {
-  RouteRight({
+class PageRouteRight extends PageRoute<void> {
+  PageRouteRight({
     @required this.builder,
     RouteSettings settings,
   })  : assert(builder != null),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/widgets/views/invoice/invoice.dart';
-import 'package:yala/widgets/views/invoice/invoice_create.dart';
-// import 'package:yala/widgets/routes/right.dart';
+import 'package:yala/widgets/pages/invoice/page_invoice.dart';
+import 'package:yala/widgets/pages/invoice/page_invoice_create.dart';
 
 class ScreenInvoices extends StatelessWidget {
   const ScreenInvoices({Key key}) : super(key: key);
@@ -14,32 +13,28 @@ class ScreenInvoices extends StatelessWidget {
         switch (settings.name) {
           case '/invoice/create':
             return PageTransition(
-              child: ViewInvoiceCreate(),
+              child: PageInvoiceCreate(),
               type: PageTransitionType.rightToLeft,
             );
-          // case '/':
-          //   return PageTransition(
-          //     child: ViewInvoice(),
-          //   );
           default:
             return PageTransition(
-              child: ViewInvoice(),
+              child: PageInvoice(),
               type: PageTransitionType.rightToLeft,
             );
         }
-        // return RouteRight(
-        //   builder: (_) {
-        //     switch (settings.name) {
-        //       case '/invoice/create':
-        //         return ViewInvoice();
-        //       case '/':
-        //         return ViewInvoice();
-        //       default:
-        //         return ViewInvoice();
-        //     }
-        //   },
-        // );
       },
     );
   }
 }
+// return RouteRight(
+//   builder: (_) {
+//     switch (settings.name) {
+//       case '/invoice/create':
+//         return ViewInvoice();
+//       case '/':
+//         return ViewInvoice();
+//       default:
+//         return ViewInvoice();
+//     }
+//   },
+// );

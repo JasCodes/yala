@@ -28,4 +28,5 @@ class AppIcons {
   static var card = faSolid('');
   static var request = faSolid('');
   static var invoice_add = faSolid('');
+  static var invoice_clients = faSolid('');
 }

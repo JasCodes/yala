@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/widgets/app_bar.dart';
-import 'package:yala/widgets/cards/list_white_div.dart';
+import 'package:yala/widgets/ui/boxes/list_white_div.dart';
 
-class ViewDashbord extends StatelessWidget {
-  const ViewDashbord({Key key}) : super(key: key);
+class PageAccounts extends StatelessWidget {
+  const PageAccounts({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

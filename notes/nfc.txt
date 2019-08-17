@@ -9,3 +9,6 @@ https://github.com/rubund/mrtdreader
 
 https://github.com/Glamdring/epassport-reader
 https://jmrtd.org/
+
+https://github.com/kansasdev/mrtd
+https://github.com/kansasdev/PassportApp

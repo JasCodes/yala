@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/widgets/animated/iconx.dart';
 import 'package:yala/widgets/layout/screen.dart';
-// import 'package:yala/widgets/animated/text.dart';
+import 'package:yala/widgets/primitive/animated_iconx.dart';
 
 class BottomNavButton extends StatelessWidget {
   BottomNavButton({
@@ -31,8 +30,8 @@ class BottomNavButton extends StatelessWidget {
           child: Observer(
             builder: (_) {
               Color color = Stores.BottomNav.screen == screen
-                  ? Style.appPrimaryColor
-                  : Style.inactive;
+                  ? Style.primaryColor
+                  : Style.inactiveColor;
               return InkWell(
                 // radius: 20,
                 customBorder: CircleBorder(),

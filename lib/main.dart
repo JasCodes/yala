@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: Style.appGradient,
+          gradient: Style.primaryGradient,
         ),
         child: Stack(
           children: <Widget>[

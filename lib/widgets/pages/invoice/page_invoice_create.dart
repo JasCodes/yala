@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yala/static/style.dart';
 import 'package:yala/widgets/app_bar.dart';
 
 // import 'package:yala/widgets/primitive/scrollviewx.dart';
@@ -6,8 +7,8 @@ import 'package:yala/widgets/app_bar.dart';
 var gk = GlobalKey();
 var x1 = GlobalKey();
 
-class ViewInvoiceCreate extends StatelessWidget {
-  const ViewInvoiceCreate({Key key}) : super(key: key);
+class PageInvoiceCreate extends StatelessWidget {
+  const PageInvoiceCreate({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +16,7 @@ class ViewInvoiceCreate extends StatelessWidget {
         title: 'Create Invoice',
       ),
       body: Container(
-        color: Colors.black,
+        color: Style.blackColor,
         child: PageView(
           key: gk,
           onPageChanged: (index) {

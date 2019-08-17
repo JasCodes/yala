@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yala/widgets/views/dashboard.dart';
-import 'package:yala/widgets/routes/transparent.dart';
+import 'package:yala/widgets/page_routes/page_route_transparent.dart';
+import 'package:yala/widgets/pages/page_accounts.dart';
 
 class ScreenAccounts extends StatelessWidget {
   const ScreenAccounts({Key key}) : super(key: key);
@@ -13,7 +13,7 @@ class ScreenAccounts extends StatelessWidget {
           builder: (_) {
             switch (settings.name) {
               default:
-                return ViewDashbord();
+                return PageAccounts();
             }
           },
         );

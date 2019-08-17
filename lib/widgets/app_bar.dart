@@ -22,7 +22,7 @@ class AppBarX extends StatelessWidget with PreferredSizeWidget {
       flexibleSpace: !isTransparent
           ? Container(
               decoration: BoxDecoration(
-                gradient: Style.appGradient,
+                gradient: Style.primaryGradient,
               ),
             )
           : null,

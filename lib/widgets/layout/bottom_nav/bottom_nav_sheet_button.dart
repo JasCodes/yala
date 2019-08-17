@@ -45,7 +45,7 @@ class BottomNavSheetButton extends StatelessWidget {
               customBorder: CircleBorder(),
               child: Icon(
                 icon,
-                color: Style.appPrimaryColor,
+                color: Style.primaryColor,
               ),
             ),
           ),
