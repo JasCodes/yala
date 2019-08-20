@@ -11,7 +11,7 @@ class ScreenStack extends StatelessWidget {
     screenMap.forEach((screen, widget) {
       children.add(ScreenView(screen: screen, child: widget));
     });
-    print(children);
+    // print(children);
     return Stack(
       children: children,
     );

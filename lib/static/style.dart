@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Style {
+  static const primaryFont = 'DINNextRoundedLTPro';
   static const primaryGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
@@ -15,7 +16,7 @@ class Style {
   static const backgroundColor = Color(0xfff3f4f7);
   static const boxRadius = 3.3;
   static final themeData = ThemeData(
-    fontFamily: 'DINNextRoundedLTPro',
+    fontFamily: primaryFont,
     canvasColor: Colors.transparent,
   );
 }

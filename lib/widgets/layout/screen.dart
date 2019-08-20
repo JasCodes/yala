@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:yala/widgets/layout/screens/screen_accounts.dart';
-import 'package:yala/widgets/layout/screens/screen_billpayment.dart';
-import 'package:yala/widgets/layout/screens/screen_dev.dart';
-import 'package:yala/widgets/layout/screens/screen_invoices.dart';
-import 'package:yala/widgets/layout/screens/screen_payroll.dart';
-import 'package:yala/widgets/layout/screens/screen_request.dart';
-import 'package:yala/widgets/layout/screens/screen_transfer.dart';
+import 'package:yala/widgets/tree/screens/screen_accounts.dart';
+import 'package:yala/widgets/tree/screens/screen_billpayment.dart';
+import 'package:yala/widgets/tree/screens/screen_dev.dart';
+import 'package:yala/widgets/tree/screens/screen_invoices.dart';
+import 'package:yala/widgets/tree/screens/screen_payroll.dart';
+import 'package:yala/widgets/tree/screens/screen_request.dart';
+import 'package:yala/widgets/tree/screens/screen_transfer.dart';
 
 enum Screen {
   dev,
@@ -20,6 +20,7 @@ enum Screen {
 
 const Map<Screen, Widget> screenMap = {
   Screen.dev: ScreenDev(),
+  Screen.more: ScreenDev(),
   Screen.accounts: ScreenAccounts(),
   Screen.invoices: ScreenInvoices(),
   Screen.payroll: ScreenPayroll(),

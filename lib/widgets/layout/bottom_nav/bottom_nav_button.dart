@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
+import 'package:yala/widgets/components/primitives/animated_iconx.dart';
 import 'package:yala/widgets/layout/screen.dart';
-import 'package:yala/widgets/primitive/animated_iconx.dart';
 
 class BottomNavButton extends StatelessWidget {
   BottomNavButton({

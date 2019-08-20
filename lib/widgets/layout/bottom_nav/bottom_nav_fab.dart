@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/widgets/primitive/iconx.dart';
+import 'package:yala/widgets/components/primitives/iconx.dart';
 
 class BottomNavFAB extends StatelessWidget {
   const BottomNavFAB({Key key}) : super(key: key);

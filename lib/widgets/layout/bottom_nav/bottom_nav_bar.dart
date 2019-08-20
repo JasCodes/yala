@@ -50,7 +50,7 @@ class BottomNavBar extends StatelessWidget {
                   screen: Screen.more,
                   icon: AppIcons.more,
                   title: "More",
-                  isMenu: true,
+                  // isMenu: true,
                 ),
               ],
             ),
