@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_store.dart';
 import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_tab.dart';
 
 class ViewFormWizardItem {
   final String title;
-  final int index;
-  final bool isValidated;
   final Widget child;
-  // final Widget Function(BuildContext context, bool validated) builder;
 
   const ViewFormWizardItem({
     @required this.title,
-    @required this.index,
-    @required this.isValidated,
     @required this.child,
-
-    // @required this.builder,
   });
 }
 
@@ -27,18 +23,35 @@ class ViewFormWizard extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ViewFormWizardTab(
-          children: children,
+  Widget build(BuildContext context) => Provider<ViewFormWizardStore>(
+        builder: (_) => ViewFormWizardStore(
+          children.length,
         ),
-        Flexible(
-          child: PageView(
-            children: children.map((item) => item.child).toList(),
-          ),
+        child: Column(
+          children: <Widget>[
+            ViewFormWizardTab(
+              children: children,
+            ),
+            Flexible(
+              child: Observer(
+                builder: (con) {
+                  var store = Provider.of<ViewFormWizardStore>(con);
+                  print(store.validList);
+                  var items = List<Widget>();
+                  children.asMap().forEach((index, item) {
+                    if (index == 0 || store.activeTab(index - 1)) {
+                      items.add(item.child);
+                    }
+                  });
+                  return PageView(
+                    controller: store.pageController,
+                    // children: children.map((item) => item.child).toList()
+                    children: items,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-      ],
-    );
-  }
+      );
 }

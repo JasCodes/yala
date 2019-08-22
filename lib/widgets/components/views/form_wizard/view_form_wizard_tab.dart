@@ -1,48 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/components/views/form_wizard/view_form_wizard.dart';
+import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_store.dart';
 
-class ViewFormWizardTab extends StatefulWidget {
+class ViewFormWizardTab extends StatelessWidget {
   final List<ViewFormWizardItem> children;
-  // List<bool> l = null;
-  ViewFormWizardTab({
+
+  const ViewFormWizardTab({
     Key key,
     @required this.children,
   }) : super(key: key);
 
   @override
-  _ViewFormWizardTabState createState() => _ViewFormWizardTabState();
-}
-
-class _ViewFormWizardTabState extends State<ViewFormWizardTab> {
-  var l;
-  @override
-  void initState() {
-    // WidgetsBinding.instance.addPersistentFrameCallback((x) => print(x));
-    l = widget.children.map((_) => false).toList();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    var x = () sync* {
-      for (int i = 0; i < widget.children.length; i++) {
-        yield GestureDetector(
-          onTap: () {
-            setState(() {
-              l[i] = !l[i];
-            });
-            print(l);
-          },
-          child: AnimatedDefaultTextStyle(
-            duration: Duration(milliseconds: 400),
-            child: Text(widget.children[i].title),
-            style: TextStyle(
-              fontFamily: Style.primaryFont,
-              color: l[i] ? Style.blackColor : Style.greyColor,
-              fontSize: 13.3,
-              fontWeight: FontWeight.w500,
+    final store = Provider.of<ViewFormWizardStore>(context);
+    var list = () sync* {
+      for (int i = 0; i < children.length; i++) {
+        yield Observer(
+          builder: (_) => Container(
+            child: AnimatedDefaultTextStyle(
+              duration: Duration(milliseconds: 400),
+              child: Text(children[i].title),
+              style: TextStyle(
+                fontFamily: Style.primaryFont,
+                color: store.activeTab(i) ? Style.blackColor : Style.greyColor,
+                fontSize: 13.3,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         );
@@ -51,18 +38,10 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab> {
           color: Style.greyColor,
           size: 10,
         );
-        // yield Text(
-        //   '>',
-        //   style: TextStyle(
-        //     color: Style.greyColor,
-        //     // fontSize: 1.3,
-        //     fontWeight: FontWeight.w500,
-        //   ),
-        // );
       }
     }()
         .toList();
-    x.removeAt(x.length - 1);
+    list.removeAt(list.length - 1);
 
     return Container(
       height: 58,
@@ -71,7 +50,7 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        children: x,
+        children: list,
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yala/widgets/app_bar.dart';
 import 'package:yala/widgets/components/views/form_wizard/view_form_wizard.dart';
+import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_invoice_details.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_select_client.dart';
+import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_send_invoice.dart';
 
 // import 'package:yala/widgets/primitive/scrollviewx.dart';
 // import 'package:animated_card/animated_card.dart';
@@ -19,25 +21,21 @@ class PageInvoiceCreate extends StatelessWidget {
       body: ViewFormWizard(
         children: [
           ViewFormWizardItem(
-            index: 0,
             title: 'Select Client',
-            isValidated: false,
-            child: PageInvoiceCreateSelectClient(),
-          ),
-          ViewFormWizardItem(
-            index: 1,
-            title: 'Invoice Details',
-            isValidated: false,
-            child: Center(
-              child: Text('Invoice Details'),
+            child: PageInvoiceCreateSelectClient(
+              index: 0,
             ),
           ),
           ViewFormWizardItem(
-            index: 2,
+            title: 'Invoice Details',
+            child: PageInvoiceCreateInvoiceDetails(
+              index: 1,
+            ),
+          ),
+          ViewFormWizardItem(
             title: 'Send Invoice',
-            isValidated: false,
-            child: Center(
-              child: Text('Select Invoice'),
+            child: PageInvoiceCreateSendInvoice(
+              index: 2,
             ),
           ),
         ],
