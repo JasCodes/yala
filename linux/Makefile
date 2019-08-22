@@ -17,9 +17,9 @@
 # that are mostly likely to need to be changed.
 
 # Executable name.
-BINARY_NAME=flutter_desktop_example
+BINARY_NAME=yala_desktop
 # The C++ code for the embedder application.
-SOURCES=flutter_embedder_example.cc
+SOURCES=main.cc
 
 # Default build type. For a release build, set BUILD=release.
 # Currently this only sets NDEBUG, which is used to control the flags passed
@@ -38,7 +38,7 @@ FLUTTER_APP_BUILD_DIR=$(FLUTTER_APP_DIR)/build
 OUT_DIR=$(FLUTTER_APP_BUILD_DIR)/linux
 
 # Libraries
-FLUTTER_LIB_NAME=flutter_linux
+FLUTTER_LIB_NAME=flutter_linux_glfw
 FLUTTER_LIB=$(FLUTTER_APP_CACHE_DIR)/lib$(FLUTTER_LIB_NAME).so
 
 # Tools
@@ -62,7 +62,7 @@ FLUTTER_LIB_OUT=$(BUNDLE_LIB_DIR)/$(notdir $(FLUTTER_LIB))
 
 # Add relevant code from the wrapper library, which is intended to be statically
 # built into the client.
-WRAPPER_ROOT=$(FLUTTER_APP_CACHE_DIR)/cpp_client_wrapper
+WRAPPER_ROOT=$(FLUTTER_APP_CACHE_DIR)/cpp_client_wrapper_glfw
 WRAPPER_SOURCES= \
 	$(WRAPPER_ROOT)/flutter_window_controller.cc \
 	$(WRAPPER_ROOT)/plugin_registrar.cc \
