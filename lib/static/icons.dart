@@ -16,7 +16,7 @@ IconData faSolid(String char) {
   return IconData(charToInt(char), fontFamily: 'FontAwesome5ProSolid');
 }
 
-class AppIcons {
+class IconsX {
   static var accounts = faSolid('');
   static var invoices = faSolid('');
   static var payroll = faSolid('');
@@ -29,4 +29,5 @@ class AppIcons {
   static var request = faSolid('');
   static var invoice_add = faSolid('');
   static var invoice_clients = faSolid('');
+  static var right = faRegular('');
 }

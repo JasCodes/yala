@@ -11,7 +11,7 @@ class SectionInvoiceInfoClients extends HookWidget {
     return ScaffoldInvoiceInfo(
       title: 'My Clients',
       subTitle: '5 Saved Clients',
-      iconData: AppIcons.invoice_clients,
+      iconData: IconsX.invoice_clients,
     );
   }
 }

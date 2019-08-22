@@ -15,7 +15,7 @@ class BottomNavSheet extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final ac = useAnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 300),
     );
     final aOffset =
         Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset.zero).animate(ac);
@@ -66,17 +66,17 @@ class BottomNavSheet extends HookWidget {
                         children: <Widget>[
                           BottomNavSheetButton(
                             screen: Screen.transfer,
-                            icon: AppIcons.money,
+                            icon: IconsX.money,
                             title: 'Transfer',
                           ),
                           BottomNavSheetButton(
                             screen: Screen.billpayment,
-                            icon: AppIcons.card,
+                            icon: IconsX.card,
                             title: 'Bill Payment',
                           ),
                           BottomNavSheetButton(
                             screen: Screen.request,
-                            icon: AppIcons.request,
+                            icon: IconsX.request,
                             title: 'Request',
                           ),
                         ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_add_client.dart';
-import 'package:yala/widgets/tree/pages/invoice/page_invoice_create.dart';
+import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create.dart';
 
 class ScreenInvoices extends StatelessWidget {
   const ScreenInvoices({Key key}) : super(key: key);

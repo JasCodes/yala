@@ -42,7 +42,7 @@ class BottomNavFAB extends StatelessWidget {
                       // },
                       child: !Stores.BottomNav.isExchange
                           ? IconX(
-                              AppIcons.transfer,
+                              IconsX.transfer,
                               key: UniqueKey(),
                               color: Colors.white,
                               size: 24,

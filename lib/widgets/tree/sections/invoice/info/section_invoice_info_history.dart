@@ -10,7 +10,7 @@ class SectionInvoiceInfoHistory extends StatelessWidget {
     return ScaffoldInvoiceInfo(
       title: 'Invoice History',
       subTitle: '26 Invoices',
-      iconData: AppIcons.invoices,
+      iconData: IconsX.invoices,
     );
   }
 }

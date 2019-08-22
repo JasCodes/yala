@@ -27,7 +27,7 @@ class SectionInvoiceCreate extends StatelessWidget {
               width: 64,
               height: 64,
               child: Icon(
-                AppIcons.invoice_add,
+                IconsX.invoice_add,
                 color: Style.primaryColor,
               ),
             ),

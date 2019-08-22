@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/components/views/form_wizard/view_form_wizard.dart';
 
@@ -45,14 +46,19 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab> {
             ),
           ),
         );
-        yield Text(
-          '>',
-          style: TextStyle(
-            color: Style.greyColor,
-            // fontSize: 1.3,
-            fontWeight: FontWeight.w500,
-          ),
+        yield Icon(
+          IconsX.right,
+          color: Style.greyColor,
+          size: 10,
         );
+        // yield Text(
+        //   '>',
+        //   style: TextStyle(
+        //     color: Style.greyColor,
+        //     // fontSize: 1.3,
+        //     fontWeight: FontWeight.w500,
+        //   ),
+        // );
       }
     }()
         .toList();

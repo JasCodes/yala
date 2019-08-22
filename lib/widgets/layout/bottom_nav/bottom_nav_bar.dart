@@ -30,12 +30,12 @@ class BottomNavBar extends StatelessWidget {
               children: <Widget>[
                 BottomNavButton(
                   screen: Screen.accounts,
-                  icon: AppIcons.accounts,
+                  icon: IconsX.accounts,
                   title: "Accounts",
                 ),
                 BottomNavButton(
                   screen: Screen.invoices,
-                  icon: AppIcons.invoices,
+                  icon: IconsX.invoices,
                   title: "Invoices",
                 ),
                 SizedBox(
@@ -43,12 +43,12 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 BottomNavButton(
                   screen: Screen.payroll,
-                  icon: AppIcons.payroll,
+                  icon: IconsX.payroll,
                   title: "Payroll",
                 ),
                 BottomNavButton(
                   screen: Screen.more,
-                  icon: AppIcons.more,
+                  icon: IconsX.more,
                   title: "More",
                   // isMenu: true,
                 ),

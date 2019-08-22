@@ -18,18 +18,27 @@ class ViewFormWizardItem {
   });
 }
 
-class ComponentFormWizard extends StatelessWidget {
+class ViewFormWizard extends StatelessWidget {
   final List<ViewFormWizardItem> children;
 
-  const ComponentFormWizard({
+  const ViewFormWizard({
     Key key,
     @required this.children,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewFormWizardTab(
-      children: children,
+    return Column(
+      children: <Widget>[
+        ViewFormWizardTab(
+          children: children,
+        ),
+        Flexible(
+          child: PageView(
+            children: children.map((item) => item.child).toList(),
+          ),
+        ),
+      ],
     );
   }
 }
