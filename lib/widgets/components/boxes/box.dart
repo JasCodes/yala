@@ -21,6 +21,7 @@ class Box extends StatelessWidget {
     this.decorate = false,
     this.color = Style.primaryColor,
     this.gradient,
+    this.duration = const Duration(milliseconds: 300),
     this.onTap,
   }) : super(key: key);
 
@@ -28,6 +29,7 @@ class Box extends StatelessWidget {
   final bool decorate;
   final Color color;
   final Gradient gradient;
+  final Duration duration;
   final void Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class Box extends StatelessWidget {
     }
 
     return AnimatedContainer(
-      duration: Duration(milliseconds: 400),
+      duration: duration,
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
