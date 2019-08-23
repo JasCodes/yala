@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yala/widgets/app_bar.dart';
-import 'package:yala/widgets/components/views/form_wizard/view_form_wizard.dart';
+import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_invoice_details.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_select_client.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create_send_invoice.dart';

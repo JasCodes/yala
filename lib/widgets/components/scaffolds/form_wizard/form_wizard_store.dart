@@ -1,25 +1,39 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 // Include generated file
-part 'view_form_wizard_store.g.dart';
+part 'form_wizard_store.g.dart';
 
 // This is the class used by rest of your codebase
-class ViewFormWizardStore = _ViewFormWizardStore with _$ViewFormWizardStore;
+class FormWizardStore = _FormWizardStore with _$FormWizardStore;
 
 // The store-class
-abstract class _ViewFormWizardStore with Store {
-  _ViewFormWizardStore(
+abstract class _FormWizardStore with Store {
+  _FormWizardStore(
     int length,
   ) : assert(length != null) {
     validList = ObservableList<bool>.of(
       List.filled(length, false),
     );
     validList[0] = true;
+
+    lengthStatus = ObservableList<double>.of(
+      List.filled(length, 0.0),
+    );
+    dx = ObservableList<double>.of(
+      List.filled(length, 0.0),
+    );
   }
   PageController pageController = PageController();
+
   @observable
   ObservableList<bool> validList;
+
+  @observable
+  ObservableList<double> lengthStatus;
+
+  @observable
+  ObservableList<double> dx;
 
   bool activeTab(int index) {
     if (validList[index]) {

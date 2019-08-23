@@ -3,8 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_observer.dart';
 import 'package:yala/static/style.dart';
-
-import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_store.dart';
+import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_store.dart';
 
 class PageInvoiceCreateSendInvoice extends HookWidget {
   final int index;
@@ -17,7 +16,7 @@ class PageInvoiceCreateSendInvoice extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useObserver();
-    final store = Provider.of<ViewFormWizardStore>(context);
+    final store = Provider.of<FormWizardStore>(context);
     return Container(
       color: Style.backgroundColor,
       child: Column(

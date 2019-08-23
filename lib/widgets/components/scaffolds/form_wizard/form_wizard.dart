@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_store.dart';
-import 'package:yala/widgets/components/views/form_wizard/view_form_wizard_tab.dart';
+import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_store.dart';
+import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_tab.dart';
 
 class ViewFormWizardItem {
   final String title;
@@ -23,8 +23,8 @@ class ViewFormWizard extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Provider<ViewFormWizardStore>(
-        builder: (_) => ViewFormWizardStore(
+  Widget build(BuildContext context) => Provider<FormWizardStore>(
+        builder: (_) => FormWizardStore(
           children.length,
         ),
         child: Column(
@@ -35,12 +35,18 @@ class ViewFormWizard extends StatelessWidget {
             Flexible(
               child: Observer(
                 builder: (con) {
-                  var store = Provider.of<ViewFormWizardStore>(con);
+                  var store = Provider.of<FormWizardStore>(con);
                   print(store.validList);
                   var items = List<Widget>();
                   children.asMap().forEach((index, item) {
                     if (index == 0 || store.activeTab(index - 1)) {
-                      items.add(item.child);
+                      final gk = GlobalKey();
+                      items.add(
+                        Container(
+                          key: gk,
+                          child: item.child,
+                        ),
+                      );
                     }
                   });
                   return PageView(
