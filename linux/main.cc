@@ -63,12 +63,16 @@ int main(int argc, char **argv) {
   frame.left = 0;
   frame.width = 400*2;
   frame.height = 800*2;
+    flutter::WindowProperties window_properties = {};
+  window_properties.title = "Yala";
+  window_properties.width = frame.width;
+  window_properties.height = frame.height;
 
 
   // Start the engine.
-  if (!flutter_controller.CreateWindow(frame.width, frame.height, "Yala",
-                                       assets_path, arguments)) {
-
+  // Start the engine.
+  if (!flutter_controller.CreateWindow(window_properties, assets_path,
+                                       arguments)) {
     return EXIT_FAILURE;
   }
   flutter_controller.window()->SetFrame(frame);
