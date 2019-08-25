@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 100,
                 itemBuilder: (context, index) {
-                  print('$index');
+                  // print('$index');
                   return Padding(
                     padding: EdgeInsets.all(2),
                     child: Container(

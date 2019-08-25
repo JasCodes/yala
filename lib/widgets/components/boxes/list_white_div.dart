@@ -14,12 +14,12 @@ class ListWhiteDiv extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useAutorun((_) {
-      print(store.titles);
+      // print(store.titles);
       gk.currentState.insertItem(0);
     });
     return GestureDetector(
       onTap: () {
-        print(store.titles);
+        // print(store.titles);
       },
       child: Container(
         margin: EdgeInsets.all(20),

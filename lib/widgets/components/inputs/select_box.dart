@@ -30,6 +30,7 @@ class SelectBox extends HookWidget {
     final selectedId = useState(children[0].id);
 
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
       itemCount: children.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {

@@ -35,6 +35,25 @@ abstract class _FormWizardStore with Store {
   @observable
   ObservableList<double> dx;
 
+  @computed
+  get activeNum {
+    int x = 0;
+    for (var item in validList) {
+      if (item)
+        x++;
+      else
+        break;
+    }
+    if (x == 0) {
+      return 1;
+    } else if (x == validList.length) {
+      return x;
+    } else {
+      return x + 1;
+    }
+    // return validList.length > x ? x - 1 : x;
+  }
+
   bool activeTab(int index) {
     if (validList[index]) {
       if (index > 0)

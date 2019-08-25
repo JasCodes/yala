@@ -18,21 +18,21 @@ class PageInvoiceCreate extends StatelessWidget {
       appBar: AppBarX(
         title: 'Create a New Invoice',
       ),
-      body: ViewFormWizard(
-        children: [
-          ViewFormWizardItem(
+      body: FormWizard(
+        items: [
+          FormWizardItem(
             title: 'Select Client',
             child: PageInvoiceCreateSelectClient(
               index: 0,
             ),
           ),
-          ViewFormWizardItem(
+          FormWizardItem(
             title: 'Invoice Details',
             child: PageInvoiceCreateInvoiceDetails(
               index: 1,
             ),
           ),
-          ViewFormWizardItem(
+          FormWizardItem(
             title: 'Send Invoice',
             child: PageInvoiceCreateSendInvoice(
               index: 2,

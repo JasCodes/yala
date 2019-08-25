@@ -12,9 +12,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_hooks: ^0.6.0
   graphql_flutter: ^2.1.0
-  mobx: ^0.3.5
-  flutter_mobx: ^0.3.0+1
-  back_button_interceptor: ^4.0.7
+  mobx: ^0.3.6
+  flutter_mobx: ^0.3.1+1
+  back_button_interceptor: ^4.0.9
   shape_of_view: ^1.0.1
   page_transition: ^1.1.4
   animated_card: ^1.0.0+6
@@ -23,18 +23,16 @@ dependencies:
   locales: ^0.1.0
   intl: ^0.15.8
   enum_to_string: ^1.0.7
-  bezier_chart: ^1.0.13
+  bezier_chart: ^1.0.14
   after_layout: ^1.0.7+2
   provider: ^3.1.0
   dotted_border: ^1.0.2
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  build_runner: ^1.6.5
-
 builders:
-  mobx_codegen: ^0.3.3+1
+  mobx_codegen: ^0.3.5
+
+dev_dependencies:
+  build_runner: ^1.6.7
 
 flutter:
   uses-material-design: true

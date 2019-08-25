@@ -11,11 +11,11 @@ const double HEIGHT_TAB = 58;
 const double HEIGHT_TAB_SELECTION_LINE = 2.7;
 
 class ViewFormWizardTab extends StatefulWidget {
-  final List<ViewFormWizardItem> children;
+  final List<FormWizardItem> items;
 
   ViewFormWizardTab({
     Key key,
-    @required this.children,
+    @required this.items,
   }) : super(key: key);
 
   @override
@@ -31,13 +31,22 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab>
     var store = Provider.of<FormWizardStore>(context);
 
     var list = () sync* {
-      for (int i = 0; i < widget.children.length; i++) {
+      for (int i = 0; i < widget.items.length; i++) {
         yield Observer(
-          builder: (_) => Container(
+          builder: (_) => GestureDetector(
+            onTap: store.activeTab(i == 0 ? 0 : i - 1)
+                ? () {
+                    store.pageController.animateToPage(
+                      i,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.fastOutSlowIn,
+                    );
+                  }
+                : null,
             child: AnimatedDefaultTextStyle(
               duration: Duration(milliseconds: 400),
               child: Text(
-                widget.children[i].title,
+                widget.items[i].title,
                 key: gkl[i],
               ),
               style: TextStyle(
@@ -80,7 +89,6 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab>
     return AnimatedBuilder(
       animation: store.pageController,
       builder: (context, _) {
-        // print(left);
         return Observer(
           builder: (context) {
             PageController controller = store.pageController;
@@ -90,7 +98,7 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab>
             var l1 = store.lengthStatus[page.floor()];
             var lfr = page - page.floor();
             var len = l1;
-            print('$l1, $lfr');
+            // print('$l1, $lfr');
             var l2;
             if (lfr != 0) {
               l2 = store.lengthStatus[page.floor() + 1];
@@ -102,7 +110,7 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab>
             var x1 = store.dx[page.floor()] + (1 - factor) * l1 / 2;
             var xfr = page - page.floor();
             var left = x1;
-            print('$x1, $xfr');
+            // print('$x1, $xfr');
             if (xfr != 0) {
               var x2 = store.dx[page.floor() + 1] +
                   (l2 != null ? (1 - factor) * l2 / 2 : 0);
@@ -140,13 +148,13 @@ class _ViewFormWizardTabState extends State<ViewFormWizardTab>
           )
           .dx;
     });
-    print(store);
+    // print(store);
   }
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    for (var _ in widget.children) {
+    for (var _ in widget.items) {
       gkl.add(GlobalKey());
     }
     super.initState();

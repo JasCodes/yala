@@ -9,6 +9,12 @@ part of 'form_wizard_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FormWizardStore on _FormWizardStore, Store {
+  Computed<dynamic> _$activeNumComputed;
+
+  @override
+  dynamic get activeNum =>
+      (_$activeNumComputed ??= Computed<dynamic>(() => super.activeNum)).value;
+
   final _$validListAtom = Atom(name: '_FormWizardStore.validList');
 
   @override
