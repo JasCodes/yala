@@ -24,6 +24,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Style.backgroundColor,
       body: Container(
         decoration: BoxDecoration(
           gradient: Style.primaryGradient,

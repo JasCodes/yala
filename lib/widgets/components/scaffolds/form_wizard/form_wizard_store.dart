@@ -24,6 +24,7 @@ abstract class _FormWizardStore with Store {
       List.filled(length, 0.0),
     );
   }
+
   PageController pageController = PageController();
 
   @observable

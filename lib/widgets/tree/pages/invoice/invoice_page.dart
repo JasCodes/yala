@@ -9,8 +9,8 @@ import 'package:yala/widgets/tree/sections/invoice/section_invoice_recent.dart';
 
 var listKey = GlobalKey<AnimatedListState>();
 
-class PageInvoice extends HookWidget {
-  const PageInvoice({Key key}) : super(key: key);
+class InvoicePage extends HookWidget {
+  const InvoicePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

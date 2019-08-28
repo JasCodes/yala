@@ -54,42 +54,45 @@ class BottomNavSheet extends HookWidget {
             alignment: Alignment.bottomCenter,
             child: SlideTransition(
               position: aOffset,
-              child: ShapeOfView(
-                child: Center(
-                  child: Container(
-                    color: Color(0xfff3f4f7),
-                    child: Align(
-                      alignment: Alignment(0, -0.45),
-                      // alignment: Alignment.topCenter,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          BottomNavSheetButton(
-                            screen: Screen.transfer,
-                            icon: IconsX.money,
-                            title: 'Transfer',
-                          ),
-                          BottomNavSheetButton(
-                            screen: Screen.billpayment,
-                            icon: IconsX.card,
-                            title: 'Bill Payment',
-                          ),
-                          BottomNavSheetButton(
-                            screen: Screen.request,
-                            icon: IconsX.request,
-                            title: 'Request',
-                          ),
-                        ],
+              child: Opacity(
+                opacity: Stores.BottomNav.isExchange ? 1 : 0,
+                child: ShapeOfView(
+                  height: 230,
+                  // elevation: 10,
+                  shape: ArcShape(
+                    direction: ArcDirection.Outside,
+                    height: 20,
+                    position: ArcPosition.Top,
+                  ),
+                  child: Center(
+                    child: Container(
+                      color: Color(0xfff3f4f7),
+                      child: Align(
+                        alignment: Alignment(0, -0.45),
+                        // alignment: Alignment.topCenter,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            BottomNavSheetButton(
+                              screen: Screen.transfer,
+                              icon: IconsX.money,
+                              title: 'Transfer',
+                            ),
+                            BottomNavSheetButton(
+                              screen: Screen.billpayment,
+                              icon: IconsX.card,
+                              title: 'Bill Payment',
+                            ),
+                            BottomNavSheetButton(
+                              screen: Screen.request,
+                              icon: IconsX.request,
+                              title: 'Request',
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                height: 230,
-                // elevation: 10,
-                shape: ArcShape(
-                  direction: ArcDirection.Outside,
-                  height: 20,
-                  position: ArcPosition.Top,
                 ),
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_observer.dart';
 import 'package:yala/static/style.dart';
+import 'package:yala/widgets/components/buttons/botton_x.dart';
 import 'package:yala/widgets/components/buttons/button_dotted.dart';
 import 'package:yala/widgets/components/inputs/select_box.dart';
 import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_store.dart';
@@ -19,7 +20,6 @@ class PageInvoiceCreateSelectClient extends HookWidget {
   Widget build(BuildContext context) {
     useObserver();
     final store = Provider.of<FormWizardStore>(context);
-
     return PageScroll(
       color: Style.backgroundColor,
       child: Container(
@@ -70,6 +70,19 @@ class PageInvoiceCreateSelectClient extends HookWidget {
               title: 'Add a New Client',
               onTap: () {
                 Navigator.pushNamed(context, '/invoice/add_client');
+              },
+            ),
+            SizedBox(
+              height: 23.3,
+            ),
+            ButtonX(
+              isActive: store.validList[index],
+              title: 'continue',
+              onTap: () {
+                store.pageController.nextPage(
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                );
               },
             ),
             SizedBox(

@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/widgets/tree/pages/invoice/page_invoice.dart';
-import 'package:yala/widgets/tree/pages/invoice/page_invoice_add_client.dart';
+import 'package:yala/widgets/tree/pages/invoice/invoice_page.dart';
+import 'package:yala/widgets/tree/pages/invoice/page_invoice_add_client/page_invoice_add_client.dart';
 import 'package:yala/widgets/tree/pages/invoice/page_invoice_create/page_invoice_create.dart';
+
+class NavigatorObserverX extends NavigatorObserver {
+  NavigatorObserverX(this.onNavigation);
+
+  final VoidCallback onNavigation;
+
+  void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
+    onNavigation();
+  }
+
+  void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
+    onNavigation();
+  }
+}
 
 class ScreenInvoices extends StatelessWidget {
   const ScreenInvoices({Key key}) : super(key: key);
@@ -10,6 +24,7 @@ class ScreenInvoices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
+      observers: [NavigatorObserverX(() {})],
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/invoice/create':
@@ -24,7 +39,7 @@ class ScreenInvoices extends StatelessWidget {
             );
           default:
             return PageTransition(
-              child: PageInvoice(),
+              child: InvoicePage(),
               type: PageTransitionType.rightToLeft,
             );
         }

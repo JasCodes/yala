@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/widgets/tree/pages/payroll/page_payroll.dart';
-import 'package:yala/widgets/tree/pages/payroll/page_payroll_add.dart';
+import 'package:yala/widgets/tree/pages/payroll/page_payroll/page_payroll.dart';
+import 'package:yala/widgets/tree/pages/payroll/page_payroll_add_employee.dart';
 
 class ScreenPayroll extends StatelessWidget {
   const ScreenPayroll({Key key}) : super(key: key);
@@ -11,9 +11,9 @@ class ScreenPayroll extends StatelessWidget {
     return Navigator(
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/payroll/add':
+          case '/payroll/employee/add':
             return PageTransition(
-              child: PagePayrollAdd(),
+              child: PagePayrollAddEmployee(),
               type: PageTransitionType.rightToLeft,
             );
           default:

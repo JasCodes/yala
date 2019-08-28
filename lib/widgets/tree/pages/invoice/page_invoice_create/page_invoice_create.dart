@@ -14,31 +14,54 @@ class PageInvoiceCreate extends StatelessWidget {
   const PageInvoiceCreate({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var _items = () sync* {
+      int i = 0;
+      yield FormWizardItem(
+        title: 'Select Client',
+        child: PageInvoiceCreateSelectClient(
+          index: i++,
+        ),
+      );
+      yield FormWizardItem(
+        title: 'Invoice Details',
+        child: PageInvoiceCreateInvoiceDetails(
+          index: i++,
+        ),
+      );
+      yield FormWizardItem(
+        title: 'Send Invoice',
+        child: PageInvoiceCreateSendInvoice(
+          index: i++,
+        ),
+      );
+    }()
+        .toList();
     return Scaffold(
       appBar: AppBarX(
         title: 'Create a New Invoice',
       ),
       body: FormWizard(
-        items: [
-          FormWizardItem(
-            title: 'Select Client',
-            child: PageInvoiceCreateSelectClient(
-              index: 0,
-            ),
-          ),
-          FormWizardItem(
-            title: 'Invoice Details',
-            child: PageInvoiceCreateInvoiceDetails(
-              index: 1,
-            ),
-          ),
-          FormWizardItem(
-            title: 'Send Invoice',
-            child: PageInvoiceCreateSendInvoice(
-              index: 2,
-            ),
-          ),
-        ],
+        items: _items,
+        // items: [
+        //   // FormWizardItem(
+        //   //   title: 'Select Client',
+        //   //   child: PageInvoiceCreateSelectClient(
+        //   //     index: 0,
+        //   //   ),
+        //   // ),
+        //   FormWizardItem(
+        //     title: 'Invoice Details',
+        //     child: PageInvoiceCreateInvoiceDetails(
+        //       index: 0,
+        //     ),
+        //   ),
+        //   FormWizardItem(
+        //     title: 'Send Invoice',
+        //     child: PageInvoiceCreateSendInvoice(
+        //       index: 1,
+        //     ),
+        //   ),
+        // ],
       ),
     );
   }

@@ -36,13 +36,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
+  autocomplete_textfield:
+    dependency: "direct main"
+    description:
+      name: autocomplete_textfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.3"
   back_button_interceptor:
     dependency: "direct main"
     description:
       name: back_button_interceptor
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.9"
+    version: "4.1.1"
+  bezier:
+    dependency: "direct main"
+    description:
+      name: bezier
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.2"
   bezier_chart:
     dependency: "direct main"
     description:
@@ -209,6 +223,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.1+1"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   front_end:
     dependency: transitive
     description:
@@ -355,7 +376,7 @@ packages:
       name: mobx
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.6"
+    version: "0.3.7"
   package_config:
     dependency: transitive
     description:
@@ -447,6 +468,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  random_color:
+    dependency: "direct main"
+    description:
+      name: random_color
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   rect_getter:
     dependency: "direct main"
     description:
@@ -493,7 +521,7 @@ packages:
       name: sliver_animated_list
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+1"
+    version: "1.0.0+2"
   source_span:
     dependency: transitive
     description:

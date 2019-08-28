@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_body.dart';
 import 'package:yala/widgets/components/scaffolds/form_wizard/form_wizard_store.dart';
