@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:yala/widgets/layout/bottom_nav/bottom_nav_stack.dart';
+import 'package:yala/layout/bottom_nav/bottom_nav_stack.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
-import 'package:yala/widgets/layout/navigator_stack.dart';
+import 'package:yala/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/layout/navigator_stack.dart';
 
 main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;

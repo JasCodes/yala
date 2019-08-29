@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yala/navigation/screen.dart';
-import 'package:yala/widgets/bottom_sheet_x.dart';
+import 'package:yala/bottom_sheet_x.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({Key key, this.screen}) : super(key: key);

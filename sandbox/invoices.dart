@@ -1,10 +1,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_hooks/flutter_hooks.dart';
-// import 'package:yala/widgets/layout/screen.dart';
+// import 'package:yala/layout/screen.dart';
 // import 'package:yala/stores/bottom_nav.dart';
-// // import 'package:yala/widgets/views/dashboard.dart';
-// import 'package:yala/widgets/views/detail2.dart';
-// import 'package:yala/widgets/routes/transparent.dart';
+// // import 'package:yala/views/dashboard.dart';
+// import 'package:yala/views/detail2.dart';
+// import 'package:yala/routes/transparent.dart';
 
 // class ScreenInvoices extends StatelessWidget {
 //   const ScreenInvoices({Key key}) : super(key: key);

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:yala/providers.dart';
 import 'package:yala/screens/home.dart';
 import 'package:yala/screens/homex.dart';
-import 'package:yala/widgets/bottom_nav_bar.dart';
+import 'package:yala/bottom_nav_bar.dart';
 
 class SlideRightRoute extends PageRouteBuilder {
   final Widget widget;
