@@ -26,7 +26,7 @@ class PagePayrollDaySlider extends HookWidget {
           var _border = null;
           if (active) {
             _border = Border.all(
-              color: Color(0xff5a61f7),
+              color: Style.primaryColor,
               width: 1.7,
             );
           }
@@ -35,6 +35,8 @@ class PagePayrollDaySlider extends HookWidget {
           var weekday = Intl().date('EEEE').format(date);
           var day = Intl().date('dd').format(date);
           var month = Intl().date('MMM yyyy').format(date);
+          var holiday = weekday == 'Saturday' || weekday == 'Friday';
+          var activeX = active && !holiday;
           var style = TextStyle(
             color: Style.greyColor,
             fontSize: 10.7,
@@ -42,9 +44,9 @@ class PagePayrollDaySlider extends HookWidget {
           );
           var dayStyle = TextStyle(
             fontFamily: Style.primaryFont,
-            color: Style.blackColor,
+            color: holiday ? Style.greyColor : Style.blackColor,
             fontSize: 40,
-            fontWeight: active ? FontWeight.w500 : FontWeight.w300,
+            fontWeight: activeX ? FontWeight.w500 : FontWeight.w300,
           );
           return AnimatedContainer(
             duration: Duration(milliseconds: 300),
@@ -67,39 +69,67 @@ class PagePayrollDaySlider extends HookWidget {
                 )
               ],
             ),
-            child: Stack(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisSize: MainAxisSize.max,
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Align(
-                  alignment: Alignment(-0.55, -0.8),
-                  child: Text(
-                    weekday,
-                    style: style,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment(
-                    active ? -0.65 : -0.60,
-                    active ? -0.25 : -0.25,
-                  ),
-                  child: AnimatedDefaultTextStyle(
-                    duration: Duration(milliseconds: 300),
-                    style: dayStyle,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(3.3),
+              child: Stack(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisSize: MainAxisSize.max,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment(
+                      activeX ? -0.5 : -0.5,
+                      activeX ? -0.83 : -0.83,
+                    ),
                     child: Text(
-                      day,
+                      weekday,
+                      style: style,
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment(-0.55, 0.55),
-                  child: Text(
-                    month,
-                    style: style,
+                  Align(
+                    alignment: Alignment(
+                      activeX ? -0.52 : -0.54,
+                      activeX ? -0.35 : -0.35,
+                    ),
+                    child: AnimatedDefaultTextStyle(
+                      duration: Duration(milliseconds: 300),
+                      style: dayStyle,
+                      child: Text(
+                        day,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Align(
+                    alignment: Alignment(-0.50, 0.40),
+                    child: Text(
+                      month,
+                      style: style,
+                    ),
+                  ),
+                  Opacity(
+                    opacity: holiday ? 1 : 0,
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Container(
+                        height: 20,
+                        width: double.infinity,
+                        color: Style.redColor,
+                        child: Align(
+                          alignment: Alignment(0, -0.3),
+                          child: Text(
+                            'Bank Holiday',
+                            style: TextStyle(
+                              fontSize: 10.7,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },

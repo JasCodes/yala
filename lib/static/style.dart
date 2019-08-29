@@ -14,6 +14,7 @@ class Style {
   static const secondaryColor = Color(0xfffbc415);
   static const inactiveColor = Color(0xffbfbfbf);
   static const backgroundColor = Color(0xfff3f4f7);
+  static const redColor = Color(0xfff75a5a);
   static const boxRadius = 3.3;
   static final themeData = ThemeData(
     fontFamily: primaryFont,

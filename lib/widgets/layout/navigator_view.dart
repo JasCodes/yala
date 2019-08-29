@@ -19,12 +19,13 @@ class NavigatorView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = Provider.of<BottomNavStore>(context);
     final _fader = useAnimationController(
         lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 400));
 
     final _scaler = useAnimationController(
         lowerBound: 0.8, upperBound: 1, duration: Duration(milliseconds: 400));
+
+    final store = Provider.of<BottomNavStore>(context);
 
     return Observer(
       builder: (_) {
@@ -49,18 +50,17 @@ class NavigatorView extends HookWidget {
           child: FadeTransition(
             opacity: _fader.drive(CurveTween(curve: Curves.fastOutSlowIn)),
             child: IgnorePointer(
-              ignoring: isIgnorePointer,
-              child: Offstage(
-                offstage: !(_fader.isAnimating || isActive),
-                child: FadeTransition(
-                  opacity:
-                      _fader.drive(CurveTween(curve: Curves.fastOutSlowIn)),
-                  child: KeyedSubtree(
-                    key: globalKey,
-                    child: child,
-                  ),
+              ignoring: !isActive, //isIgnorePointer,
+              // child: Offstage(
+              // offstage: !isActive, // !(_fader.isAnimating || isActive),
+              child: FadeTransition(
+                opacity: _fader.drive(CurveTween(curve: Curves.fastOutSlowIn)),
+                child: KeyedSubtree(
+                  key: globalKey,
+                  child: child,
                 ),
               ),
+              // ),
             ),
           ),
         );
