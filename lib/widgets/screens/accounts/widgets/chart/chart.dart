@@ -12,28 +12,30 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 207 + KNOB_WIDTH / 2,
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Stack(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: (KNOB_WIDTH / 2)),
-              height: CHART_HEIGHT,
-              width: double.infinity,
-              child: CustomPaint(
-                painter: ChartPainter(data: null),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return Stack(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: (KNOB_WIDTH / 2)),
+                height: CHART_HEIGHT,
+                width: double.infinity,
+                child: CustomPaint(
+                  painter: ChartPainter(data: null),
+                ),
               ),
-            ),
-            Container(
-              child: ChartSlider(
-                widgetWidth: constraints.maxWidth,
-                widgetHeight: constraints.maxHeight,
-                knobWidth: KNOB_WIDTH,
-                chartHeight: CHART_HEIGHT,
+              Container(
+                child: ChartSlider(
+                  widgetWidth: constraints.maxWidth,
+                  widgetHeight: constraints.maxHeight,
+                  knobWidth: KNOB_WIDTH,
+                  chartHeight: CHART_HEIGHT,
+                ),
               ),
-            ),
-          ],
-        );
-      }),
+            ],
+          );
+        },
+      ),
     );
   }
 }

@@ -13,7 +13,7 @@ List<DateTime> _getLastMonthNames(int num) {
   return ret;
 }
 
-class ChartSlider extends HookWidget {
+class ChartSlider extends StatefulWidget {
   final double widgetWidth;
   final double widgetHeight;
   final double knobWidth;
@@ -28,19 +28,48 @@ class ChartSlider extends HookWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final _left = useState(6 / 7 * widgetWidth - (knobWidth / 2));
+  _ChartSliderState createState() => _ChartSliderState();
+}
 
-    final _onDrag = (dd) {
-      _left.value = dd.globalPosition.dx - knobWidth / 2;
-      print('x');
-    };
-    final _onDragUp = (dd) {
-      var index = (7 / widgetWidth * (_left.value + knobWidth / 2));
+class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
+  double _left;
+  bool _down = false;
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    _left = (6 / 7 * widget.widgetWidth - (widget.knobWidth / 2));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    // _onDragUp(null);
+  }
+
+  _onDrag(dd) {
+    setState(() {
+      _down = false;
+      _left = dd.globalPosition.dx - widget.knobWidth / 2;
+    });
+  }
+
+  _onDragUp(dd) {
+    setState(() {
+      _down = false;
+      var index = (7 / widget.widgetWidth * (_left + widget.knobWidth / 2));
       if (index < 1) index = 1;
       if (index > 6) index = 6;
-      _left.value = (index.round() * widgetWidth / 7) - (knobWidth / 2);
-    };
+      _left = (index.round() * widget.widgetWidth / 7) - (widget.knobWidth / 2);
+    });
+  }
+
+  Widget _buildMonthRow() {
     final List<Widget> _months = [];
     _getLastMonthNames(6).forEach((date) {
       var month = Intl().date('MMM').format(date);
@@ -62,6 +91,18 @@ class ChartSlider extends HookWidget {
         ),
       );
     });
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: _months,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_down) {
+      _onDragUp(null);
+    }
     return GestureDetector(
       onHorizontalDragStart: _onDrag,
       onHorizontalDragDown: _onDrag,
@@ -77,17 +118,13 @@ class ChartSlider extends HookWidget {
               alignment: Alignment(-1, 0.85),
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: KNOB_WIDTH / 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: _months,
-                ),
+                child: _buildMonthRow(),
               ),
             ),
             ChartSliderKnob(
-              left: _left.value,
-              height: (widgetHeight - chartHeight * 1),
-              knobWidth: knobWidth,
+              left: _left,
+              height: (widget.widgetHeight - widget.chartHeight * 1),
+              knobWidth: widget.knobWidth,
             ),
           ],
         ),
