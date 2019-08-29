@@ -30,9 +30,9 @@ class NavigatorView extends HookWidget {
     return Observer(
       builder: (_) {
         final id = store.navigator;
-        final isAnimating = _fader.isAnimating || _scaler.isAnimating;
+        // final isAnimating = _fader.isAnimating || _scaler.isAnimating;
         final isActive = id == navigator;
-        final isIgnorePointer = isAnimating && !isActive;
+        // final isIgnorePointer = isAnimating && !isActive;
         // final isOffstage =!(isAnimating || isActive); //!isAnimating && !isActive;
         // print("$isActive ${_fader.isAnimating} ${_scaler.isAnimating}");
         // _fader.reset();

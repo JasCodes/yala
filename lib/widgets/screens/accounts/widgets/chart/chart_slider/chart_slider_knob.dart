@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yala/widgets/screens/accounts/widgets/chart/chart.dart';
+// import 'package:yala/widgets/screens/accounts/widgets/chart/chart.dart';
 
 class ChartSliderKnob extends StatelessWidget {
   final double left;
