@@ -17,11 +17,23 @@ class Account extends _Account {
   ObservableList<Vector2> get summary => (_$summaryComputed ??=
           Computed<ObservableList<Vector2>>(() => super.summary))
       .value;
-  Computed<int> _$balanceComputed;
+
+  final _$typeAtom = Atom(name: '_Account.type');
 
   @override
-  int get balance =>
-      (_$balanceComputed ??= Computed<int>(() => super.balance)).value;
+  String get type {
+    _$typeAtom.context.enforceReadPolicy(_$typeAtom);
+    _$typeAtom.reportObserved();
+    return super.type;
+  }
+
+  @override
+  set type(String value) {
+    _$typeAtom.context.conditionallyRunInAction(() {
+      super.type = value;
+      _$typeAtom.reportChanged();
+    }, _$typeAtom, name: '${_$typeAtom.name}_set');
+  }
 
   final _$numberAtom = Atom(name: '_Account.number');
 
@@ -38,6 +50,23 @@ class Account extends _Account {
       super.number = value;
       _$numberAtom.reportChanged();
     }, _$numberAtom, name: '${_$numberAtom.name}_set');
+  }
+
+  final _$balanceAtom = Atom(name: '_Account.balance');
+
+  @override
+  double get balance {
+    _$balanceAtom.context.enforceReadPolicy(_$balanceAtom);
+    _$balanceAtom.reportObserved();
+    return super.balance;
+  }
+
+  @override
+  set balance(double value) {
+    _$balanceAtom.context.conditionallyRunInAction(() {
+      super.balance = value;
+      _$balanceAtom.reportChanged();
+    }, _$balanceAtom, name: '${_$balanceAtom.name}_set');
   }
 
   final _$transactionsAtom = Atom(name: '_Account.transactions');

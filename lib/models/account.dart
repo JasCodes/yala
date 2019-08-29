@@ -9,7 +9,13 @@ part 'account.g.dart';
 @store
 abstract class _Account {
   @observable
+  String type;
+
+  @observable
   String number;
+
+  @observable
+  double balance;
 
   @observable
   ObservableList<Transaction> transactions;
@@ -17,10 +23,5 @@ abstract class _Account {
   @computed
   ObservableList<Vector2> get summary {
     return ObservableList.of([]);
-  }
-
-  @computed
-  int get balance {
-    return 0;
   }
 }
