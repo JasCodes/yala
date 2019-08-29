@@ -1,17 +1,17 @@
-import 'package:mobx/mobx.dart';
-import 'package:yala/widgets/layout/screen.dart';
+// import 'package:mobx/mobx.dart';
 
-// Include generated file
-part 'store_bottom_nav.g.dart';
+// // Include generated file
+// part 'store_bottom_nav.g.dart';
 
-// This is the class used by rest of your codebase
-class StoreBottomNav = _StoreBottomNav with _$StoreBottomNav;
+// // This is the class used by rest of your codebase
+// class StoreBottomNav = _StoreBottomNav with _$StoreBottomNav;
 
-// The store-class
-abstract class _StoreBottomNav with Store {
-  @observable
-  Screen screen = Screen.dev;
+// // The store-class
+// abstract class _StoreBottomNav with Store {
+//   @observable
 
-  @observable
-  bool isExchange = false;
-}
+//   //  screen = Screen.dev;
+
+//   @observable
+//   bool isExchange = false;
+// }

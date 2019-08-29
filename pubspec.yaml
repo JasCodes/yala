@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
   flutter_hooks: ^0.6.0
   graphql_flutter: ^2.1.0
   mobx: ^0.3.7
@@ -19,18 +18,16 @@ dependencies:
   page_transition: ^1.1.4
   animated_card: ^1.0.0+6
   sliver_animated_list: ^1.0.0+2
-  rect_getter: ^0.0.1
   locales: ^0.1.0
   intl: ^0.15.8
   enum_to_string: ^1.0.7
-  bezier_chart: ^1.0.14
   after_layout: ^1.0.7+2
   provider: ^3.1.0
   dotted_border: ^1.0.2
   random_color: ^1.0.3
   autocomplete_textfield: ^1.7.3
   flutter_screenutil: ^0.6.0
-  bezier: ^1.1.2
+  vector_math: ^2.0.8
 
 builders:
   mobx_codegen: ^0.3.5

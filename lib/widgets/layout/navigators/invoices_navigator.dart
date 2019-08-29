@@ -18,8 +18,8 @@ class NavigatorObserverX extends NavigatorObserver {
   }
 }
 
-class ScreenInvoices extends StatelessWidget {
-  const ScreenInvoices({Key key}) : super(key: key);
+class InvoicesNavigator extends StatelessWidget {
+  const InvoicesNavigator({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

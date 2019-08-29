@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:yala/static/stores.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/widgets/layout/screen.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/widgets/layout/navigator_map.dart';
 
 class BottomNavSheetButton extends StatelessWidget {
   const BottomNavSheetButton({
     Key key,
-    @required this.screen,
+    @required this.navigator,
     @required this.icon,
     @required this.title,
   }) : super(key: key);
 
-  final Screen screen;
+  final NavigatorX navigator;
   final IconData icon;
   final String title;
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<BottomNavStore>(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -39,8 +41,8 @@ class BottomNavSheetButton extends StatelessWidget {
             type: MaterialType.transparency,
             child: InkWell(
               onTap: () {
-                Stores.BottomNav.screen = screen;
-                Stores.BottomNav.isExchange = false;
+                store.navigator = navigator;
+                store.isExchange = false;
               },
               customBorder: CircleBorder(),
               child: Icon(

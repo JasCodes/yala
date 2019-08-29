@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yala/widgets/components/page_routes/page_route_transparent.dart';
-import 'package:yala/widgets/tree/pages/page_accounts.dart';
+import 'package:yala/widgets/screens/accounts/accounts_screen.dart';
 
-class ScreenAccounts extends StatelessWidget {
-  const ScreenAccounts({Key key}) : super(key: key);
+class AccountsNavigator extends StatelessWidget {
+  const AccountsNavigator({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class ScreenAccounts extends StatelessWidget {
           builder: (_) {
             switch (settings.name) {
               default:
-                return PageAccounts();
+                return AccountsScreen();
             }
           },
         );

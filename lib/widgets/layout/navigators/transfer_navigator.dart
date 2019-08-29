@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/widgets/tree/pages/bill_payment/page_billpayment.dart';
-import 'package:yala/widgets/tree/pages/bill_payment/page_billpayment_pay.dart';
+import 'package:yala/widgets/tree/pages/transfer/page_transfer.dart';
+import 'package:yala/widgets/tree/pages/transfer/page_transfer_international.dart';
 
-class ScreenBillPayment extends StatelessWidget {
-  const ScreenBillPayment({Key key}) : super(key: key);
+class TransferNavigator extends StatelessWidget {
+  const TransferNavigator({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/billpayment/pay':
+          case '/transfer/international':
             return PageTransition(
-              child: PageBillPaymentPay(),
+              child: PageTransferInternational(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
-              child: PageBillPayment(),
+              child: PageTransfer(),
               type: PageTransitionType.rightToLeft,
             );
         }

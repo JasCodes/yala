@@ -84,7 +84,7 @@ class TextFieldX extends StatelessWidget {
             keyboardType: textInputType,
             focusNode: input.focusNode,
             onSubmitted: (value) {
-              print(input.value);
+              // print(input.value);
               // _controller.setTextAndPosition('${_controller.text}\n',caretPosition: 5);
               // input.focusNode.requestFocus();
               _fieldFocusChange(

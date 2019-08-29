@@ -1,8 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
-import 'package:yala/packages/radial_slider.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/tree/pages/payroll/page_payroll/page_payroll_period/page_payroll_day_slider.dart';
 import 'package:yala/widgets/tree/pages/payroll/page_payroll/page_payroll_period/page_payroll_month_slider.dart';
@@ -75,12 +71,7 @@ class PagePayrollPeriod extends StatelessWidget {
           ),
           SizedBox(height: 13.3),
           PagePayrollDaySlider(),
-          Container(
-            height: 200,
-            child: RadialSlider(
-              color: Style.primaryColor,
-            ),
-          ),
+          Container(),
         ],
       ),
     );

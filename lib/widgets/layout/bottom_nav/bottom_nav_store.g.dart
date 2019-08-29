@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'store_bottom_nav.dart';
+part of 'bottom_nav_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,25 +8,27 @@ part of 'store_bottom_nav.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$StoreBottomNav on _StoreBottomNav, Store {
-  final _$screenAtom = Atom(name: '_StoreBottomNav.screen');
+class BottomNavStore extends _BottomNavStore {
+  BottomNavStore() : super();
+
+  final _$navigatorAtom = Atom(name: '_BottomNavStore.navigator');
 
   @override
-  Screen get screen {
-    _$screenAtom.context.enforceReadPolicy(_$screenAtom);
-    _$screenAtom.reportObserved();
-    return super.screen;
+  NavigatorX get navigator {
+    _$navigatorAtom.context.enforceReadPolicy(_$navigatorAtom);
+    _$navigatorAtom.reportObserved();
+    return super.navigator;
   }
 
   @override
-  set screen(Screen value) {
-    _$screenAtom.context.conditionallyRunInAction(() {
-      super.screen = value;
-      _$screenAtom.reportChanged();
-    }, _$screenAtom, name: '${_$screenAtom.name}_set');
+  set navigator(NavigatorX value) {
+    _$navigatorAtom.context.conditionallyRunInAction(() {
+      super.navigator = value;
+      _$navigatorAtom.reportChanged();
+    }, _$navigatorAtom, name: '${_$navigatorAtom.name}_set');
   }
 
-  final _$isExchangeAtom = Atom(name: '_StoreBottomNav.isExchange');
+  final _$isExchangeAtom = Atom(name: '_BottomNavStore.isExchange');
 
   @override
   bool get isExchange {

@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:yala/static/stores.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/components/primitives/animated_iconx.dart';
-import 'package:yala/widgets/layout/screen.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/widgets/layout/navigator_map.dart';
 
 class BottomNavButton extends StatelessWidget {
   BottomNavButton({
     Key key,
-    @required this.screen,
+    @required this.navigator,
     @required this.icon,
     @required this.title,
     this.isMenu = false,
   }) : super(key: key);
 
-  final Screen screen;
+  final NavigatorX navigator;
   final IconData icon;
   final String title;
   final bool isMenu;
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<BottomNavStore>(context);
     return Expanded(
       flex: 1,
       child: SizedBox(
@@ -29,15 +31,15 @@ class BottomNavButton extends StatelessWidget {
           type: MaterialType.transparency,
           child: Observer(
             builder: (_) {
-              Color color = Stores.BottomNav.screen == screen
+              Color color = store.navigator == navigator
                   ? Style.primaryColor
                   : Style.inactiveColor;
               return InkWell(
                 // radius: 20,
                 customBorder: CircleBorder(),
                 onTap: () {
-                  if (!isMenu) Stores.BottomNav.screen = screen;
-                  Stores.BottomNav.isExchange = false;
+                  if (!isMenu) store.navigator = navigator;
+                  store.isExchange = false;
                 },
                 child: Padding(
                   padding: EdgeInsets.all(5),

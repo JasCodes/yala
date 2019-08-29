@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:yala/static/stores.dart';
-import 'package:yala/widgets/layout/screen.dart';
+import 'package:provider/provider.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/widgets/layout/navigator_map.dart';
 
-class ScreenView extends HookWidget {
-  ScreenView({
+class NavigatorView extends HookWidget {
+  NavigatorView({
     Key key,
-    @required this.screen,
+    @required this.navigator,
     @required this.child,
   }) : super(key: key);
 
   // final GlobalKey gk;
-  final Screen screen;
+  final NavigatorX navigator;
   final Widget child;
-  final gk = GlobalKey();
+  final globalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<BottomNavStore>(context);
     final _fader = useAnimationController(
         lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 400));
 
@@ -26,13 +28,15 @@ class ScreenView extends HookWidget {
 
     return Observer(
       builder: (_) {
-        final id = Stores.BottomNav.screen;
+        final id = store.navigator;
         final isAnimating = _fader.isAnimating || _scaler.isAnimating;
-        final isActive = id == screen;
+        final isActive = id == navigator;
         final isIgnorePointer = isAnimating && !isActive;
-        final isOffstage = !isAnimating && !isActive;
-
-        if (id == screen) {
+        // final isOffstage =!(isAnimating || isActive); //!isAnimating && !isActive;
+        // print("$isActive ${_fader.isAnimating} ${_scaler.isAnimating}");
+        // _fader.reset();
+        // _scaler.reset();
+        if (id == navigator) {
           _fader.forward();
           _scaler.forward();
         } else {
@@ -40,18 +44,19 @@ class ScreenView extends HookWidget {
           _scaler.reverse();
         }
         return ScaleTransition(
-          scale: _scaler.drive(CurveTween(curve: Curves.fastOutSlowIn)),
+          scale: _scaler,
+          // scale: _scaler.drive(CurveTween(curve: Curves.fastOutSlowIn)),
           child: FadeTransition(
             opacity: _fader.drive(CurveTween(curve: Curves.fastOutSlowIn)),
             child: IgnorePointer(
               ignoring: isIgnorePointer,
               child: Offstage(
-                offstage: isOffstage,
+                offstage: !(_fader.isAnimating || isActive),
                 child: FadeTransition(
                   opacity:
                       _fader.drive(CurveTween(curve: Curves.fastOutSlowIn)),
                   child: KeyedSubtree(
-                    key: gk,
+                    key: globalKey,
                     child: child,
                   ),
                 ),

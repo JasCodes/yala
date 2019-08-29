@@ -1,15 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/widgets/layout/bottom_nav/bottom_nav_stack.dart';
-import 'package:yala/widgets/layout/screen_stack.dart';
 import 'package:yala/static/style.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/widgets/layout/navigator_stack.dart';
 
 main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // status bar color
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // status bar color
+    ),
+  );
   runApp(
     MaterialApp(
       home: Home(),
@@ -23,17 +27,24 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Style.backgroundColor,
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: Style.primaryGradient,
+    return MultiProvider(
+      providers: [
+        Provider<BottomNavStore>(
+          builder: (_) => BottomNavStore(),
         ),
-        child: Stack(
-          children: <Widget>[
-            ScreenStack(),
-            BottomNavStack(),
-          ],
+      ],
+      child: Scaffold(
+        backgroundColor: Style.backgroundColor,
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: Style.primaryGradient,
+          ),
+          child: Stack(
+            children: <Widget>[
+              NavigatorStack(),
+              BottomNavStack(),
+            ],
+          ),
         ),
       ),
     );

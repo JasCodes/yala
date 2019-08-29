@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/widgets/tree/pages/transfer/page_transfer.dart';
-import 'package:yala/widgets/tree/pages/transfer/page_transfer_international.dart';
+import 'package:yala/widgets/tree/pages/payroll/page_payroll/page_payroll.dart';
+import 'package:yala/widgets/tree/pages/payroll/page_payroll_add_employee.dart';
 
-class ScreenTransfer extends StatelessWidget {
-  const ScreenTransfer({Key key}) : super(key: key);
+class PayrollNavigator extends StatelessWidget {
+  const PayrollNavigator({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/transfer/international':
+          case '/payroll/employee/add':
             return PageTransition(
-              child: PageTransferInternational(),
+              child: PagePayrollAddEmployee(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
-              child: PageTransfer(),
+              child: PagePayroll(),
               type: PageTransitionType.rightToLeft,
             );
         }

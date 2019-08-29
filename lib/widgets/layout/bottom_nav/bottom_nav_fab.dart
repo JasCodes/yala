@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/static/icons.dart';
-import 'package:yala/static/stores.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/components/primitives/iconx.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
 
 class BottomNavFAB extends StatelessWidget {
   const BottomNavFAB({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<BottomNavStore>(context);
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
@@ -24,7 +26,7 @@ class BottomNavFAB extends StatelessWidget {
             child: InkWell(
               customBorder: CircleBorder(),
               onTap: () {
-                Stores.BottomNav.isExchange = !Stores.BottomNav.isExchange;
+                store.isExchange = !store.isExchange;
               },
               child: Container(
                 width: 66.7,
@@ -33,14 +35,7 @@ class BottomNavFAB extends StatelessWidget {
                   builder: (_) {
                     return AnimatedSwitcher(
                       duration: Duration(milliseconds: 200),
-                      // transitionBuilder: (child, animation) {
-                      //   animation.drive()
-                      //   return RotationTransition(
-                      //     child: child,
-                      //     turns: ,
-                      //   );
-                      // },
-                      child: !Stores.BottomNav.isExchange
+                      child: !store.isExchange
                           ? IconX(
                               IconsX.transfer,
                               key: UniqueKey(),

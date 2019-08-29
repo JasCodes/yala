@@ -2,18 +2,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
+import 'package:provider/provider.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import 'package:yala/hooks/use_autorun.dart';
 import 'package:yala/static/icons.dart';
-import 'package:yala/static/stores.dart';
+import 'package:yala/static/style.dart';
 import 'package:yala/widgets/layout/bottom_nav/bottom_nav_sheet_button.dart';
-import 'package:yala/widgets/layout/screen.dart';
+import 'package:yala/widgets/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/widgets/layout/navigator_map.dart';
 
 class BottomNavSheet extends HookWidget {
   const BottomNavSheet({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<BottomNavStore>(context);
     final ac = useAnimationController(
       duration: Duration(milliseconds: 300),
     );
@@ -22,10 +26,9 @@ class BottomNavSheet extends HookWidget {
 
     final aOpacity =
         useAnimation(ac.drive(CurveTween(curve: Curves.fastOutSlowIn)));
-
     useAutorun((_) {
-      // print(Stores.BottomNav.isExchange);
-      if (Stores.BottomNav.isExchange) {
+      // print(store.isExchange);
+      if (store.isExchange) {
         ac.forward();
       } else {
         ac.reverse();
@@ -33,12 +36,12 @@ class BottomNavSheet extends HookWidget {
     });
 
     return IgnorePointer(
-      ignoring: ac.isAnimating || !Stores.BottomNav.isExchange,
+      ignoring: ac.isAnimating || !store.isExchange,
       child: Stack(
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Stores.BottomNav.isExchange = false;
+              store.isExchange = false;
             },
             child: Opacity(
               opacity: aOpacity,
@@ -55,7 +58,7 @@ class BottomNavSheet extends HookWidget {
             child: SlideTransition(
               position: aOffset,
               child: Opacity(
-                opacity: Stores.BottomNav.isExchange ? 1 : 0,
+                opacity: store.isExchange || ac.isAnimating ? 1 : 0,
                 child: ShapeOfView(
                   height: 230,
                   // elevation: 10,
@@ -66,7 +69,7 @@ class BottomNavSheet extends HookWidget {
                   ),
                   child: Center(
                     child: Container(
-                      color: Color(0xfff3f4f7),
+                      color: Style.backgroundColor,
                       child: Align(
                         alignment: Alignment(0, -0.45),
                         // alignment: Alignment.topCenter,
@@ -74,17 +77,17 @@ class BottomNavSheet extends HookWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             BottomNavSheetButton(
-                              screen: Screen.transfer,
+                              navigator: NavigatorX.transfer,
                               icon: IconsX.money,
                               title: 'Transfer',
                             ),
                             BottomNavSheetButton(
-                              screen: Screen.billpayment,
+                              navigator: NavigatorX.billpayment,
                               icon: IconsX.card,
                               title: 'Bill Payment',
                             ),
                             BottomNavSheetButton(
-                              screen: Screen.request,
+                              navigator: NavigatorX.request,
                               icon: IconsX.request,
                               title: 'Request',
                             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yala/widgets/layout/bottom_nav/bottom_nav_button.dart';
 import 'package:yala/static/icons.dart';
-import 'package:yala/widgets/layout/screen.dart';
+import 'package:yala/widgets/layout/navigator_map.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key key}) : super(key: key);
@@ -29,12 +29,12 @@ class BottomNavBar extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 BottomNavButton(
-                  screen: Screen.accounts,
+                  navigator: NavigatorX.accounts,
                   icon: IconsX.accounts,
                   title: "Accounts",
                 ),
                 BottomNavButton(
-                  screen: Screen.invoices,
+                  navigator: NavigatorX.invoices,
                   icon: IconsX.invoices,
                   title: "Invoices",
                 ),
@@ -42,12 +42,12 @@ class BottomNavBar extends StatelessWidget {
                   width: 60,
                 ),
                 BottomNavButton(
-                  screen: Screen.payroll,
+                  navigator: NavigatorX.payroll,
                   icon: IconsX.payroll,
                   title: "Payroll",
                 ),
                 BottomNavButton(
-                  screen: Screen.more,
+                  navigator: NavigatorX.more,
                   icon: IconsX.more,
                   title: "More",
                   // isMenu: true,
