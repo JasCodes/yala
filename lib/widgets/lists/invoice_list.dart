@@ -1,19 +1,13 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:locales/currency_codes.dart';
+import 'package:yala/models/invoice.dart';
 import 'package:yala/static/formater.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/boxes/box.dart';
 
-enum InvoiceStatus {
-  Pending,
-  Paid,
-  Overdue,
-}
-
-class ScaffoldInvoiceRecent extends StatelessWidget {
-  const ScaffoldInvoiceRecent({
+class InvoiceList extends StatelessWidget {
+  const InvoiceList({
     Key key,
     @required this.client,
     @required this.invoice_id,

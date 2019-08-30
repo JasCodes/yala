@@ -1,7 +1,7 @@
+import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:vector_math/vector_math.dart';
 import 'package:yala/models/transaction.dart';
-import 'package:yala/packages/currency_code.dart';
 
 // Include generated file
 part 'account.g.dart';

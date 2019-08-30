@@ -28,6 +28,40 @@ class User extends _User {
     }, _$accountsAtom, name: '${_$accountsAtom.name}_set');
   }
 
+  final _$clientsAtom = Atom(name: '_User.clients');
+
+  @override
+  ObservableList<Client> get clients {
+    _$clientsAtom.context.enforceReadPolicy(_$clientsAtom);
+    _$clientsAtom.reportObserved();
+    return super.clients;
+  }
+
+  @override
+  set clients(ObservableList<Client> value) {
+    _$clientsAtom.context.conditionallyRunInAction(() {
+      super.clients = value;
+      _$clientsAtom.reportChanged();
+    }, _$clientsAtom, name: '${_$clientsAtom.name}_set');
+  }
+
+  final _$invoicesAtom = Atom(name: '_User.invoices');
+
+  @override
+  ObservableList<Invoice> get invoices {
+    _$invoicesAtom.context.enforceReadPolicy(_$invoicesAtom);
+    _$invoicesAtom.reportObserved();
+    return super.invoices;
+  }
+
+  @override
+  set invoices(ObservableList<Invoice> value) {
+    _$invoicesAtom.context.conditionallyRunInAction(() {
+      super.invoices = value;
+      _$invoicesAtom.reportChanged();
+    }, _$invoicesAtom, name: '${_$invoicesAtom.name}_set');
+  }
+
   final _$_UserActionController = ActionController(name: '_User');
 
   @override

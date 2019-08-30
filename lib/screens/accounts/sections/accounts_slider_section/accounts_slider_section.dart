@@ -11,13 +11,18 @@ class AccountsSliderSection extends StatelessWidget {
     final store = Provider.of<User>(context);
     final pageController =
         PageController(keepPage: true, initialPage: 10000 - 1);
+
     return Container(
       height: AccountsSliderItemSection.WIDGET_HEIGHT,
       child: PageView.builder(
         controller: pageController,
         itemBuilder: (context, index) {
           var pageIndex = index % store.accounts.length;
-          return AccountsSliderItemSection(pageIndex, pageController);
+          return AccountsSliderItemSection(
+            pageIndex,
+            pageController,
+            key: ObjectKey(pageIndex),
+          );
         },
       ),
     );

@@ -42,26 +42,30 @@ class PageInvoiceCreateSelectClient extends HookWidget {
             SizedBox(
               height: 23.3,
             ),
-            SelectBox(
-              children: [
-                SelectBoxItem(
-                  id: '1',
-                  title: 'ACME Corp LLC',
-                  subTitle:
-                      'Building No 8, Sheikh Zayed Road, Dubai Internet City - Dubai',
-                ),
-                SelectBoxItem(
-                  id: '2',
-                  title: 'Microsoft Corporation',
-                  subTitle: 'Emaar Business Park, Sheikh Zayed Road - Dubai',
-                ),
-                SelectBoxItem(
-                  id: '3',
-                  title: 'Thynk Digital',
-                  subTitle:
-                      'Suite 1002, Burlington Tower, Business Bay - Dubai',
-                ),
-              ],
+            Container(
+              height: 150,
+              // constraints: BoxConstraints(maxHeight: 700),
+              child: SelectBox(
+                children: [
+                  SelectBoxItem(
+                    id: '1',
+                    title: 'ACME Corp LLC',
+                    subTitle:
+                        'Building No 8, Sheikh Zayed Road, Dubai Internet City - Dubai',
+                  ),
+                  SelectBoxItem(
+                    id: '2',
+                    title: 'Microsoft Corporation',
+                    subTitle: 'Emaar Business Park, Sheikh Zayed Road - Dubai',
+                  ),
+                  SelectBoxItem(
+                    id: '3',
+                    title: 'Thynk Digital',
+                    subTitle:
+                        'Suite 1002, Burlington Tower, Business Bay - Dubai',
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 23.3,
@@ -75,6 +79,7 @@ class PageInvoiceCreateSelectClient extends HookWidget {
             SizedBox(
               height: 23.3,
             ),
+            Expanded(child: Container()),
             ButtonX(
               isActive: store.validList[index],
               title: 'continue',

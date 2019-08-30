@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/tree/pages/invoice/invoice_page.dart';
+import 'package:yala/screens/invoices/invoice_screen/invoice_screen.dart';
 import 'package:yala/tree/pages/invoice/page_invoice_add_client/page_invoice_add_client.dart';
 import 'package:yala/tree/pages/invoice/page_invoice_create/page_invoice_create.dart';
 
@@ -39,7 +39,7 @@ class InvoicesNavigator extends StatelessWidget {
             );
           default:
             return PageTransition(
-              child: InvoicePage(),
+              child: InvoiceScreen(),
               type: PageTransitionType.rightToLeft,
             );
         }

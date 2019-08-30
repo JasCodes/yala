@@ -1,7 +1,9 @@
+import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:yala/models/account.dart';
+import 'package:yala/models/client.dart';
+import 'package:yala/models/invoice.dart';
 import 'package:yala/models/user.dart';
-import 'package:yala/packages/currency_code.dart';
 
 User MockData() {
   var user = User();
@@ -51,6 +53,55 @@ User MockData() {
   accounts.add(cAccount);
   accounts.add(iAccount);
   accounts.add(sAccount);
+
+  var clientAcme = Client()
+    ..companyName = 'ACME Corp LLC'
+    ..address = 'Building No 8, Sheikh Zayed Road, Dubai Internet City - Dubai';
+
+  var clientMicrosoft = Client()
+    ..companyName = 'Microsoft Corporation'
+    ..address = 'Suite 1002, Burlington Tower, Business Bay - Dubai';
+
+  var clientTD = Client()
+    ..companyName = "ACME Corp LLC"
+    ..address = 'Emaar Business Park, Sheikh Zayed Road - Dubai';
+
+  user.clients.add(clientAcme);
+  user.clients.add(clientMicrosoft);
+  user.clients.add(clientTD);
+
+  var invoice1 = Invoice()
+    ..client = clientAcme
+    ..currencyCode = CurrencyCode.aed
+    ..amount = 21350.50
+    ..invoice_id = '221145'
+    ..status = InvoiceStatus.Pending;
+
+  var invoice2 = Invoice()
+    ..client = clientMicrosoft
+    ..currencyCode = CurrencyCode.aed
+    ..amount = 67220
+    ..invoice_id = '221146'
+    ..status = InvoiceStatus.Overdue;
+
+  var invoice3 = Invoice()
+    ..client = clientTD
+    ..currencyCode = CurrencyCode.aed
+    ..amount = 117800
+    ..invoice_id = '221147'
+    ..status = InvoiceStatus.Paid;
+
+  var invoice4 = Invoice()
+    ..client = clientMicrosoft
+    ..currencyCode = CurrencyCode.aed
+    ..amount = 33330
+    ..invoice_id = '221146'
+    ..status = InvoiceStatus.Overdue;
+
+  user.invoices.add(invoice1);
+  user.invoices.add(invoice2);
+  user.invoices.add(invoice3);
+  user.invoices.add(invoice4);
 
   return user;
 }

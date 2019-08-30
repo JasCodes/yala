@@ -28,7 +28,7 @@ class ChartSliderKnob extends StatelessWidget {
     var prevBalance = account.balances[chartStore.knobIndex + 1];
     var deltaBalance = currBalance - prevBalance;
     var deltaBalanceString =
-        '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.name} ${nf.format(deltaBalance.round())}';
+        '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.toString()} ${nf.format(deltaBalance.round())}';
     var sData =
         scaledArray(account.balances, minV: 150, maxV: 1 * Chart.WIDGET_HEIGHT)
             .toList();

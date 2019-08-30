@@ -144,7 +144,7 @@ class AccountsSliderItemInfoSection extends HookWidget {
                     Container(
                       height: 33,
                       child: Text(
-                        account.currencyCode.name,
+                        account.currencyCode.toString(),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
