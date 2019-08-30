@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 import 'package:yala/screens/accounts/widgets/chart/chart_slider/chart_slider_knob.dart';
+import 'package:yala/screens/accounts/widgets/chart/chart_store.dart';
 
 List<DateTime> _getLastMonthNames(int num) {
   List<DateTime> ret = [];
@@ -15,15 +17,11 @@ List<DateTime> _getLastMonthNames(int num) {
 class ChartSlider extends StatefulWidget {
   final double widgetWidth;
   final double widgetHeight;
-  final double knobWidth;
-  final double chartHeight;
 
   const ChartSlider({
     Key key,
     this.widgetWidth,
     this.widgetHeight,
-    this.knobWidth,
-    this.chartHeight,
   }) : super(key: key);
 
   @override
@@ -36,7 +34,7 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    _left = (6 / 7 * widget.widgetWidth - (widget.knobWidth / 2));
+    _left = (6 / 7 * widget.widgetWidth - (Chart.KNOB_WIDTH / 2));
     super.initState();
   }
 
@@ -53,18 +51,23 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
 
   _onDrag(dd) {
     setState(() {
-      _down = false;
-      _left = dd.globalPosition.dx - widget.knobWidth / 2;
+      _down = true;
+      _left = dd.globalPosition.dx - Chart.KNOB_WIDTH / 2;
     });
   }
 
-  _onDragUp(dd) {
+  _onDragUp(ChartStore store) {
     setState(() {
+      double index;
+      if (_down) {
+        index = (7 / widget.widgetWidth * (_left + Chart.KNOB_WIDTH / 2));
+        if (index < 1) index = 1;
+        if (index > 6) index = 6;
+        store.knobIndex = 6 - index.round();
+      }
+      _left = ((6 - store.knobIndex) * widget.widgetWidth / 7) -
+          (Chart.KNOB_WIDTH / 2);
       _down = false;
-      var index = (7 / widget.widgetWidth * (_left + widget.knobWidth / 2));
-      if (index < 1) index = 1;
-      if (index > 6) index = 6;
-      _left = (index.round() * widget.widgetWidth / 7) - (widget.knobWidth / 2);
     });
   }
 
@@ -75,7 +78,7 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
       _months.insert(
         0,
         Container(
-          width: KNOB_WIDTH,
+          width: Chart.KNOB_WIDTH,
           child: Container(
             child: Text(
               month,
@@ -99,15 +102,17 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<ChartStore>(context);
+
     if (!_down) {
-      _onDragUp(null);
+      _onDragUp(store);
     }
     return GestureDetector(
       onHorizontalDragStart: _onDrag,
       onHorizontalDragDown: _onDrag,
-      onTapUp: _onDragUp,
       onHorizontalDragUpdate: _onDrag,
-      onHorizontalDragEnd: _onDragUp,
+      onTapUp: (dd) => _onDragUp(store),
+      onHorizontalDragEnd: (dd) => _onDragUp(store),
       child: Container(
         color: Colors.transparent,
         child: Stack(
@@ -116,14 +121,14 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
               // alignment: Alignment.bottomCenter,
               alignment: Alignment(-1, 0.85),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: KNOB_WIDTH / 2),
+                padding: EdgeInsets.symmetric(horizontal: Chart.KNOB_WIDTH / 2),
                 child: _buildMonthRow(),
               ),
             ),
             ChartSliderKnob(
               left: _left,
-              height: (widget.widgetHeight - widget.chartHeight * 1),
-              knobWidth: widget.knobWidth,
+              height: (widget.widgetHeight - Chart.CHART_HEIGHT * 1),
+              // knobWidth: widget.knobWidth,
             ),
           ],
         ),

@@ -30,4 +30,5 @@ class IconsX {
   static var invoice_add = faSolid('');
   static var invoice_clients = faSolid('');
   static var right = faRegular('');
+  static var dir = faSolid('');
 }

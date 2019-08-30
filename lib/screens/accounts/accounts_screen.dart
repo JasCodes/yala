@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shape_of_view/shape_of_view.dart';
+import 'package:yala/screens/accounts/sections/accounts_slider_section/accounts_slider_section.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/app_bar.dart';
-import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 
 class AccountsScreen extends StatelessWidget {
   const AccountsScreen({Key key}) : super(key: key);
@@ -18,11 +18,7 @@ class AccountsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              height: 176.3,
-              color: Colors.green,
-            ),
-            Chart(),
+            AccountsSliderSection(),
             SizedBox(
               height: 13.7,
             ),

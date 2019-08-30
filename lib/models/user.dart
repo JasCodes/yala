@@ -8,7 +8,7 @@ part 'user.g.dart';
 @store
 abstract class _User {
   @observable
-  ObservableList<Account> accounts;
+  ObservableList<Account> accounts = ObservableList.of([]);
 
   String email;
 

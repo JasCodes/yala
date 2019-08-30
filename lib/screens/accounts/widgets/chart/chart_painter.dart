@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as mat;
-import 'package:vector_math/vector_math_lists.dart';
+// import 'package:vector_math/vector_math_lists.dart';
 import 'package:yala/packages/utils.dart';
 
 class ChartPainter extends CustomPainter {
-  final Vector2List data;
+  final List<double> data;
   final bool padLast;
 
   ChartPainter({
@@ -14,6 +14,7 @@ class ChartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // var _data = data.reversed;
     var _data = [15.0, 18.0, 8.0, 25.0, 20.0, 15.0];
     var sData = scaledArray(_data, maxV: size.height).toList();
     if (padLast) sData.add(sData.last);

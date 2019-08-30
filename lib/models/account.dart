@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:vector_math/vector_math.dart';
 import 'package:yala/models/transaction.dart';
+import 'package:yala/packages/currency_code.dart';
 
 // Include generated file
 part 'account.g.dart';
@@ -15,7 +16,10 @@ abstract class _Account {
   String number;
 
   @observable
-  double balance;
+  CurrencyCode currencyCode;
+
+  @observable
+  ObservableList<double> balances;
 
   @observable
   ObservableList<Transaction> transactions;

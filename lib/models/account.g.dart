@@ -52,21 +52,38 @@ class Account extends _Account {
     }, _$numberAtom, name: '${_$numberAtom.name}_set');
   }
 
-  final _$balanceAtom = Atom(name: '_Account.balance');
+  final _$currencyCodeAtom = Atom(name: '_Account.currencyCode');
 
   @override
-  double get balance {
-    _$balanceAtom.context.enforceReadPolicy(_$balanceAtom);
-    _$balanceAtom.reportObserved();
-    return super.balance;
+  CurrencyCode get currencyCode {
+    _$currencyCodeAtom.context.enforceReadPolicy(_$currencyCodeAtom);
+    _$currencyCodeAtom.reportObserved();
+    return super.currencyCode;
   }
 
   @override
-  set balance(double value) {
-    _$balanceAtom.context.conditionallyRunInAction(() {
-      super.balance = value;
-      _$balanceAtom.reportChanged();
-    }, _$balanceAtom, name: '${_$balanceAtom.name}_set');
+  set currencyCode(CurrencyCode value) {
+    _$currencyCodeAtom.context.conditionallyRunInAction(() {
+      super.currencyCode = value;
+      _$currencyCodeAtom.reportChanged();
+    }, _$currencyCodeAtom, name: '${_$currencyCodeAtom.name}_set');
+  }
+
+  final _$balancesAtom = Atom(name: '_Account.balances');
+
+  @override
+  ObservableList<double> get balances {
+    _$balancesAtom.context.enforceReadPolicy(_$balancesAtom);
+    _$balancesAtom.reportObserved();
+    return super.balances;
+  }
+
+  @override
+  set balances(ObservableList<double> value) {
+    _$balancesAtom.context.conditionallyRunInAction(() {
+      super.balances = value;
+      _$balancesAtom.reportChanged();
+    }, _$balancesAtom, name: '${_$balancesAtom.name}_set');
   }
 
   final _$transactionsAtom = Atom(name: '_Account.transactions');

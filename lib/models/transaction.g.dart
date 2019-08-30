@@ -45,23 +45,6 @@ class Transaction extends _Transaction {
     }, _$toAtom, name: '${_$toAtom.name}_set');
   }
 
-  final _$amountAtom = Atom(name: '_Transaction.amount');
-
-  @override
-  Currency get amount {
-    _$amountAtom.context.enforceReadPolicy(_$amountAtom);
-    _$amountAtom.reportObserved();
-    return super.amount;
-  }
-
-  @override
-  set amount(Currency value) {
-    _$amountAtom.context.conditionallyRunInAction(() {
-      super.amount = value;
-      _$amountAtom.reportChanged();
-    }, _$amountAtom, name: '${_$amountAtom.name}_set');
-  }
-
   final _$dateTimeAtom = Atom(name: '_Transaction.dateTime');
 
   @override

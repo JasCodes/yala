@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 // import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 
 class ChartSliderKnob extends StatelessWidget {
   final double left;
   final double height;
-  final double knobWidth;
   const ChartSliderKnob({
     Key key,
     this.left,
     this.height,
-    this.knobWidth,
   }) : super(key: key);
 
   @override
@@ -19,19 +18,19 @@ class ChartSliderKnob extends StatelessWidget {
       bottom: 0,
       left: left,
       child: ClipPath(
-        clipper: _Clipper(knobWidth),
+        clipper: _Clipper(Chart.KNOB_WIDTH),
         // shape: _Clipper(),
         clipBehavior: Clip.antiAlias,
         child: Container(
           constraints: BoxConstraints(minHeight: height),
           // height: height,
-          width: knobWidth,
+          width: Chart.KNOB_WIDTH,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(70),
           ),
           child: Container(
-            margin: EdgeInsets.only(top: 10, bottom: knobWidth),
+            margin: EdgeInsets.only(top: 10, bottom: Chart.KNOB_WIDTH),
             child: Align(
               alignment: Alignment.topCenter,
               child: RotatedBox(

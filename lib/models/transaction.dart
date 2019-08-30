@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:yala/models/account.dart';
-import 'package:yala/models/currency.dart';
+// import 'package:yala/models/currency.dart';
 
 // Include generated file
 part 'transaction.g.dart';
@@ -12,8 +12,8 @@ abstract class _Transaction {
   Account from;
   @observable
   Account to;
-  @observable
-  Currency amount;
+  // @observable
+  // Currency amount;
   @observable
   DateTime dateTime;
 }
