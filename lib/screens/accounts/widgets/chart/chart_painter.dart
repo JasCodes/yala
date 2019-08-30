@@ -14,17 +14,18 @@ class ChartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // var _data = data.reversed;
-    var _data = [15.0, 18.0, 8.0, 25.0, 20.0, 15.0];
+    var _data = data.toList();
+    // var _data = [15.0, 18.0, 8.0, 25.0, 20.0, 15.0];
     var sData = scaledArray(_data, maxV: size.height).toList();
+    sData = sData.reversed.toList();
     if (padLast) sData.add(sData.last);
 
     Path path = Path();
     path.moveTo(0, size.height - sData[0]);
 
     for (int i = 0; i < sData.length - 1; i++) {
-      var x1 = size.width * (i + 1) / sData.length;
-      var x2 = size.width * (i + 2) / sData.length;
+      var x1 = size.width * (i) / (sData.length - 1);
+      var x2 = size.width * (i + 1) / (sData.length - 1);
 
       var y1 = size.height - sData[i];
       // print(y1);

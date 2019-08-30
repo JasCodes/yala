@@ -15,10 +15,12 @@ List<DateTime> _getLastMonthNames(int num) {
 }
 
 class ChartSlider extends StatefulWidget {
+  final int pageIndex;
   final double widgetWidth;
   final double widgetHeight;
 
-  const ChartSlider({
+  const ChartSlider(
+    this.pageIndex, {
     Key key,
     this.widgetWidth,
     this.widgetHeight,
@@ -108,11 +110,13 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
       _onDragUp(store);
     }
     return GestureDetector(
+      onVerticalDragUpdate: (_) {},
       onHorizontalDragStart: _onDrag,
       onHorizontalDragDown: _onDrag,
       onHorizontalDragUpdate: _onDrag,
       onTapUp: (dd) => _onDragUp(store),
       onHorizontalDragEnd: (dd) => _onDragUp(store),
+      onVerticalDragEnd: (dd) => _onDragUp(store),
       child: Container(
         color: Colors.transparent,
         child: Stack(
@@ -126,6 +130,7 @@ class _ChartSliderState extends State<ChartSlider> with WidgetsBindingObserver {
               ),
             ),
             ChartSliderKnob(
+              widget.pageIndex,
               left: _left,
               height: (widget.widgetHeight - Chart.CHART_HEIGHT * 1),
               // knobWidth: widget.knobWidth,

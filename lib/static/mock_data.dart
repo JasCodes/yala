@@ -11,14 +11,13 @@ User MockData() {
     ..currencyCode = CurrencyCode.aed
     ..number = '5004844755214248'
     ..balances = ObservableList.of([
-      200000,
-      300000,
-      120000,
-      420000,
-      300000,
       400000,
-      700000,
-      500000,
+      250000,
+      300000,
+      200000,
+      450000,
+      400000,
+      300000,
     ]);
 
   var iAccount = Account()
@@ -26,18 +25,32 @@ User MockData() {
     ..currencyCode = CurrencyCode.usd
     ..number = '5001844655214259'
     ..balances = ObservableList.of([
-      200000,
-      300000,
+      420000,
+      400000,
       120000,
       420000,
       300000,
       400000,
       700000,
-      700000,
+    ]);
+
+  var sAccount = Account()
+    ..type = 'Savings Account'
+    ..currencyCode = CurrencyCode.usd
+    ..number = '5001844655214259'
+    ..balances = ObservableList.of([
+      32000,
+      30000,
+      12000,
+      42000,
+      30000,
+      40000,
+      30000,
     ]);
 
   accounts.add(cAccount);
   accounts.add(iAccount);
+  accounts.add(sAccount);
 
   return user;
 }

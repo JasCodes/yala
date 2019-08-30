@@ -9,10 +9,10 @@ class AccountsSliderItemSection extends StatelessWidget {
   static const WIDGET_HEIGHT =
       Chart.WIDGET_HEIGHT + AccountsSliderItemInfoSection.WIDGET_HEIGHT;
 
-  final int index;
+  final int pageIndex;
   final PageController pageController;
   const AccountsSliderItemSection(
-    this.index,
+    this.pageIndex,
     this.pageController, {
     Key key,
   }) : super(key: key);
@@ -23,8 +23,8 @@ class AccountsSliderItemSection extends StatelessWidget {
       builder: (_) => ChartStore(),
       child: Column(
         children: <Widget>[
-          AccountsSliderItemInfoSection(index, pageController),
-          Chart(index),
+          AccountsSliderItemInfoSection(pageIndex, pageController),
+          Chart(pageIndex),
         ],
       ),
     );

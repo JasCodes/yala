@@ -10,14 +10,14 @@ class Chart extends StatelessWidget {
   static const CHART_HEIGHT = 113.0;
   static const WIDGET_HEIGHT = 207 + KNOB_WIDTH / 2;
 
-  final int index;
-  const Chart(this.index, {Key key}) : super(key: key);
+  final int pageIndex;
+  const Chart(this.pageIndex, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final store = Provider.of<User>(context);
     // final chartStore = Provider.of<ChartStore>(context);
-    var balances = store.accounts[index].balances;
+    var balances = store.accounts[pageIndex].balances;
     return Container(
       height: WIDGET_HEIGHT,
       child: LayoutBuilder(
@@ -34,6 +34,7 @@ class Chart extends StatelessWidget {
               ),
               Container(
                 child: ChartSlider(
+                  pageIndex,
                   widgetWidth: constraints.maxWidth,
                   widgetHeight: constraints.maxHeight,
                 ),

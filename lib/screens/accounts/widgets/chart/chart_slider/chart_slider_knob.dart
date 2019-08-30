@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:yala/models/user.dart';
+import 'package:yala/packages/utils.dart';
 import 'package:yala/screens/accounts/widgets/chart/chart.dart';
+import 'package:yala/screens/accounts/widgets/chart/chart_store.dart';
 // import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 
 class ChartSliderKnob extends StatelessWidget {
+  final int pageIndex;
   final double left;
   final double height;
-  const ChartSliderKnob({
+  const ChartSliderKnob(
+    this.pageIndex, {
     Key key,
     this.left,
     this.height,
@@ -13,6 +20,21 @@ class ChartSliderKnob extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nf = NumberFormat('##,###,##.00', 'en_US');
+    final store = Provider.of<User>(context);
+    final chartStore = Provider.of<ChartStore>(context);
+    var account = store.accounts[pageIndex];
+    var currBalance = account.balances[chartStore.knobIndex];
+    var prevBalance = account.balances[chartStore.knobIndex + 1];
+    var deltaBalance = currBalance - prevBalance;
+    var deltaBalanceString =
+        '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.name} ${nf.format(deltaBalance.round())}';
+    var sData =
+        scaledArray(account.balances, minV: 150, maxV: 1 * Chart.WIDGET_HEIGHT)
+            .toList();
+
+    // var deltaBalancePer = (currBalance - prevBalance) / prevBalance * 100;
+
     return AnimatedPositioned(
       duration: Duration(milliseconds: 150),
       bottom: 0,
@@ -21,25 +43,31 @@ class ChartSliderKnob extends StatelessWidget {
         clipper: _Clipper(Chart.KNOB_WIDTH),
         // shape: _Clipper(),
         clipBehavior: Clip.antiAlias,
-        child: Container(
-          constraints: BoxConstraints(minHeight: height),
-          // height: height,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          // constraints: BoxConstraints(minHeight: 120),
+          height: sData[chartStore.knobIndex],
           width: Chart.KNOB_WIDTH,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(70),
           ),
           child: Container(
-            margin: EdgeInsets.only(top: 10, bottom: Chart.KNOB_WIDTH),
+            margin: EdgeInsets.only(
+              top: 15,
+              bottom: Chart.KNOB_WIDTH + 5,
+            ),
             child: Align(
               alignment: Alignment.topCenter,
               child: RotatedBox(
                 quarterTurns: 3,
-                child: Text(
-                  '+ USD 50,00000',
-                  style: TextStyle(
-                    fontSize: 12.7,
-                    fontWeight: FontWeight.w500,
+                child: FittedBox(
+                  child: Text(
+                    deltaBalanceString,
+                    style: TextStyle(
+                      fontSize: 12.7,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
