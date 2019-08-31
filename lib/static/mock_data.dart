@@ -2,9 +2,12 @@ import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:uuid/uuid.dart';
 import 'package:yala/models/account.dart';
+import 'package:yala/models/beneficiary.dart';
 import 'package:yala/models/client.dart';
 import 'package:yala/models/invoice.dart';
+import 'package:yala/models/transaction.dart';
 import 'package:yala/models/user.dart';
+import 'package:yala/models/vendor.dart';
 
 User MockData() {
   var user = User();
@@ -107,5 +110,75 @@ User MockData() {
   user.invoices.add(invoice3);
   user.invoices.add(invoice4);
 
+  //Vendors
+  var du_bene = Beneficiary()
+    ..title = 'Office Phone'
+    ..id = '055 8675912';
+  var du_bene2 = Beneficiary()
+    ..title = 'Internet'
+    ..id = '055 8684998';
+  var du_bene3 = Beneficiary()
+    ..title = 'Rick\'s Phone'
+    ..id = '055 8415906';
+
+  var dewa = Vendor()
+    ..title = 'Dewa'
+    ..imagePath = "assets/images/logos/dewa.png";
+
+  var sewa = Vendor()
+    ..title = 'Sewa'
+    ..imagePath = "assets/images/logos/sewa.png";
+
+  var etisalat = Vendor()
+    ..title = 'Etisalat'
+    ..imagePath = "assets/images/logos/etisalat.png"
+    ..beneficiaries.add(du_bene2)
+    ..beneficiaries.add(du_bene3);
+
+  var du = Vendor()
+    ..title = 'Du'
+    ..imagePath = "assets/images/logos/dewa.png"
+    ..beneficiaries.add(du_bene)
+    ..beneficiaries.add(du_bene2)
+    ..beneficiaries.add(du_bene3);
+
+  var salik = Vendor()
+    ..title = 'Dewa'
+    ..imagePath = "assets/images/logos/salik.png"
+    ..beneficiaries.add(du_bene)
+    ..beneficiaries.add(du_bene3);
+
+  var nol = Vendor()
+    ..title = 'Nol'
+    ..imagePath = "assets/images/logos/nol.png";
+
+  user.vendors
+    ..add(dewa)
+    ..add(sewa)
+    ..add(etisalat)
+    ..add(du)
+    ..add(salik)
+    ..add(nol);
+  //
+  //Transactions
+  var t1 = Transaction()
+    ..from = cAccount
+    ..to = salik
+    ..dateTime = DateTime(2019, 09, 05)
+    ..amount = 210;
+
+  var t2 = Transaction()
+    ..from = cAccount
+    ..to = du
+    ..dateTime = DateTime(2019, 09, 06)
+    ..amount = 210;
+
+  var t3 = Transaction()
+    ..from = cAccount
+    ..to = etisalat
+    ..dateTime = DateTime(2019, 09, 07)
+    ..amount = 210;
+  user.transactions..add(t1)..add(t2)..add(t3);
+  //
   return user;
 }

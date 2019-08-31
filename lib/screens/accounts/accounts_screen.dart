@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shape_of_view/shape_of_view.dart';
 import 'package:yala/screens/accounts/sections/accounts_info_section/accounts_info_section.dart';
 import 'package:yala/screens/accounts/sections/accounts_slider_section/accounts_slider_section.dart';
-import 'package:yala/static/style.dart';
 import 'package:yala/app_bar.dart';
 
 class AccountsScreen extends StatelessWidget {

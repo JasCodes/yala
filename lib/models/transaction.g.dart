@@ -31,14 +31,14 @@ class Transaction extends _Transaction {
   final _$toAtom = Atom(name: '_Transaction.to');
 
   @override
-  Account get to {
+  Vendor get to {
     _$toAtom.context.enforceReadPolicy(_$toAtom);
     _$toAtom.reportObserved();
     return super.to;
   }
 
   @override
-  set to(Account value) {
+  set to(Vendor value) {
     _$toAtom.context.conditionallyRunInAction(() {
       super.to = value;
       _$toAtom.reportChanged();
@@ -60,5 +60,22 @@ class Transaction extends _Transaction {
       super.dateTime = value;
       _$dateTimeAtom.reportChanged();
     }, _$dateTimeAtom, name: '${_$dateTimeAtom.name}_set');
+  }
+
+  final _$amountAtom = Atom(name: '_Transaction.amount');
+
+  @override
+  double get amount {
+    _$amountAtom.context.enforceReadPolicy(_$amountAtom);
+    _$amountAtom.reportObserved();
+    return super.amount;
+  }
+
+  @override
+  set amount(double value) {
+    _$amountAtom.context.conditionallyRunInAction(() {
+      super.amount = value;
+      _$amountAtom.reportChanged();
+    }, _$amountAtom, name: '${_$amountAtom.name}_set');
   }
 }

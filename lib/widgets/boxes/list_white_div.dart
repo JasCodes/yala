@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_autorun.dart';
-import 'package:yala/hooks/use_when.dart';
 import 'package:yala/stores/test_noti.dart';
 
 class ListWhiteDiv extends HookWidget {

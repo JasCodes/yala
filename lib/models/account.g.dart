@@ -11,13 +11,6 @@ part of 'account.dart';
 class Account extends _Account {
   Account() : super();
 
-  Computed<ObservableList<Vector2>> _$summaryComputed;
-
-  @override
-  ObservableList<Vector2> get summary => (_$summaryComputed ??=
-          Computed<ObservableList<Vector2>>(() => super.summary))
-      .value;
-
   final _$typeAtom = Atom(name: '_Account.type');
 
   @override
@@ -84,22 +77,5 @@ class Account extends _Account {
       super.balances = value;
       _$balancesAtom.reportChanged();
     }, _$balancesAtom, name: '${_$balancesAtom.name}_set');
-  }
-
-  final _$transactionsAtom = Atom(name: '_Account.transactions');
-
-  @override
-  ObservableList<Transaction> get transactions {
-    _$transactionsAtom.context.enforceReadPolicy(_$transactionsAtom);
-    _$transactionsAtom.reportObserved();
-    return super.transactions;
-  }
-
-  @override
-  set transactions(ObservableList<Transaction> value) {
-    _$transactionsAtom.context.conditionallyRunInAction(() {
-      super.transactions = value;
-      _$transactionsAtom.reportChanged();
-    }, _$transactionsAtom, name: '${_$transactionsAtom.name}_set');
   }
 }
