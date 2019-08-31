@@ -44,7 +44,13 @@ class TextFieldX extends StatelessWidget {
   }
 
   // var _controller = TextEditingControllerWorkaroud();
-
+// Text(
+//             input.errorContext.errors.toString(),
+//             style: TextStyle(
+//               color: Style.greyColor,
+//               fontSize: 14.7,
+//             ),
+//           ),
   @override
   Widget build(BuildContext context) {
     var _textInputAction = textInputAction;
@@ -59,15 +65,6 @@ class TextFieldX extends StatelessWidget {
           style: TextStyle(
             color: Style.greyColor,
             fontSize: 14.7,
-          ),
-        ),
-        Observer(
-          builder: (_) => Text(
-            input.errorContext.errors.toString(),
-            style: TextStyle(
-              color: Style.greyColor,
-              fontSize: 14.7,
-            ),
           ),
         ),
         EnsureVisibleWhenFocused(
@@ -113,6 +110,40 @@ class TextFieldX extends StatelessWidget {
                 borderSide: BorderSide(color: Style.primaryColor, width: 0.7),
               ),
             ),
+          ),
+        ),
+        Observer(
+          builder: (_) => AnimatedSwitcher(
+            transitionBuilder: (child, animation) => SizeTransition(
+              sizeFactor: animation,
+              child: FadeTransition(
+                child: child,
+                opacity: animation,
+              ),
+            ),
+            duration: Duration(milliseconds: 300),
+            child: input.errorContext.errors.length > 0
+                ? Column(
+                    key: UniqueKey(),
+                    children: input.errorContext.errors
+                        .map(
+                          (error) => Container(
+                            margin: EdgeInsets.symmetric(vertical: 4),
+                            child: Text(
+                              error.message,
+                              style: TextStyle(
+                                color: Color(0xfff75a5a),
+                                fontSize: 32 / 3,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  )
+                : Column(
+                    key: UniqueKey(),
+                  ),
           ),
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
+import 'package:uuid/uuid.dart';
 import 'package:yala/models/account.dart';
 import 'package:yala/models/client.dart';
 import 'package:yala/models/invoice.dart';
@@ -55,14 +56,17 @@ User MockData() {
   accounts.add(sAccount);
 
   var clientAcme = Client()
+    ..id = Uuid().v4()
     ..companyName = 'ACME Corp LLC'
     ..address = 'Building No 8, Sheikh Zayed Road, Dubai Internet City - Dubai';
 
   var clientMicrosoft = Client()
+    ..id = Uuid().v4()
     ..companyName = 'Microsoft Corporation'
     ..address = 'Suite 1002, Burlington Tower, Business Bay - Dubai';
 
   var clientTD = Client()
+    ..id = Uuid().v4()
     ..companyName = "ACME Corp LLC"
     ..address = 'Emaar Business Park, Sheikh Zayed Road - Dubai';
 

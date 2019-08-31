@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shape_of_view/shape_of_view.dart';
+import 'package:yala/screens/accounts/sections/accounts_info_section/accounts_info_section.dart';
 import 'package:yala/screens/accounts/sections/accounts_slider_section/accounts_slider_section.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/app_bar.dart';
@@ -15,61 +16,24 @@ class AccountsScreen extends StatelessWidget {
         title: 'Dashboard',
         isTransparent: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            AccountsSliderSection(),
-            SizedBox(
-              height: 13.7,
-            ),
-            Stack(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 45.0),
-                  child: ShapeOfView(
-                    shape: ArcShape(
-                      direction: ArcDirection.Inside,
-                      height: 25,
-                      position: ArcPosition.Top,
-                    ),
-                    // height: 500,
-                    child: Container(
-                      color: Style.backgroundColor,
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 41.7 + 25,
-                          ),
-                          Container(
-                            color: Colors.green,
-                            height: 200,
-                          ),
-                          SizedBox(
-                            height: 100,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                AccountsSliderSection(),
+                SizedBox(
+                  height: 13.7,
                 ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        'Upcoming Payments',
-                        style: TextStyle(
-                          fontSize: 13.3,
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                // AccountsInfoSection(),
               ],
             ),
-          ],
-        ),
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: AccountsInfoSection(),
+          )
+        ],
       ),
     );
   }

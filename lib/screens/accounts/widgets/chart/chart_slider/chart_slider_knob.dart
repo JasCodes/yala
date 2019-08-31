@@ -5,6 +5,7 @@ import 'package:yala/models/user.dart';
 import 'package:yala/packages/utils.dart';
 import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 import 'package:yala/screens/accounts/widgets/chart/chart_store.dart';
+import 'package:yala/widgets/primitives/animated_number.dart';
 // import 'package:yala/screens/accounts/widgets/chart/chart.dart';
 
 class ChartSliderKnob extends StatelessWidget {
@@ -27,8 +28,10 @@ class ChartSliderKnob extends StatelessWidget {
     var currBalance = account.balances[chartStore.knobIndex];
     var prevBalance = account.balances[chartStore.knobIndex + 1];
     var deltaBalance = currBalance - prevBalance;
+    // var deltaBalanceString =
+    //     '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.toString()} ${nf.format(deltaBalance.abs())}';
     var deltaBalanceString =
-        '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.toString()} ${nf.format(deltaBalance.round())}';
+        '${deltaBalance >= 0 ? "+" : "-"} ${account.currencyCode.toString()}  ';
     var sData =
         scaledArray(account.balances, minV: 150, maxV: 1 * Chart.WIDGET_HEIGHT)
             .toList();
@@ -62,12 +65,25 @@ class ChartSliderKnob extends StatelessWidget {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: FittedBox(
-                  child: Text(
-                    deltaBalanceString,
-                    style: TextStyle(
-                      fontSize: 12.7,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        deltaBalanceString,
+                        style: TextStyle(
+                          fontSize: 12.7,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      AnimatedNumber(
+                        duration: Duration(milliseconds: 300),
+                        number: deltaBalance.abs(),
+                        format: nf,
+                        style: TextStyle(
+                          fontSize: 12.7,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),

@@ -12,14 +12,14 @@ mixin _$StoreTextNoti on _StoreTextNoti, Store {
   final _$titlesAtom = Atom(name: '_StoreTextNoti.titles');
 
   @override
-  List<String> get titles {
+  ObservableList<String> get titles {
     _$titlesAtom.context.enforceReadPolicy(_$titlesAtom);
     _$titlesAtom.reportObserved();
     return super.titles;
   }
 
   @override
-  set titles(List<String> value) {
+  set titles(ObservableList<String> value) {
     _$titlesAtom.context.conditionallyRunInAction(() {
       super.titles = value;
       _$titlesAtom.reportChanged();

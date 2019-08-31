@@ -9,5 +9,6 @@ class StoreTextNoti = _StoreTextNoti with _$StoreTextNoti;
 // The store-class
 abstract class _StoreTextNoti with Store {
   @observable
-  List<String> titles = ['Apple', 'Banana', 'Cherry'];
+  ObservableList<String> titles =
+      ObservableList.of(['Apple', 'Banana', 'Cherry']);
 }

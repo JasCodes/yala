@@ -15,20 +15,24 @@ class SelectBoxItem {
   });
 }
 
+void x(String X) {}
+
 class SelectBox extends HookWidget {
+  final String id;
+  final void Function(String id) setId;
   final List<SelectBoxItem> children;
 
-  final void Function(String id) onSelected;
+  // final void Function(String id) onSelected;
   const SelectBox({
     Key key,
+    this.id,
+    this.setId,
     this.children,
-    this.onSelected,
+    // this.onSelected,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final selectedId = useState(children[0].id);
-
     return ListView.separated(
       physics: NeverScrollableScrollPhysics(),
       itemCount: children.length,
@@ -37,14 +41,13 @@ class SelectBox extends HookWidget {
         var item = children[index];
         var textColor = Style.blackColor;
         var decorate = true;
-        if (item.id == selectedId.value) {
+        if (item.id == id) {
           decorate = false;
           textColor = Colors.white;
         }
         return GestureDetector(
           onTap: () {
-            selectedId.value = item.id;
-            onSelected(item.id);
+            setId(item.id);
           },
           child: Box(
             decorate: decorate,

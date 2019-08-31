@@ -11,6 +11,23 @@ part of 'client.dart';
 class Client extends _Client {
   Client() : super();
 
+  final _$idAtom = Atom(name: '_Client.id');
+
+  @override
+  String get id {
+    _$idAtom.context.enforceReadPolicy(_$idAtom);
+    _$idAtom.reportObserved();
+    return super.id;
+  }
+
+  @override
+  set id(String value) {
+    _$idAtom.context.conditionallyRunInAction(() {
+      super.id = value;
+      _$idAtom.reportChanged();
+    }, _$idAtom, name: '${_$idAtom.name}_set');
+  }
+
   final _$personNameAtom = Atom(name: '_Client.personName');
 
   @override

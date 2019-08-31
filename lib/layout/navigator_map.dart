@@ -19,7 +19,7 @@ enum NavigatorX {
 }
 
 const Map<NavigatorX, Widget> navigatorMap = {
-  NavigatorX.dev: AccountsNavigator(),
+  NavigatorX.dev: DevNavigator(),
   NavigatorX.more: DevNavigator(),
   NavigatorX.accounts: AccountsNavigator(),
   NavigatorX.invoices: InvoicesNavigator(),

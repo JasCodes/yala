@@ -43,8 +43,6 @@ class PageInvoiceCreateSelectClient extends HookWidget {
               height: 23.3,
             ),
             Container(
-              height: 150,
-              // constraints: BoxConstraints(maxHeight: 700),
               child: SelectBox(
                 children: [
                   SelectBoxItem(
@@ -79,7 +77,6 @@ class PageInvoiceCreateSelectClient extends HookWidget {
             SizedBox(
               height: 23.3,
             ),
-            Expanded(child: Container()),
             ButtonX(
               isActive: store.validList[index],
               title: 'continue',

@@ -107,7 +107,7 @@ abstract class _FieldState<T> with Store {
       case ValidationPolicy.onChange:
         _disposer = reaction((_) => value, (_) {
           validate();
-        });
+        }, fireImmediately: true);
         break;
     }
   }

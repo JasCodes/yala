@@ -6,6 +6,9 @@ part 'client.g.dart';
 // The store-class
 @store
 abstract class _Client {
+
+  @observable
+  String id;
   @observable
   String personName;
   @observable

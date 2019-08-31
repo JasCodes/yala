@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yala/models/user.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/widgets/buttons/decorated_list_button.dart';
 
@@ -7,6 +9,11 @@ class InvoiceInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+    var clientSubtitle =
+        '${(user.clients.length == 0) ? 'No' : user.clients.length.toString()} Saved Clients';
+    var invoiceSubtitle =
+        '${(user.invoices.length == 0) ? 'No' : user.invoices.length.toString()} Invoices';
     Axis direction;
     MainAxisSize axisSize;
 
@@ -23,7 +30,7 @@ class InvoiceInfoSection extends StatelessWidget {
       children: <Widget>[
         DecoratedListButton(
           title: 'My Clients',
-          subTitle: '5 Saved Clients',
+          subTitle: clientSubtitle,
           iconData: IconsX.invoice_clients,
         ),
         SizedBox(
@@ -32,7 +39,7 @@ class InvoiceInfoSection extends StatelessWidget {
         ),
         DecoratedListButton(
           title: 'Invoice History',
-          subTitle: '26 Invoices',
+          subTitle: invoiceSubtitle,
           iconData: IconsX.invoices,
         ),
       ],

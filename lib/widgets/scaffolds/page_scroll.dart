@@ -28,7 +28,7 @@ class PageScroll extends StatelessWidget {
             margin: margin,
             padding: padding,
             // child: child,
-            child: IntrinsicHeight(child: child),
+            child: child,
           ),
         );
       },

@@ -9,6 +9,7 @@ part 'user.g.dart';
 // The store-class
 @store
 abstract class _User {
+
   @observable
   ObservableList<Account> accounts = ObservableList.of([]);
 

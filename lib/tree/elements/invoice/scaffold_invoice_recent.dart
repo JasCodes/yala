@@ -1,6 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:locales/currency_codes.dart';
 import 'package:yala/static/formater.dart';
 import 'package:yala/static/style.dart';
