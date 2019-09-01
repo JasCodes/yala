@@ -18,7 +18,7 @@ class TextEditingControllerWorkaroud extends TextEditingController {
 }
 
 class TextFieldX extends StatelessWidget {
-  final FieldState input;
+  final FieldState state;
   final FieldState nextFocusField;
   final TextInputAction textInputAction;
   final TextInputType textInputType;
@@ -27,7 +27,7 @@ class TextFieldX extends StatelessWidget {
   final void Function(String) onSubmitted;
 
   TextFieldX(
-    this.input, {
+    this.state, {
     Key key,
     this.nextFocusField,
     this.textInputAction,
@@ -61,32 +61,32 @@ class TextFieldX extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          input.label,
+          state.label,
           style: TextStyle(
             color: Style.greyColor,
             fontSize: 14.7,
           ),
         ),
         EnsureVisibleWhenFocused(
-          focusNode: input.focusNode,
+          focusNode: state.focusNode,
           curve: Curves.bounceIn,
           duration: Duration(milliseconds: 300),
           child: TextField(
             // controller: _controller,
             onChanged: (value) {
-              input.value = value;
+              state.value = value;
             },
             autocorrect: false,
             textCapitalization: TextCapitalization.words,
             keyboardType: textInputType,
-            focusNode: input.focusNode,
+            focusNode: state.focusNode,
             onSubmitted: (value) {
               // print(input.value);
               // _controller.setTextAndPosition('${_controller.text}\n',caretPosition: 5);
               // input.focusNode.requestFocus();
               _fieldFocusChange(
                 context,
-                input.focusNode,
+                state.focusNode,
                 nextFocusField.focusNode,
               );
               onSubmitted(value);
@@ -122,10 +122,10 @@ class TextFieldX extends StatelessWidget {
               ),
             ),
             duration: Duration(milliseconds: 300),
-            child: input.errorContext.errors.length > 0
+            child: state.errorContext.errors.length > 0
                 ? Column(
                     key: UniqueKey(),
-                    children: input.errorContext.errors
+                    children: state.errorContext.errors
                         .map(
                           (error) => Container(
                             margin: EdgeInsets.symmetric(vertical: 4),

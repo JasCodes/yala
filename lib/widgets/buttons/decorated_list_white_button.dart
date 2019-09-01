@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/boxes/box.dart';
+import 'package:yala/widgets/scaffolds/status_text.dart';
 
 class DecoratedListWhiteButton extends StatelessWidget {
   final String title;
   final String subTitle;
-  final bool subDot;
+  final bool dot;
+  final StatusTextType type;
   final Color subTitleColor;
   final void Function() onTap;
   // final IconData iconData;
@@ -14,38 +16,16 @@ class DecoratedListWhiteButton extends StatelessWidget {
     Key key,
     this.title,
     this.subTitle,
-    this.subDot = false,
-    this.subTitleColor = Style.greyColor,
+    this.dot = false,
+    this.subTitleColor,
     this.icon,
     this.onTap,
+    this.type = StatusTextType.GREY,
     // this.iconData,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> subTitleText = [];
-    if (subDot) {
-      subTitleText.add(Container(
-        margin: EdgeInsets.only(top: 1.5),
-        decoration: BoxDecoration(
-          color: subTitleColor,
-          shape: BoxShape.circle,
-        ),
-        width: 6,
-        height: 6,
-      ));
-      subTitleText.add(SizedBox(
-        width: 4,
-      ));
-    }
-    subTitleText.add(Text(
-      subTitle,
-      style: TextStyle(
-        color: subTitleColor,
-        fontSize: 10.7,
-      ),
-    ));
-
     return Flexible(
       child: Box(
         decorate: false,
@@ -63,9 +43,6 @@ class DecoratedListWhiteButton extends StatelessWidget {
                 child: icon,
                 width: 43,
               ),
-              // SizedBox(
-              //   width: 11,
-              // ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -80,9 +57,15 @@ class DecoratedListWhiteButton extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  Row(
-                    children: subTitleText,
+                  StatusText(
+                    type: type,
+                    text: "due in 2 days",
+                    dot: dot,
+                    color: subTitleColor,
                   ),
+                  // Row(
+                  //   children: subTitleText,
+                  // ),
                 ],
               )
             ],

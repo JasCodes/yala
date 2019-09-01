@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:yala/hooks/use_observer.dart';
+import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/boxes/box.dart';
 
@@ -18,21 +20,27 @@ class SelectBoxItem {
 void x(String X) {}
 
 class SelectBox extends HookWidget {
-  final String id;
-  final void Function(String id) setId;
+  // final String id;
+  // final void Function(String id) setId;
+  final FieldState<String> state;
   final List<SelectBoxItem> children;
 
   // final void Function(String id) onSelected;
   const SelectBox({
     Key key,
-    this.id,
-    this.setId,
+    this.state,
+    // this.id,
+    // this.setId,
     this.children,
     // this.onSelected,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    useObserver();
+    if (state.value == null) {
+      state.value = children[0].id;
+    }
     return ListView.separated(
       physics: NeverScrollableScrollPhysics(),
       itemCount: children.length,
@@ -41,13 +49,14 @@ class SelectBox extends HookWidget {
         var item = children[index];
         var textColor = Style.blackColor;
         var decorate = true;
-        if (item.id == id) {
+        if (item.id == state.value) {
           decorate = false;
           textColor = Colors.white;
         }
         return GestureDetector(
           onTap: () {
-            setId(item.id);
+            // setId(item.id);
+            state.value = item.id;
           },
           child: Box(
             decorate: decorate,

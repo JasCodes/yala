@@ -6,6 +6,7 @@ import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/decorated_list_white_button.dart';
 import 'package:yala/widgets/primitives/iconx.dart';
+import 'package:yala/widgets/scaffolds/status_text.dart';
 
 class AccountsUpcomingPaymentSection extends StatelessWidget {
   const AccountsUpcomingPaymentSection({Key key}) : super(key: key);
@@ -45,8 +46,8 @@ class AccountsUpcomingPaymentSection extends StatelessWidget {
             ),
             // iconData: ,
             title: 'Run Payroll',
-            subDot: true,
-            subTitleColor: Style.redColor,
+            dot: true,
+            type: StatusTextType.RED,
             subTitle: 'due in 2 days',
           ),
         ],

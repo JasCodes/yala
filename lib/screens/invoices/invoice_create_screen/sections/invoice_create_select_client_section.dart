@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_observer.dart';
 import 'package:yala/models/user.dart';
 import 'package:yala/screens/invoices/invoice_add_client_screen/invoice_add_client_screen.dart';
+import 'package:yala/screens/invoices/invoice_create_screen/invoice_create_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
 import 'package:yala/widgets/buttons/button_dotted.dart';
@@ -20,8 +21,8 @@ class InvoiceCreateSelectClientSection extends HookWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final selectIndex = useState<String>(null);
     useObserver();
+    final store = Provider.of<InvoiceCreateStore>(context);
     final user = Provider.of<User>(context);
     final formWizard = Provider.of<FormWizardStore>(context);
     print(ModalRoute.of(context).settings);
@@ -50,8 +51,9 @@ class InvoiceCreateSelectClientSection extends HookWidget {
             ),
             Container(
               child: SelectBox(
-                id: selectIndex.value,
-                setId: (val) => selectIndex.value = val,
+                state: store.selectClientId,
+                // id: selectIndex.value,
+                // setId: (val) => selectIndex.value = val,
                 children: user.clients.map((client) {
                   return SelectBoxItem(
                     id: client.id,
@@ -68,7 +70,7 @@ class InvoiceCreateSelectClientSection extends HookWidget {
               title: 'Add a New Client',
               onTap: () {
                 Navigator.pushNamed(context, InvoiceAddClientScreen.route)
-                    .then((val) => selectIndex.value = val);
+                    .then((val) => store.selectClientId.value = val);
               },
             ),
             SizedBox(

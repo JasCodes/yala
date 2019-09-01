@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yala/app_bar.dart';
+import 'package:yala/screens/invoices/invoice_create_screen/invoice_create_store.dart';
 import 'package:yala/screens/invoices/invoice_create_screen/sections/invoice_create_invoice_details_section.dart';
 import 'package:yala/screens/invoices/invoice_create_screen/sections/invoice_create_select_client_section.dart';
 import 'package:yala/screens/invoices/invoice_create_screen/sections/invoice_create_send_invoice_section.dart';
@@ -33,12 +35,15 @@ class InvoiceCreateScreen extends StatelessWidget {
       );
     }()
         .toList();
-    return Scaffold(
-      appBar: AppBarX(
-        title: 'Create a New Invoice',
-      ),
-      body: FormWizard(
-        items: _items,
+    return Provider<InvoiceCreateStore>(
+      builder: (_) => InvoiceCreateStore(),
+      child: Scaffold(
+        appBar: AppBarX(
+          title: 'Create a New Invoice',
+        ),
+        body: FormWizard(
+          items: _items,
+        ),
       ),
     );
   }
