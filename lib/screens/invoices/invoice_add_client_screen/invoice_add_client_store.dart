@@ -46,16 +46,20 @@ abstract class _InvoiceAddClientStore {
     label: 'Email Address',
     value: '',
     name: 'email_address',
-    validator: (x, e) {
-      // e.addErrorMessage('hi');
-      // print('asdsfd');
-      print('$x, $e');
+    validator: (name, err) {
+      err.reset();
+      if (name == '') {
+        err.addErrorMessage('Required');
+      }
+      if (!RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(name)) {
+        err.addErrorMessage('Valid Email');
+      }
     },
     // asyncValidator: (x, e) async {
     //   print(x);
     //   e.addErrorMessage('hi');
     // },
-    validationPolicy: ValidationPolicy.always,
+    validationPolicy: ValidationPolicy.onChange,
   );
 
   @observable

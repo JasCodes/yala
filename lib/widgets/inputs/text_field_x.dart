@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/packages/forms_x/ensure_visible_when_focused.dart';
 import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/static/style.dart';
+import 'package:yala/widgets/scaffolds/status_text.dart';
 
 class TextEditingControllerWorkaroud extends TextEditingController {
   TextEditingControllerWorkaroud({String text}) : super(text: text);
@@ -43,14 +44,6 @@ class TextFieldX extends StatelessWidget {
     FocusScope.of(context).requestFocus(nextFocus);
   }
 
-  // var _controller = TextEditingControllerWorkaroud();
-// Text(
-//             input.errorContext.errors.toString(),
-//             style: TextStyle(
-//               color: Style.greyColor,
-//               fontSize: 14.7,
-//             ),
-//           ),
   @override
   Widget build(BuildContext context) {
     var _textInputAction = textInputAction;
@@ -60,11 +53,52 @@ class TextFieldX extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        // Title
         Text(
           state.label,
           style: TextStyle(
             color: Style.greyColor,
             fontSize: 14.7,
+          ),
+        ),
+        Observer(
+          builder: (_) => AnimatedSwitcher(
+            transitionBuilder: (child, animation) => SizeTransition(
+              sizeFactor: animation,
+              child: FadeTransition(
+                child: child,
+                opacity: animation,
+              ),
+            ),
+            duration: Duration(milliseconds: 300),
+            child: state.errorContext.errors.length > 0
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    key: UniqueKey(),
+                    children: state.errorContext.errors
+                        .map(
+                          (error) => Container(
+                            margin: EdgeInsets.symmetric(vertical: 4),
+                            child: StatusText(
+                              dot: true,
+                              type: StatusTextType.RED,
+                              text: error.message,
+                            ),
+                            // child: Text(
+                            //   error.message,
+                            //   style: TextStyle(
+                            //     color: Color(0xfff75a5a),
+                            //     fontSize: 32 / 3,
+                            //     fontWeight: FontWeight.w500,
+                            //   ),
+                            // ),
+                          ),
+                        )
+                        .toList(),
+                  )
+                : Column(
+                    key: UniqueKey(),
+                  ),
           ),
         ),
         EnsureVisibleWhenFocused(
@@ -110,40 +144,6 @@ class TextFieldX extends StatelessWidget {
                 borderSide: BorderSide(color: Style.primaryColor, width: 0.7),
               ),
             ),
-          ),
-        ),
-        Observer(
-          builder: (_) => AnimatedSwitcher(
-            transitionBuilder: (child, animation) => SizeTransition(
-              sizeFactor: animation,
-              child: FadeTransition(
-                child: child,
-                opacity: animation,
-              ),
-            ),
-            duration: Duration(milliseconds: 300),
-            child: state.errorContext.errors.length > 0
-                ? Column(
-                    key: UniqueKey(),
-                    children: state.errorContext.errors
-                        .map(
-                          (error) => Container(
-                            margin: EdgeInsets.symmetric(vertical: 4),
-                            child: Text(
-                              error.message,
-                              style: TextStyle(
-                                color: Color(0xfff75a5a),
-                                fontSize: 32 / 3,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  )
-                : Column(
-                    key: UniqueKey(),
-                  ),
           ),
         ),
       ],
