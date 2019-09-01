@@ -5,38 +5,21 @@ import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/scaffolds/status_text.dart';
 
-class TextEditingControllerWorkaroud extends TextEditingController {
-  TextEditingControllerWorkaroud({String text}) : super(text: text);
-
-  void setTextAndPosition(String newText, {int caretPosition}) {
-    int offset = caretPosition != null ? caretPosition : newText.length;
-    value = value.copyWith(
-      text: newText,
-      selection: TextSelection.collapsed(offset: offset),
-      composing: TextRange.empty,
-    );
-  }
-}
-
-class TextFieldX extends StatelessWidget {
+class CurrencyAmountField extends StatelessWidget {
   final FieldState state;
   final FieldState nextFocusField;
   final Color labelColor;
   final TextInputAction textInputAction;
   final TextInputType textInputType;
-  final int minLines;
-  final int maxLines;
   final void Function(String) onSubmitted;
 
-  TextFieldX(
+  CurrencyAmountField(
     this.state, {
     Key key,
     this.labelColor = Style.greyColor,
     this.nextFocusField,
     this.textInputAction,
     this.textInputType,
-    this.minLines,
-    this.maxLines,
     this.onSubmitted,
   }) : super(key: key);
 
@@ -88,14 +71,6 @@ class TextFieldX extends StatelessWidget {
                               type: StatusTextType.RED,
                               text: error.message,
                             ),
-                            // child: Text(
-                            //   error.message,
-                            //   style: TextStyle(
-                            //     color: Color(0xfff75a5a),
-                            //     fontSize: 32 / 3,
-                            //     fontWeight: FontWeight.w500,
-                            //   ),
-                            // ),
                           ),
                         )
                         .toList()
@@ -112,7 +87,6 @@ class TextFieldX extends StatelessWidget {
           curve: Curves.bounceIn,
           duration: Duration(milliseconds: 300),
           child: TextField(
-            // controller: _controller,
             onChanged: (value) {
               state.value = value;
             },
@@ -121,9 +95,6 @@ class TextFieldX extends StatelessWidget {
             keyboardType: textInputType,
             focusNode: state.focusNode,
             onSubmitted: (value) {
-              // print(input.value);
-              // _controller.setTextAndPosition('${_controller.text}\n',caretPosition: 5);
-              // input.focusNode.requestFocus();
               _fieldFocusChange(
                 context,
                 state.focusNode,
@@ -132,14 +103,12 @@ class TextFieldX extends StatelessWidget {
               onSubmitted(value);
             },
             textInputAction: _textInputAction,
-            maxLines: maxLines,
-            minLines: minLines,
             style: TextStyle(
               color: Style.primaryColor,
               fontSize: 18.7,
             ),
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              contentPadding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: Style.greyColor,

@@ -16,13 +16,19 @@ abstract class _InvoiceCreateStore {
   @observable
   var selectClientId = FieldState<String>();
   @observable
-  var invoiceId = FieldState<String>();
+  var invoiceId = FieldState<String>(
+    label: 'Purchase Order Number',
+  );
   @observable
-  var invoiceDesc = FieldState<String>();
+  var invoiceDesc = FieldState<String>(
+    label: 'Description',
+  );
   @observable
-  var currencyAmount = FieldState<CurrencyAmount>();
+  var currencyAmount = FieldState<CurrencyAmount>(
+    label: 'Invoice Amount',
+  );
   @observable
-  var dueDate = FieldState<DateTime>();
+  var dueDate = FieldState<DateTime>(label: 'Invoice Due Date');
   @observable
   var emails = FieldState<ObservableList<String>>();
 }

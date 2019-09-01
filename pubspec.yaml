@@ -29,6 +29,9 @@ dependencies:
   flutter_screenutil: ^0.6.0
   vector_math: ^2.0.8
   uuid: ^2.0.2
+  direct_select_flutter: ^1.0.4
+  flutter_datetime_picker: ^1.2.6
+  currency_pickers: ^1.0.5
 
 builders:
   mobx_codegen: ^0.3.5

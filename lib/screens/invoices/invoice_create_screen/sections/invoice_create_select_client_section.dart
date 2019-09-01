@@ -69,8 +69,13 @@ class InvoiceCreateSelectClientSection extends HookWidget {
             ButtonDotted(
               title: 'Add a New Client',
               onTap: () {
-                Navigator.pushNamed(context, InvoiceAddClientScreen.route)
-                    .then((val) => store.selectClientId.value = val);
+                Navigator.pushNamed(context, InvoiceAddClientScreen.route).then(
+                  (val) {
+                    if (val != null) {
+                      store.selectClientId.value = val;
+                    }
+                  },
+                );
               },
             ),
             SizedBox(

@@ -11,6 +11,13 @@ part of 'invoice_add_client_store.dart';
 class InvoiceAddClientStore extends _InvoiceAddClientStore {
   InvoiceAddClientStore() : super();
 
+  Computed<dynamic> _$isFormValidComputed;
+
+  @override
+  dynamic get isFormValid =>
+      (_$isFormValidComputed ??= Computed<dynamic>(() => super.isFormValid))
+          .value;
+
   final _$contactPersonAtom =
       Atom(name: '_InvoiceAddClientStore.contactPerson');
 

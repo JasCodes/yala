@@ -1,4 +1,8 @@
+import 'package:currency_pickers/country.dart';
+import 'package:currency_pickers/currency_picker_dropdown.dart';
+import 'package:currency_pickers/currency_pickers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:yala/models/client.dart';
@@ -82,26 +86,70 @@ class InvoiceAddClientScreen extends StatelessWidget {
             SizedBox(
               height: 24,
             ),
+            CurrencyPickerDropdown(
+              initialValue: 'ae',
+              itemFilter: (c) {
+                if (c.currencyCode == 'AED') {
+                  return true;
+                }
+                if (c.isoCode == 'US') {
+                  return true;
+                }
+                if (c.currencyCode == 'AED') {
+                  return true;
+                }
+                // if (c.iso3Code == 'USD') return true;
+                return false;
+              },
+              // itemBuilder: _buildDropdownItem,
+              onValuePicked: (Country country) {
+                print("${country.name}");
+              },
+            ),
+            GestureDetector(
+              child: Container(
+                color: Colors.amber,
+                height: 200,
+                width: 200,
+              ),
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => Theme(
+                  data: Theme.of(context).copyWith(primaryColor: Colors.pink),
+                  child: CurrencyPickerDialog(
+                    titlePadding: EdgeInsets.all(8.0),
+                    searchCursorColor: Colors.pinkAccent,
+                    searchInputDecoration:
+                        InputDecoration(hintText: 'Search...'),
+                    isSearchable: true,
+                    title: Text('Select your phone code'),
+                    // onValuePicked: (Country country) =>
+                    // setState(() => _selectedDialogCountry = country),
+                    // itemBuilder: _buildDialogItem
+                  ),
+                ),
+              ),
+            )
           ],
         ),
-        bottomPinChild: ButtonX(
-          isActive: true,
-          // isActive: formWizard.validList[index],
-          title: 'continue',
-          onTap: () {
-            var client = Client()
-              ..id = Uuid().v4()
-              ..companyName = store.companyName.value
-              ..address = store.companyAddress.value;
-            user.clients.add(client);
-            Navigator.pop(context, client.id);
-            // Navigator.of(context).pop();
-            // selectBoxStore.id;
-            // formWizard.pageController.nextPage(
-            //   duration: const Duration(milliseconds: 400),
-            //   curve: Curves.easeInOut,
-            // );
-          },
+        bottomPinChild: Observer(
+          builder: (_) => ButtonX(
+            isActive: store.isFormValid,
+            // isActive: formWizard.validList[index],
+            title: 'continue',
+            onTap: () {
+              var client = Client()
+                ..id = Uuid().v4()
+                ..personName = store.companyName.value
+                ..companyName = store.companyName.value
+                ..address = store.companyAddress.value
+                ..email = store.emailAddress.value
+                ..phone = store.phoneNumber.value;
+
+              user.clients.add(client);
+              Navigator.pop(context, client.id);
+            },
+          ),
         ),
       ),
     );

@@ -1,12 +1,25 @@
 import 'package:mobx/mobx.dart';
+import 'package:yala/packages/mobx_forms/error_context.dart';
 import 'package:yala/packages/mobx_forms/field_state.dart';
 
 // Include generated file
 part 'invoice_add_client_store.g.dart';
 
+void chk(ec, e, bool cond) {
+  if (cond) {
+    if (!e.errors.contains(ec)) {
+      e.addError(ec);
+    }
+  } else {
+    e.reset();
+  }
+}
+
 // The store-class
 @store
 abstract class _InvoiceAddClientStore {
+  static final Ereq = ConstraintError('Req');
+
   @observable
   var contactPerson = FieldState<String>(
     label: 'Contact Person',
@@ -22,11 +35,10 @@ abstract class _InvoiceAddClientStore {
     label: 'Company Name',
     value: '',
     name: 'company_name',
-    validator: (name, err) {
-      err.reset();
-      if (name == '') {
-        err.addErrorMessage('Required');
-      }
+    validator: (value, e) {
+      e.map({
+        'REQUIRED: Company Name should not be blank': value == '',
+      });
     },
     validationPolicy: ValidationPolicy.onChange,
   );
@@ -36,8 +48,11 @@ abstract class _InvoiceAddClientStore {
     label: 'Company Address',
     value: '',
     name: 'company_address',
-    validator: (x, e) {
-      print('$x, $e');
+    validationPolicy: ValidationPolicy.onChange,
+    validator: (value, e) {
+      e.map({
+        'Required: Company Address should not be blank': value == '',
+      });
     },
   );
 
@@ -46,14 +61,15 @@ abstract class _InvoiceAddClientStore {
     label: 'Email Address',
     value: '',
     name: 'email_address',
-    validator: (name, err) {
-      err.reset();
-      if (name == '') {
-        err.addErrorMessage('Required');
-      }
-      if (!RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(name)) {
-        err.addErrorMessage('Valid Email');
-      }
+    validator: (value, e) {
+      e.map({
+        'REQUIRED: Email Address should not be blank': value == '',
+        'INVALID: Format of Email Address is invalid':
+            !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value),
+      });
+      // err.update('Required', name == '');
+      // err.update('Email',
+      //     !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(name));
     },
     // asyncValidator: (x, e) async {
     //   print(x);
@@ -71,4 +87,11 @@ abstract class _InvoiceAddClientStore {
       print('$x, $e');
     },
   );
+
+  @computed
+  get isFormValid {
+    return companyName.isValid &&
+        companyAddress.isValid &&
+        emailAddress.isValid;
+  }
 }
