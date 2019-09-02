@@ -5,6 +5,8 @@ import 'package:yala/models/user.dart';
 import 'package:yala/screens/invoices/invoice_create_screen/invoice_create_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
+import 'package:yala/widgets/inputs/currency_amount_field.dart';
+import 'package:yala/widgets/inputs/date_time_field.dart';
 import 'package:yala/widgets/inputs/text_field_x.dart';
 import 'package:yala/widgets/scaffolds/bottom_pin_scroll_view.dart';
 import 'package:yala/widgets/scaffolds/form_wizard/form_wizard_store.dart';
@@ -22,6 +24,11 @@ class InvoiceCreateInvoiceDetailsSection extends StatelessWidget {
     final user = Provider.of<User>(context);
     final formWizard = Provider.of<FormWizardStore>(context);
 
+    if (store.currency.value == null) {
+      store.currency.value = user.accounts.first.currencyCode;
+    }
+    store.invoiceId.validate();
+
     return BottomPinScrollView(
       bottomMargin: 100,
       padding: EdgeInsets.symmetric(horizontal: 35.5),
@@ -38,9 +45,20 @@ class InvoiceCreateInvoiceDetailsSection extends StatelessWidget {
           SizedBox(height: 27.3),
           TextFieldX(
             store.invoiceDesc,
-
+            minLines: 1,
+            maxLines: 5,
+            textInputAction: TextInputAction.newline,
             labelColor: Style.blackColor,
             // nextFocusField: store.companyAddress,
+          ),
+          SizedBox(height: 27.3),
+          CurrencyAmountField(
+            amountState: store.amount,
+            currencyState: store.currency,
+          ),
+          SizedBox(height: 27.3),
+          DateTimeField(
+            state: store.dueDate,
           ),
           SizedBox(height: 27.3),
         ],

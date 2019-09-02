@@ -11,6 +11,13 @@ part of 'invoice_create_store.dart';
 class InvoiceCreateStore extends _InvoiceCreateStore {
   InvoiceCreateStore() : super();
 
+  Computed<dynamic> _$isValidDetailsComputed;
+
+  @override
+  dynamic get isValidDetails => (_$isValidDetailsComputed ??=
+          Computed<dynamic>(() => super.isValidDetails))
+      .value;
+
   final _$selectClientIdAtom = Atom(name: '_InvoiceCreateStore.selectClientId');
 
   @override
@@ -62,21 +69,38 @@ class InvoiceCreateStore extends _InvoiceCreateStore {
     }, _$invoiceDescAtom, name: '${_$invoiceDescAtom.name}_set');
   }
 
-  final _$currencyAmountAtom = Atom(name: '_InvoiceCreateStore.currencyAmount');
+  final _$currencyAtom = Atom(name: '_InvoiceCreateStore.currency');
 
   @override
-  FieldState<CurrencyAmount> get currencyAmount {
-    _$currencyAmountAtom.context.enforceReadPolicy(_$currencyAmountAtom);
-    _$currencyAmountAtom.reportObserved();
-    return super.currencyAmount;
+  FieldState<CurrencyCode> get currency {
+    _$currencyAtom.context.enforceReadPolicy(_$currencyAtom);
+    _$currencyAtom.reportObserved();
+    return super.currency;
   }
 
   @override
-  set currencyAmount(FieldState<CurrencyAmount> value) {
-    _$currencyAmountAtom.context.conditionallyRunInAction(() {
-      super.currencyAmount = value;
-      _$currencyAmountAtom.reportChanged();
-    }, _$currencyAmountAtom, name: '${_$currencyAmountAtom.name}_set');
+  set currency(FieldState<CurrencyCode> value) {
+    _$currencyAtom.context.conditionallyRunInAction(() {
+      super.currency = value;
+      _$currencyAtom.reportChanged();
+    }, _$currencyAtom, name: '${_$currencyAtom.name}_set');
+  }
+
+  final _$amountAtom = Atom(name: '_InvoiceCreateStore.amount');
+
+  @override
+  FieldState<String> get amount {
+    _$amountAtom.context.enforceReadPolicy(_$amountAtom);
+    _$amountAtom.reportObserved();
+    return super.amount;
+  }
+
+  @override
+  set amount(FieldState<String> value) {
+    _$amountAtom.context.conditionallyRunInAction(() {
+      super.amount = value;
+      _$amountAtom.reportChanged();
+    }, _$amountAtom, name: '${_$amountAtom.name}_set');
   }
 
   final _$dueDateAtom = Atom(name: '_InvoiceCreateStore.dueDate');

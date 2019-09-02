@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:yala/tree/pages/bill_payment/page_billpayment.dart';
-import 'package:yala/tree/pages/bill_payment/page_billpayment_pay.dart';
+// import 'package:yala/tree/pages/bill_payment/page_billpayment.dart';
+// import 'package:yala/tree/pages/bill_payment/page_billpayment_pay.dart';
 
 class BillPaymentNavigator extends StatelessWidget {
   const BillPaymentNavigator({Key key}) : super(key: key);
@@ -13,12 +13,12 @@ class BillPaymentNavigator extends StatelessWidget {
         switch (settings.name) {
           case '/billpayment/pay':
             return PageTransition(
-              child: PageBillPaymentPay(),
+              // child: PageBillPaymentPay(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
-              child: PageBillPayment(),
+              // child: PageBillPayment(),
               type: PageTransitionType.rightToLeft,
             );
         }

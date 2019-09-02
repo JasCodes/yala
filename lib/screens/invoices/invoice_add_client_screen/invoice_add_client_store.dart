@@ -51,7 +51,7 @@ abstract class _InvoiceAddClientStore {
     validationPolicy: ValidationPolicy.onChange,
     validator: (value, e) {
       e.map({
-        'Required: Company Address should not be blank': value == '',
+        'REQUIRED: Company Address should not be blank': value == '',
       });
     },
   );

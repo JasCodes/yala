@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:yala/packages/forms_x/ensure_visible_when_focused.dart';
 import 'package:yala/packages/mobx_forms/field_state.dart';
@@ -24,6 +25,7 @@ class TextFieldX extends StatelessWidget {
   final Color labelColor;
   final TextInputAction textInputAction;
   final TextInputType textInputType;
+  final List<TextInputFormatter> inputFormatters;
   final int minLines;
   final int maxLines;
   final void Function(String) onSubmitted;
@@ -35,6 +37,7 @@ class TextFieldX extends StatelessWidget {
     this.nextFocusField,
     this.textInputAction,
     this.textInputType,
+    this.inputFormatters,
     this.minLines,
     this.maxLines,
     this.onSubmitted,
@@ -98,8 +101,6 @@ class TextFieldX extends StatelessWidget {
                             // ),
                           ),
                         )
-                        .toList()
-                        .reversed
                         .toList(),
                   )
                 : Column(
@@ -112,6 +113,7 @@ class TextFieldX extends StatelessWidget {
           curve: Curves.bounceIn,
           duration: Duration(milliseconds: 300),
           child: TextField(
+            inputFormatters: inputFormatters,
             // controller: _controller,
             onChanged: (value) {
               state.value = value;
