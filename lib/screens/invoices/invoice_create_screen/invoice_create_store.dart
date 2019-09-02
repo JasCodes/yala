@@ -39,7 +39,7 @@ abstract class _InvoiceCreateStore {
   @observable
   var amount = FieldState<String>(
     label: 'Invoice Amount',
-    value: '0',
+    value: "0",
     validationPolicy: ValidationPolicy.onChange,
     validator: (value, e) {
       bool isValid = true;

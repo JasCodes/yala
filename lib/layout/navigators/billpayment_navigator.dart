@@ -13,11 +13,13 @@ class BillPaymentNavigator extends StatelessWidget {
         switch (settings.name) {
           case '/billpayment/pay':
             return PageTransition(
+              child: Container(),
               // child: PageBillPaymentPay(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
+              child: Container(),
               // child: PageBillPayment(),
               type: PageTransitionType.rightToLeft,
             );

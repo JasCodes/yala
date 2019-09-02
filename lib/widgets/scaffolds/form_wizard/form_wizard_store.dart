@@ -25,7 +25,7 @@ abstract class _FormWizardStore with Store {
     );
   }
 
-  PageController pageController = PageController(initialPage: 2);
+  PageController pageController = PageController(initialPage: 0);
 
   @observable
   ObservableList<bool> validList;

@@ -61,17 +61,21 @@ User MockData() {
   var clientAcme = Client()
     ..id = Uuid().v4()
     ..companyName = 'ACME Corp LLC'
-    ..address = 'Building No 8, Sheikh Zayed Road, Dubai Internet City - Dubai';
+    ..email = 'hi@acme.com'
+    ..address =
+        'Building No 8, Sheikh Zayed Road,\nDubai Internet City - Dubai';
 
   var clientMicrosoft = Client()
     ..id = Uuid().v4()
     ..companyName = 'Microsoft Corporation'
-    ..address = 'Suite 1002, Burlington Tower, Business Bay - Dubai';
+    ..email = 'hi@microsoft.com'
+    ..address = 'Suite 1002, Burlington Tower,\nBusiness Bay - Dubai';
 
   var clientTD = Client()
     ..id = Uuid().v4()
     ..companyName = "ACME Corp LLC"
-    ..address = 'Emaar Business Park, Sheikh Zayed Road - Dubai';
+    ..email = 'hi@acme.com'
+    ..address = 'Emaar Business Park,\nSheikh Zayed Road - Dubai';
 
   user.clients.add(clientAcme);
   user.clients.add(clientMicrosoft);

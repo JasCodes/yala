@@ -11,6 +11,23 @@ part of 'user.dart';
 class User extends _User {
   User() : super();
 
+  final _$nameAtom = Atom(name: '_User.name');
+
+  @override
+  String get name {
+    _$nameAtom.context.enforceReadPolicy(_$nameAtom);
+    _$nameAtom.reportObserved();
+    return super.name;
+  }
+
+  @override
+  set name(String value) {
+    _$nameAtom.context.conditionallyRunInAction(() {
+      super.name = value;
+      _$nameAtom.reportChanged();
+    }, _$nameAtom, name: '${_$nameAtom.name}_set');
+  }
+
   final _$accountsAtom = Atom(name: '_User.accounts');
 
   @override

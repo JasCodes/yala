@@ -3,19 +3,14 @@
 // import 'package:currency_pickers/currency_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:locales/currency_codes.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:yala/models/client.dart';
 import 'package:yala/models/user.dart';
-// import 'package:yala/packages/currency_picker_x.dart';
-import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/screens/invoices/invoice_add_client_screen/invoice_add_client_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/app_bar.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
-import 'package:yala/widgets/inputs/currency_amount_field.dart';
 import 'package:yala/widgets/inputs/text_field_x.dart';
 import 'package:yala/widgets/scaffolds/bottom_pin_scroll_view.dart';
 

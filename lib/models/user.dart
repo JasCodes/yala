@@ -12,6 +12,8 @@ part 'user.g.dart';
 @store
 abstract class _User {
   @observable
+  String name = 'Thynk Digital';
+  @observable
   ObservableList<Account> accounts = ObservableList.of([]);
 
   @observable

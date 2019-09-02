@@ -22,9 +22,11 @@ class InvoiceCreateSelectClientSection extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useObserver();
+
     final store = Provider.of<InvoiceCreateStore>(context);
     final user = Provider.of<User>(context);
     final formWizard = Provider.of<FormWizardStore>(context);
+
     print(ModalRoute.of(context).settings);
     return BottomPinScrollView(
       bottomMargin: 100,

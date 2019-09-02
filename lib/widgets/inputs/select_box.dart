@@ -17,8 +17,6 @@ class SelectBoxItem {
   });
 }
 
-void x(String X) {}
-
 class SelectBox extends HookWidget {
   // final String id;
   // final void Function(String id) setId;
@@ -86,9 +84,7 @@ class SelectBox extends HookWidget {
                     ),
                     Text(
                       item.subTitle,
-                      style: TextStyle(
-                        fontSize: 10.7,
-                      ),
+                      style: TextStyle(fontSize: 10.7, height: 1.25),
                     ),
                   ],
                 ),

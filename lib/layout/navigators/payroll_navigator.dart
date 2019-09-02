@@ -13,11 +13,13 @@ class PayrollNavigator extends StatelessWidget {
         switch (settings.name) {
           case '/payroll/employee/add':
             return PageTransition(
+              child: Container(),
               // child: PagePayrollAddEmployee(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
+              child: Container(),
               // child: PagePayroll(),
               type: PageTransitionType.rightToLeft,
             );

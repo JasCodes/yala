@@ -85,8 +85,9 @@ class DateTimeField extends StatelessWidget {
               onTap: () {
                 DatePicker.showDatePicker(
                   context,
+                  theme: DatePickerTheme(containerHeight: 400),
                   currentTime: state.value,
-                  showTitleActions: false,
+                  showTitleActions: true,
                   onChanged: (val) => state.value = val,
                 );
               },

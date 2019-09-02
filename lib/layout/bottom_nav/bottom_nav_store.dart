@@ -8,7 +8,7 @@ part 'bottom_nav_store.g.dart';
 @store
 abstract class _BottomNavStore {
   @observable
-  NavigatorX navigator = NavigatorX.dev;
+  NavigatorX navigator = NavigatorX.accounts;
 
   @observable
   bool isExchange = false;

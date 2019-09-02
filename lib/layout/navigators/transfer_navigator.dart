@@ -13,11 +13,13 @@ class TransferNavigator extends StatelessWidget {
         switch (settings.name) {
           case '/transfer/international':
             return PageTransition(
+              child: Container(),
               // child: PageTransferInternational(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
+              child: Container(),
               // child: PageTransfer(),
               type: PageTransitionType.rightToLeft,
             );
