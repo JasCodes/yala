@@ -113,6 +113,40 @@ class User extends _User {
     }, _$transactionsAtom, name: '${_$transactionsAtom.name}_set');
   }
 
+  final _$employeesAtom = Atom(name: '_User.employees');
+
+  @override
+  ObservableList<Employee> get employees {
+    _$employeesAtom.context.enforceReadPolicy(_$employeesAtom);
+    _$employeesAtom.reportObserved();
+    return super.employees;
+  }
+
+  @override
+  set employees(ObservableList<Employee> value) {
+    _$employeesAtom.context.conditionallyRunInAction(() {
+      super.employees = value;
+      _$employeesAtom.reportChanged();
+    }, _$employeesAtom, name: '${_$employeesAtom.name}_set');
+  }
+
+  final _$payrollsAtom = Atom(name: '_User.payrolls');
+
+  @override
+  ObservableList<Payroll> get payrolls {
+    _$payrollsAtom.context.enforceReadPolicy(_$payrollsAtom);
+    _$payrollsAtom.reportObserved();
+    return super.payrolls;
+  }
+
+  @override
+  set payrolls(ObservableList<Payroll> value) {
+    _$payrollsAtom.context.conditionallyRunInAction(() {
+      super.payrolls = value;
+      _$payrollsAtom.reportChanged();
+    }, _$payrollsAtom, name: '${_$payrollsAtom.name}_set');
+  }
+
   final _$_UserActionController = ActionController(name: '_User');
 
   @override

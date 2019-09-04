@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:yala/layout/navigators/accounts_navigator.dart';
-import 'package:yala/layout/navigators/billpayment_navigator.dart';
-import 'package:yala/layout/navigators/dev_navigator.dart';
-import 'package:yala/layout/navigators/invoices_navigator.dart';
-import 'package:yala/layout/navigators/payroll_navigator.dart';
-import 'package:yala/layout/navigators/request_navigator.dart';
-import 'package:yala/layout/navigators/transfer_navigator.dart';
+import 'package:yala/navigation/navigators/accounts_navigator.dart';
+import 'package:yala/navigation/navigators/billpayment_navigator.dart';
+import 'package:yala/navigation/navigators/dev_navigator.dart';
+import 'package:yala/navigation/navigators/invoices_navigator.dart';
+import 'package:yala/navigation/navigators/payroll_navigator.dart';
+import 'package:yala/navigation/navigators/request_navigator.dart';
+import 'package:yala/navigation/navigators/transfer_navigator.dart';
 
 enum NavigatorX {
   dev,

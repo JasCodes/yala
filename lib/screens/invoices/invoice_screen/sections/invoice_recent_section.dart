@@ -18,6 +18,8 @@ class InvoiceRecentSection extends StatelessWidget {
                 invoice_id: invoice.invoice_id,
                 status: invoice.status,
               ))
+          .toList()
+          .reversed
           .toList(),
     );
   }

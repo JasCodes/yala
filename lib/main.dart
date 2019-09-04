@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_stack.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_stack.dart';
 import 'package:yala/models/user.dart';
 import 'package:yala/static/mock_data.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_store.dart';
-import 'package:yala/layout/navigator_stack.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/navigation/navigator_stack.dart';
 
 main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
@@ -39,6 +39,7 @@ class Home extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Style.backgroundColor,
         body: Container(
           decoration: BoxDecoration(

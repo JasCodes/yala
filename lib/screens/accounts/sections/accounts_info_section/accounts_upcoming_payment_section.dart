@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_store.dart';
-import 'package:yala/layout/navigator_map.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/navigation/navigator_map.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/decorated_list_white_button.dart';

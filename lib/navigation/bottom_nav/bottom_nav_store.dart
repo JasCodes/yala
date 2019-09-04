@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:yala/layout/navigator_map.dart';
+import 'package:yala/navigation/navigator_map.dart';
 
 // Include generated file
 part 'bottom_nav_store.g.dart';

@@ -8,9 +8,9 @@ import 'package:shape_of_view/shape_of_view.dart';
 import 'package:yala/hooks/use_autorun.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_sheet_button.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_store.dart';
-import 'package:yala/layout/navigator_map.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_sheet_button.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/navigation/navigator_map.dart';
 
 class BottomNavSheet extends HookWidget {
   const BottomNavSheet({Key key}) : super(key: key);

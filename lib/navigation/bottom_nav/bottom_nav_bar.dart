@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_button.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_button.dart';
 import 'package:yala/static/icons.dart';
-import 'package:yala/layout/navigator_map.dart';
+import 'package:yala/navigation/navigator_map.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key key}) : super(key: key);

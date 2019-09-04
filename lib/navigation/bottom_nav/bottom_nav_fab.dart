@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/primitives/iconx.dart';
-import 'package:yala/layout/bottom_nav/bottom_nav_store.dart';
+import 'package:yala/navigation/bottom_nav/bottom_nav_store.dart';
 
 class BottomNavFAB extends StatelessWidget {
   const BottomNavFAB({Key key}) : super(key: key);

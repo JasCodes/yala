@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yala/layout/navigator_map.dart';
-import 'package:yala/layout/navigator_view.dart';
+import 'package:yala/navigation/navigator_map.dart';
+import 'package:yala/navigation/navigator_view.dart';
 
 class NavigatorStack extends StatelessWidget {
   const NavigatorStack({Key key}) : super(key: key);
@@ -11,7 +11,6 @@ class NavigatorStack extends StatelessWidget {
     navigatorMap.forEach((navigator, widget) {
       children.add(NavigatorView(navigator: navigator, child: widget));
     });
-    print(children);
     return Stack(
       children: children,
     );

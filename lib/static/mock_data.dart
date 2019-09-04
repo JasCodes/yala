@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import 'package:yala/models/account.dart';
 import 'package:yala/models/beneficiary.dart';
 import 'package:yala/models/client.dart';
+import 'package:yala/models/employee.dart';
 import 'package:yala/models/invoice.dart';
 import 'package:yala/models/transaction.dart';
 import 'package:yala/models/user.dart';
@@ -109,10 +110,7 @@ User MockData() {
     ..invoice_id = '221146'
     ..status = InvoiceStatus.Overdue;
 
-  user.invoices.add(invoice1);
-  user.invoices.add(invoice2);
-  user.invoices.add(invoice3);
-  user.invoices.add(invoice4);
+  user.invoices..add(invoice4)..add(invoice3)..add(invoice2)..add(invoice1);
 
   //Vendors
   var du_bene = Beneficiary()
@@ -184,5 +182,40 @@ User MockData() {
     ..amount = 210;
   user.transactions..add(t1)..add(t2)..add(t3);
   //
+
+  // Employees
+  var emp1 = Employee()
+    ..id = 'EAD45'
+    ..name = 'Eugene Pena'
+    ..currencyCode = CurrencyCode.aed
+    ..salary = 20000;
+
+  var emp2 = Employee()
+    ..id = 'EAD46'
+    ..name = 'Gerald Porter'
+    ..currencyCode = CurrencyCode.aed
+    ..salary = 7500;
+
+  var emp3 = Employee()
+    ..id = 'EAD51'
+    ..name = 'Karen Perkins'
+    ..currencyCode = CurrencyCode.aed
+    ..salary = 35000;
+
+  var emp4 = Employee()
+    ..id = 'EAD57'
+    ..name = 'Katherine May'
+    ..currencyCode = CurrencyCode.aed
+    ..salary = 70000;
+
+  var emp5 = Employee()
+    ..id = 'EAD56'
+    ..name = 'Gloria Bell'
+    ..currencyCode = CurrencyCode.aed
+    ..salary = 9546;
+  //
+
+  user.employees..add(emp1)..add(emp2)..add(emp3)..add(emp4)..add(emp5);
+
   return user;
 }

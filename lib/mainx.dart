@@ -58,7 +58,7 @@ class MyAppState extends State<MyApp> {
             ),
           ),
           new BottomNav(navCallback: (String namedRoute) {
-            print("Navigating to $namedRoute");
+            // print("Navigating to $namedRoute");
             _navigatorKey.currentState.pushReplacementNamed(namedRoute);
           }),
         ],
