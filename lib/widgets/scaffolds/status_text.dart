@@ -70,6 +70,7 @@ class StatusText extends StatelessWidget {
       duration: Duration(milliseconds: 300),
       style: TextStyle(fontFamily: Style.primaryFont),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: children,
       ),
     );

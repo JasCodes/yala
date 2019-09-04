@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/packages/utils.dart';
 import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
+import 'package:yala/widgets/scaffolds/status_text.dart';
 import 'package:yala/widgets/texts/tx.dart';
 
 class CC extends CustomClipper<Path> {
@@ -60,24 +61,60 @@ class PayrollMonthFrontSlider extends StatelessWidget {
 
     return ClipPath(
       clipper: CC(),
-      child: PageView.builder(
-        controller: store.pageController,
-        onPageChanged: (i) {
-          print('$i ${store.pageController.page}');
-        },
-        itemBuilder: (context, index) {
-          var _index = index - 10000;
-          var month = Intl().date('MMM` yy').format(getOffsetMonth(_index));
+      child: IgnorePointer(
+        child: PageView.builder(
+          pageSnapping: false,
+          // physics: AlwaysScrollableScrollPhysics(),
+          controller: store.frontPageController,
+          itemBuilder: (context, index) {
+            var _index = index - 10000;
+            var month = Intl().date('MMM ‘yy').format(getOffsetMonth(_index));
+            var sPeriod =
+                Intl().date('dd.MM.yyyy').format(getOffsetMonth(_index));
+            var ePeriod = Intl().date('dd.MM.yyyy').format(
+                  getOffsetMonth(_index + 1).subtract(
+                    Duration(days: 1),
+                  ),
+                );
+            var due =
+                getOffsetMonth(_index + 1).difference(DateTime.now()).inDays;
+            var period = '$sPeriod - $ePeriod';
+            Widget status = Container();
+            if (_index == 0) {
+              status = StatusText(
+                text: 'due in ${due} days',
+                dot: true,
+                type: StatusTextType.RED,
+              );
+            } else if (_index < 0) {
+              status = StatusText(
+                text: 'Paid',
+                dot: false,
+                type: StatusTextType.GREEN,
+              );
+            }
 
-          return ClipPath(
-            child: Container(
-              color: Colors.white,
-              child: Center(
-                child: TxPB(40, month),
+            // getOffsetMonth()
+// 01.05.2019 - 31.05.2019
+            return ClipPath(
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    H(10),
+                    TxPB(40, month),
+                    H(1),
+                    TxGB(12.7, period),
+                    H(1),
+                    status,
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

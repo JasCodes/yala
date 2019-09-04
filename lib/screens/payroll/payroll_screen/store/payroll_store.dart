@@ -10,15 +10,33 @@ part 'payroll_store.g.dart';
 // The store-class
 @store
 abstract class _PayrollStore {
+  static const double BACK_FRACTION = 0.37;
+  static const double FRONT_FRACTION = 0.8;
+
+  _PayrollStore() {
+    print('hi');
+    backPageController.addListener(() {
+      print(backPageController.page);
+      frontPageController.jumpTo(
+          backPageController.position.pixels / BACK_FRACTION * FRONT_FRACTION);
+      // frontPageController.jumpTo(backPageController.page);
+      // page = backPageController.page;
+    });
+  }
+
 ////
   @observable
   DateTime payDay = getLastDayOfMonth();
 
   @observable
   DateTime payrollMonth = getLastDayOfMonth();
+  PageController backPageController =
+      PageController(initialPage: 10000, viewportFraction: BACK_FRACTION);
+  PageController frontPageController =
+      PageController(initialPage: 10000, viewportFraction: FRONT_FRACTION);
 
-  final pageController =
-      PageController(initialPage: 10000, viewportFraction: 0.3);
+  // @observable
+  // double page = 10000;
 ////
   // Select Client
   @observable
