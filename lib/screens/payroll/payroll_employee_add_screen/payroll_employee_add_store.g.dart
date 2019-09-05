@@ -10,4 +10,65 @@ part of 'payroll_employee_add_store.dart';
 
 class PayrollEmployeeAddStore extends _PayrollEmployeeAddStore {
   PayrollEmployeeAddStore() : super();
+
+  Computed<dynamic> _$isFormValidComputed;
+
+  @override
+  dynamic get isFormValid =>
+      (_$isFormValidComputed ??= Computed<dynamic>(() => super.isFormValid))
+          .value;
+
+  final _$employeeNumberAtom =
+      Atom(name: '_PayrollEmployeeAddStore.employeeNumber');
+
+  @override
+  FieldState<String> get employeeNumber {
+    _$employeeNumberAtom.context.enforceReadPolicy(_$employeeNumberAtom);
+    _$employeeNumberAtom.reportObserved();
+    return super.employeeNumber;
+  }
+
+  @override
+  set employeeNumber(FieldState<String> value) {
+    _$employeeNumberAtom.context.conditionallyRunInAction(() {
+      super.employeeNumber = value;
+      _$employeeNumberAtom.reportChanged();
+    }, _$employeeNumberAtom, name: '${_$employeeNumberAtom.name}_set');
+  }
+
+  final _$employeeNameAtom =
+      Atom(name: '_PayrollEmployeeAddStore.employeeName');
+
+  @override
+  FieldState<String> get employeeName {
+    _$employeeNameAtom.context.enforceReadPolicy(_$employeeNameAtom);
+    _$employeeNameAtom.reportObserved();
+    return super.employeeName;
+  }
+
+  @override
+  set employeeName(FieldState<String> value) {
+    _$employeeNameAtom.context.conditionallyRunInAction(() {
+      super.employeeName = value;
+      _$employeeNameAtom.reportChanged();
+    }, _$employeeNameAtom, name: '${_$employeeNameAtom.name}_set');
+  }
+
+  final _$employeeSalaryAtom =
+      Atom(name: '_PayrollEmployeeAddStore.employeeSalary');
+
+  @override
+  FieldState<String> get employeeSalary {
+    _$employeeSalaryAtom.context.enforceReadPolicy(_$employeeSalaryAtom);
+    _$employeeSalaryAtom.reportObserved();
+    return super.employeeSalary;
+  }
+
+  @override
+  set employeeSalary(FieldState<String> value) {
+    _$employeeSalaryAtom.context.conditionallyRunInAction(() {
+      super.employeeSalary = value;
+      _$employeeSalaryAtom.reportChanged();
+    }, _$employeeSalaryAtom, name: '${_$employeeSalaryAtom.name}_set');
+  }
 }

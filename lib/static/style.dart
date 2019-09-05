@@ -9,6 +9,7 @@ class Style {
     stops: [0, 1],
   );
   static const blackColor = Color(0xff181818);
+  static const darkGreyColor = Color(0xff979797);
   static const greyColor = Color(0xffbfbfbf);
   static const primaryColor = Color(0xff5a61f7);
   static const secondaryColor = Color(0xfffbc415);

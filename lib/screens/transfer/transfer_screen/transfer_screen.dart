@@ -21,7 +21,7 @@ class TransferScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 25.3),
-                TxBB(14.7, "How would you like to transfer?"),
+                TxBM(14.7, "How would you like to transfer?"),
                 SizedBox(height: 27.3),
                 SizedBox(height: 340),
               ],

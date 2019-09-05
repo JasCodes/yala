@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_observer.dart';
-import 'package:yala/models/user.dart';
+
 import 'package:yala/screens/payroll/payroll_screen/pages/payroll_pay_period_page/sections/payroll_date_slider_section.dart';
 import 'package:yala/screens/payroll/payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_slider_section.dart';
-import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
 import 'package:yala/widgets/scaffolds/bottom_pin_scroll_view.dart';
@@ -23,8 +22,8 @@ class PayrollPayPeriodPage extends HookWidget {
   Widget build(BuildContext context) {
     useObserver();
 
-    final store = Provider.of<PayrollStore>(context);
-    final user = Provider.of<User>(context);
+    // final store = Provider.of<PayrollStore>(context);
+    // final user = Provider.of<User>(context);
     final formWizard = Provider.of<FormWizardStore>(context);
 
     print(ModalRoute.of(context).settings);
@@ -35,13 +34,13 @@ class PayrollPayPeriodPage extends HookWidget {
         child: Column(
           children: [
             H(28.3),
-            TxBB(14.7, 'Select Payroll Period'),
+            TxBM(14.7, 'Select Payroll Period'),
             H(5.7),
             TxG(12, 'Swipe to switch months'),
             H(15.3),
             PayrollMonthSliderSection(),
             H(31.7),
-            TxBB(14.7, 'Select Payday'),
+            TxBM(14.7, 'Select Payday'),
             H(13.3),
             PayrollDateSliderSection(),
           ],

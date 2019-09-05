@@ -30,7 +30,7 @@ class PayrollDateSliderSection extends HookWidget {
               width: 1.7,
             );
           }
-          var date = store.payDay.add(Duration(days: index));
+          var date = store.payDate.add(Duration(days: index));
 
           var weekday = Intl().date('EEEE').format(date);
           var day = Intl().date('dd').format(date);

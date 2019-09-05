@@ -94,7 +94,7 @@ class InvoiceAddClientScreen extends StatelessWidget {
           builder: (_) => ButtonX(
             isActive: store.isFormValid,
             // isActive: formWizard.validList[index],
-            title: 'continue',
+            title: 'add client',
             onTap: () {
               var client = Client()
                 ..id = Uuid().v4()

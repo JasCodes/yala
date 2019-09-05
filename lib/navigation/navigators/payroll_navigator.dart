@@ -13,7 +13,7 @@ class PayrollNavigator extends StatelessWidget {
     return Navigator(
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/payroll/employee/add':
+          case PayrollEmployeeAddScreen.route:
             return PageTransition(
               child: PayrollEmployeeAddScreen(),
               type: PageTransitionType.rightToLeft,

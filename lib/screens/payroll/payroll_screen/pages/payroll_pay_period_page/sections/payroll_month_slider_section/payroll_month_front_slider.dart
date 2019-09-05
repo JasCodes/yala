@@ -104,9 +104,9 @@ class PayrollMonthFrontSlider extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     H(10),
-                    TxPB(40, month),
+                    TxPM(40, month),
                     H(1),
-                    TxGB(12.7, period),
+                    TxGM(12.7, period),
                     H(1),
                     status,
                   ],

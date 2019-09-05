@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/packages/utils.dart';
@@ -48,7 +46,7 @@ class _PayrollMonthBackSliderState extends State<PayrollMonthBackSlider> {
         return ClipPath(
           child: Container(
             child: Center(
-              child: TxGB(20, month),
+              child: TxGM(20, month),
             ),
           ),
         );

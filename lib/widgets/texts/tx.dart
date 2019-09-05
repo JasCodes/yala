@@ -31,8 +31,8 @@ class TxB extends Tx {
       : super(fontSize, text, color: color);
 }
 
-class TxBB extends Tx {
-  TxBB(double fontSize, String text,
+class TxBM extends Tx {
+  TxBM(double fontSize, String text,
       {color = Style.blackColor, fontWeight = FontWeight.w500})
       : super(fontSize, text, color: color, fontWeight: fontWeight);
 }
@@ -42,8 +42,8 @@ class TxW extends Tx {
       : super(fontSize, text, color: color);
 }
 
-class TxWB extends Tx {
-  TxWB(double fontSize, String text,
+class TxWM extends Tx {
+  TxWM(double fontSize, String text,
       {Color color = Colors.white, fontWeight = FontWeight.w500})
       : super(fontSize, text, color: color, fontWeight: fontWeight);
 }
@@ -53,8 +53,8 @@ class TxG extends Tx {
       : super(fontSize, text, color: color);
 }
 
-class TxGB extends Tx {
-  TxGB(double fontSize, String text,
+class TxGM extends Tx {
+  TxGM(double fontSize, String text,
       {Color color = Style.greyColor, fontWeight = FontWeight.w500})
       : super(fontSize, text, color: color, fontWeight: fontWeight);
 }
@@ -64,8 +64,8 @@ class TxP extends Tx {
       : super(fontSize, text, color: color);
 }
 
-class TxPB extends Tx {
-  TxPB(double fontSize, String text,
+class TxPM extends Tx {
+  TxPM(double fontSize, String text,
       {Color color = Style.primaryColor, fontWeight = FontWeight.w500})
       : super(fontSize, text, color: color, fontWeight: fontWeight);
 }
