@@ -54,6 +54,24 @@ class PayrollEmployeeAddStore extends _PayrollEmployeeAddStore {
     }, _$employeeNameAtom, name: '${_$employeeNameAtom.name}_set');
   }
 
+  final _$employeeCurrencyAtom =
+      Atom(name: '_PayrollEmployeeAddStore.employeeCurrency');
+
+  @override
+  FieldState<CurrencyCode> get employeeCurrency {
+    _$employeeCurrencyAtom.context.enforceReadPolicy(_$employeeCurrencyAtom);
+    _$employeeCurrencyAtom.reportObserved();
+    return super.employeeCurrency;
+  }
+
+  @override
+  set employeeCurrency(FieldState<CurrencyCode> value) {
+    _$employeeCurrencyAtom.context.conditionallyRunInAction(() {
+      super.employeeCurrency = value;
+      _$employeeCurrencyAtom.reportChanged();
+    }, _$employeeCurrencyAtom, name: '${_$employeeCurrencyAtom.name}_set');
+  }
+
   final _$employeeSalaryAtom =
       Atom(name: '_PayrollEmployeeAddStore.employeeSalary');
 

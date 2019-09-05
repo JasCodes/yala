@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -6,9 +7,11 @@ import 'package:yala/screens/payroll/payroll_employee_add_screen/payroll_employe
 import 'package:yala/screens/payroll/payroll_screen/pages/payroll_salary_details_page/sections/payroll_salary_details_field/payroll_salary_details_field.dart';
 import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
 import 'package:yala/static/formater.dart';
+import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
 import 'package:yala/widgets/primitives/animated_number.dart';
+import 'package:yala/widgets/primitives/iconx.dart';
 import 'package:yala/widgets/scaffolds/bottom_pin_scroll_view.dart';
 import 'package:yala/widgets/scaffolds/form_wizard/form_wizard_store.dart';
 import 'package:yala/widgets/texts/tx.dart';
@@ -63,21 +66,51 @@ class PayrollSalaryDetailsPage extends StatelessWidget {
                   color: Style.darkGreyColor.withOpacity(0.28),
                   height: 0.3,
                 ),
+                H(14.3),
                 Container(
                   child: Column(
                     children: store.salaryDetialItems.map((item) {
-                      return PayrollSalaryDetailsField(item);
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: PayrollSalaryDetailsField(item),
+                      );
                     }).toList(),
                   ),
                 ),
-                H(9.3),
-                RaisedButton(
-                  onPressed: () {
+                H(30.3),
+                GestureDetector(
+                  onTap: () {
                     Navigator.of(context)
                         .pushNamed(PayrollEmployeeAddScreen.route);
                   },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 16),
+                    child: Row(
+                      children: <Widget>[
+                        Stack(
+                          children: <Widget>[
+                            DottedBorder(
+                              color: Style.primaryColor,
+                              padding: EdgeInsets.all(0),
+                              child: Container(
+                                height: 18,
+                                width: 18,
+                              ),
+                            ),
+                            IconX(
+                              Icons.add,
+                              size: 18,
+                              color: Style.primaryColor,
+                            )
+                          ],
+                        ),
+                        W(12),
+                        TxPM(18.7, 'Add a New Employee'),
+                      ],
+                    ),
+                  ),
                 ),
-                H(9.3),
+                H(70),
               ],
             ),
           ],

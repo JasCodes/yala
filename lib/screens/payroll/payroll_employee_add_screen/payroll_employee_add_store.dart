@@ -1,3 +1,4 @@
+import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:yala/packages/mobx_forms/field_state.dart';
 
@@ -29,6 +30,12 @@ abstract class _PayrollEmployeeAddStore {
       });
     },
     validationPolicy: ValidationPolicy.onChange,
+  );
+
+  @observable
+  var employeeCurrency = FieldState<CurrencyCode>(
+    label: 'Currency',
+    value: CurrencyCode.aed,
   );
 
   @observable

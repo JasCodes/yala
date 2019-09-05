@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:locales/currency_codes.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/app_bar.dart';
 import 'package:yala/models/employee.dart';
 import 'package:yala/models/user.dart';
+import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/screens/payroll/payroll_employee_add_screen/payroll_employee_add_store.dart';
 import 'package:yala/screens/payroll/payroll_screen/pages/payroll_salary_details_page/sections/payroll_salary_details_field/payroll_salary_details_item.dart';
 import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
+import 'package:yala/widgets/inputs/currency_amount_field.dart';
 import 'package:yala/widgets/inputs/text_field_x.dart';
 import 'package:yala/widgets/scaffolds/bottom_pin_scroll_view.dart';
 
@@ -55,9 +58,10 @@ class PayrollEmployeeAddScreen extends StatelessWidget {
               store.employeeName,
               nextFocusField: store.employeeSalary,
             ),
-            TextFieldX(
-              store.employeeSalary,
-              // nextFocusField: store.employeeSalary,
+            SizedBox(height: 24),
+            CurrencyAmountField(
+              amountState: store.employeeSalary,
+              currencyState: store.employeeCurrency,
             ),
             SizedBox(height: 24),
           ],
@@ -71,7 +75,7 @@ class PayrollEmployeeAddScreen extends StatelessWidget {
               var emp = Employee()
                 ..id = store.employeeNumber.value
                 ..name = store.employeeName.value
-                ..currencyCode = user.accounts[0].currencyCode
+                ..currencyCode = store.employeeCurrency.value
                 ..salary = double.parse(
                     store.employeeSalary.value.replaceAll(',', ''));
               user.employees.add(emp);

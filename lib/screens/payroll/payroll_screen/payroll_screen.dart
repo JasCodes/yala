@@ -29,12 +29,12 @@ class PayrollScreen extends StatelessWidget {
           index: i++,
         ),
       );
-      yield FormWizardItem(
-        title: 'Submit Payroll',
-        child: PayrollSubmitPage(
-          index: i++,
-        ),
-      );
+      // yield FormWizardItem(
+      //   title: 'Submit Payroll',
+      //   child: PayrollSubmitPage(
+      //     index: i++,
+      //   ),
+      // );
     }()
         .toList();
     return Provider<PayrollStore>(
