@@ -43,9 +43,14 @@ class TxW extends Tx {
 }
 
 class TxWM extends Tx {
-  TxWM(double fontSize, String text,
-      {Color color = Colors.white, fontWeight = FontWeight.w500})
-      : super(fontSize, text, color: color, fontWeight: fontWeight);
+  TxWM(
+    double fontSize,
+    String text, {
+    Color color = Colors.white,
+    fontWeight = FontWeight.w500,
+    TextStyle style,
+  }) : super(fontSize, text,
+            color: color, fontWeight: fontWeight, style: style);
 }
 
 class TxG extends Tx {

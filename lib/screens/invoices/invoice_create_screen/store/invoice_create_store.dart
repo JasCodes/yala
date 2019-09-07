@@ -1,6 +1,7 @@
 import 'package:locales/currency_codes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:yala/packages/mobx_forms/field_state.dart';
+import 'package:yala/widgets/scaffolds/form_wizard/form_wizard_store.dart';
 
 // Include generated file
 part 'invoice_create_store.g.dart';
@@ -8,6 +9,13 @@ part 'invoice_create_store.g.dart';
 // The store-class
 @store
 abstract class _InvoiceCreateStore {
+  _InvoiceCreateStore(FormWizardStore formWizardStore) {
+    autorun((_) {
+      formWizardStore.validList[0] = true;
+      formWizardStore.validList[1] = isInvoiceDetailsValid;
+      formWizardStore.validList[2] = true;
+    });
+  }
   // Select Client
   @observable
   var selectClientId = FieldState<String>();
@@ -82,7 +90,7 @@ abstract class _InvoiceCreateStore {
   var emails = FieldState<ObservableList<String>>();
 
   @computed
-  get isValidDetails {
+  get isInvoiceDetailsValid {
     return invoiceId.isValid && amount.isValid && dueDate.isValid;
   }
   //

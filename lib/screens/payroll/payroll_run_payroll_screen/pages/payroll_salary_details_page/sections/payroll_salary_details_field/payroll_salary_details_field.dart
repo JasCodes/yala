@@ -1,10 +1,11 @@
-import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:yala/screens/payroll/payroll_screen/pages/payroll_salary_details_page/sections/payroll_salary_details_field/payroll_salary_details_item.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/pages/payroll_salary_details_page/sections/payroll_salary_details_field/payroll_salary_details_item.dart';
 import 'package:yala/static/formater.dart';
 import 'package:yala/static/style.dart';
+import 'package:yala/widgets/scaffolds/amount_text_controller.dart';
 import 'package:yala/widgets/texts/tx.dart';
 
 class PayrollSalaryDetailsField extends StatelessWidget {
@@ -13,8 +14,10 @@ class PayrollSalaryDetailsField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = MoneyMaskedTextController(
-        decimalSeparator: '.', thousandSeparator: ',');
+    var controller = AmountTextController();
+
+    // var controller = MoneyMaskedTextController(
+    //     decimalSeparator: '.', thousandSeparator: ',');
 
     return Observer(builder: (context) {
       final emp = item.employee;
@@ -22,6 +25,7 @@ class PayrollSalaryDetailsField extends StatelessWidget {
       final sub =
           '${emp.id} / ${emp.currencyCode.toString()} ${Formatter.numC.format(emp.salary)} pm';
       controller.text = Formatter.numC.format(emp.salary);
+      // controller.text = emp.salary.toString();
       return GestureDetector(
         onTap: () {
           item.selected = !item.selected;
@@ -62,7 +66,11 @@ class PayrollSalaryDetailsField extends StatelessWidget {
                     Container(
                       // width: 150,
                       child: TextField(
+                        inputFormatters: [
+                          // WhitelistingTextInputFormatter.digitsOnly,
+                        ],
                         controller: controller,
+                        keyboardType: TextInputType.number,
                         onChanged: (val) {
                           item.amount = double.parse(val.replaceAll(',', ''));
                         },

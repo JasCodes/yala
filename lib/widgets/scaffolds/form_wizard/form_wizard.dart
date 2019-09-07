@@ -16,9 +16,11 @@ class FormWizardItem {
 
 class FormWizard extends StatelessWidget {
   final List<FormWizardItem> items;
+  final FormWizardStore store;
 
   const FormWizard({
     Key key,
+    @required this.store,
     @required this.items,
   }) : super(key: key);
 
@@ -26,9 +28,7 @@ class FormWizard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider<FormWizardStore>(
       builder: (_) {
-        return FormWizardStore(
-          items.length,
-        );
+        return store;
       },
       child: Column(
         children: <Widget>[

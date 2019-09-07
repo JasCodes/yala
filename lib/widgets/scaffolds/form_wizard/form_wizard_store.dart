@@ -15,7 +15,7 @@ abstract class _FormWizardStore with Store {
     validList = ObservableList<bool>.of(
       List.filled(length, false),
     );
-    validList[0] = true;
+    // validList[0] = true;
 
     lengthStatus = ObservableList<double>.of(
       List.filled(length, 0.0),

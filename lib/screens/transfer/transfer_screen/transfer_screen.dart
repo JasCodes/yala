@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:locales/currency_codes.dart';
+import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/screens/accounts/sections/accounts_info_section/accounts_info_section.dart';
 
 import 'package:yala/app_bar.dart';
+import 'package:yala/widgets/inputs/currency_amount_field.dart';
 import 'package:yala/widgets/texts/tx.dart';
 
 class TransferScreen extends StatelessWidget {

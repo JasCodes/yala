@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/hooks/use_autorun.dart';
 import 'package:yala/models/user.dart';
-import 'package:yala/screens/invoices/invoice_create_screen/invoice_create_store.dart';
+import 'package:yala/screens/invoices/invoice_create_screen/store/invoice_create_store.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/buttons/botton_x.dart';
 import 'package:yala/widgets/inputs/currency_amount_field.dart';
@@ -22,14 +23,10 @@ class InvoiceCreateInvoiceDetailsSection extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // useObserver();
     final store = Provider.of<InvoiceCreateStore>(context);
     final user = Provider.of<User>(context);
     final formWizard = Provider.of<FormWizardStore>(context);
-    useAutorun((_) {
-      formWizard.validList[index] = store.isValidDetails;
-      formWizard.validList[index + 1] = store.isValidDetails;
-    });
+    final dateTimeFieldKey = GlobalKey();
     if (store.currency.value == null) {
       store.currency.value = user.accounts.first.currencyCode;
     }
@@ -62,9 +59,17 @@ class InvoiceCreateInvoiceDetailsSection extends HookWidget {
             CurrencyAmountField(
               amountState: store.amount,
               currencyState: store.currency,
+              onSubmitted: (v) {
+                var renObj = dateTimeFieldKey.currentContext.findRenderObject();
+                if (renObj is RenderBox) {
+                  final hitTestResult = HitTestResult();
+                  renObj.hitTest(hitTestResult, position: Offset(20, 20));
+                }
+              },
             ),
             SizedBox(height: 27.3),
             DateTimeField(
+              key: dateTimeFieldKey,
               state: store.dueDate,
             ),
             SizedBox(height: 27.3),
@@ -77,6 +82,7 @@ class InvoiceCreateInvoiceDetailsSection extends HookWidget {
             isActive: formWizard.validList[index],
             title: 'continue',
             onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
               formWizard.pageController.nextPage(
                 duration: const Duration(milliseconds: 400),
                 curve: Curves.easeInOut,

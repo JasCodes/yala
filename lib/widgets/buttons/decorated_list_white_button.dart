@@ -59,7 +59,7 @@ class DecoratedListWhiteButton extends StatelessWidget {
                   ),
                   StatusText(
                     type: type,
-                    text: "due in 2 days",
+                    text: subTitle,
                     dot: dot,
                     color: subTitleColor,
                   ),

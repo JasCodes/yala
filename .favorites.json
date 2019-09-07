@@ -1,0 +1,27 @@
+[
+    {
+        "type": "Group",
+        "name": "active",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "sBFP706uNZhdEjMe",
+        "iconColor": "rgb(0, 128, 0)"
+    },
+    {
+        "type": "File",
+        "name": "/home/jas/data/repo/github.com/jascodes/yalax/lib/screens/payroll/payroll_run_payroll_screen/payroll_run_payroll_screen.dart",
+        "parent_id": "sBFP706uNZhdEjMe",
+        "workspaceRoot": "/home/jas/data/repo/github.com/jascodes/yalax",
+        "workspacePath": "lib/screens/payroll/payroll_run_payroll_screen/payroll_run_payroll_screen.dart",
+        "id": "z6Vv9jLk31nSfcKP"
+    },
+    {
+        "type": "File",
+        "name": "/home/jas/data/repo/github.com/jascodes/yalax/lib/widgets/scaffolds/amount_text_controller.dart",
+        "parent_id": "sBFP706uNZhdEjMe",
+        "workspaceRoot": "/home/jas/data/repo/github.com/jascodes/yalax",
+        "workspacePath": "lib/widgets/scaffolds/amount_text_controller.dart",
+        "id": "f8mohcdpPGq6F3He"
+    }
+]

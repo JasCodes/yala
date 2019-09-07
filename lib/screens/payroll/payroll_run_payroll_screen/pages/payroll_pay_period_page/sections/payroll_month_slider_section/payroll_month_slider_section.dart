@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yala/screens/payroll/payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_back_slider.dart';
-import 'package:yala/screens/payroll/payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_front_slider.dart';
-import 'package:yala/screens/payroll/payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_slider_circle_section.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_back_slider.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_front_slider.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/pages/payroll_pay_period_page/sections/payroll_month_slider_section/payroll_month_slider_circle_section.dart';
 
 class PayrollMonthSliderSection extends StatelessWidget {
   const PayrollMonthSliderSection({Key key}) : super(key: key);

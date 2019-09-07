@@ -9,6 +9,7 @@ import 'package:yala/packages/mobx_forms/field_state.dart';
 import 'package:yala/static/icons.dart';
 import 'package:yala/static/style.dart';
 import 'package:yala/widgets/primitives/iconx.dart';
+import 'package:yala/widgets/scaffolds/amount_text_controller.dart';
 import 'package:yala/widgets/scaffolds/status_text.dart';
 
 class CurrencyAmountField extends HookWidget {
@@ -155,9 +156,9 @@ class CurrencyAmountField extends HookWidget {
     if (nextFocusField != null && textInputAction == null) {
       _textInputAction = TextInputAction.next;
     }
-    final controller = new MoneyMaskedTextController(
-        decimalSeparator: '.', thousandSeparator: ',');
-
+    // final controller = new MoneyMaskedTextController(
+    // decimalSeparator: '.', thousandSeparator: ',', initialValue: 0);
+    final controller = AmountTextController();
     return TextField(
       controller: controller,
       onChanged: (value) {
@@ -172,11 +173,12 @@ class CurrencyAmountField extends HookWidget {
       keyboardType: TextInputType.number,
       focusNode: amountState.focusNode,
       onSubmitted: (value) {
-        _fieldFocusChange(
-          context,
-          amountState.focusNode,
-          nextFocusField.focusNode,
-        );
+        if (nextFocusField != null)
+          _fieldFocusChange(
+            context,
+            amountState.focusNode,
+            nextFocusField.focusNode,
+          );
         onSubmitted(value);
       },
       textInputAction: _textInputAction,

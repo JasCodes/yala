@@ -13,14 +13,14 @@ class TransferNavigator extends StatelessWidget {
         switch (settings.name) {
           case TransferIntlScreen.route:
             return PageTransition(
-              // child: Container(),
-              child: TransferIntlScreen(),
+              child: Container(),
+              // child: TransferIntlScreen(),
               type: PageTransitionType.rightToLeft,
             );
           default:
             return PageTransition(
-              // child: Container(),
-              child: TransferScreen(),
+              child: Container(),
+              // child: TransferScreen(),
               type: PageTransitionType.rightToLeft,
             );
         }

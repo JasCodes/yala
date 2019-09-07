@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/packages/utils.dart';
-import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/store/payroll_run_payroll_store.dart';
 import 'package:yala/widgets/texts/tx.dart';
 
 class PayrollMonthBackSlider extends StatefulWidget {
@@ -29,7 +29,7 @@ class _PayrollMonthBackSliderState extends State<PayrollMonthBackSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final store = Provider.of<PayrollStore>(context);
+    final store = Provider.of<PayrollRunPayrollStore>(context);
 
     // final gk = GlobalKey();
     // ScrollController x;

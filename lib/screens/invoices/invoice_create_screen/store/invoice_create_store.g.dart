@@ -9,13 +9,13 @@ part of 'invoice_create_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 class InvoiceCreateStore extends _InvoiceCreateStore {
-  InvoiceCreateStore() : super();
+  InvoiceCreateStore(FormWizardStore formWizardStore) : super(formWizardStore);
 
-  Computed<dynamic> _$isValidDetailsComputed;
+  Computed<dynamic> _$isInvoiceDetailsValidComputed;
 
   @override
-  dynamic get isValidDetails => (_$isValidDetailsComputed ??=
-          Computed<dynamic>(() => super.isValidDetails))
+  dynamic get isInvoiceDetailsValid => (_$isInvoiceDetailsValidComputed ??=
+          Computed<dynamic>(() => super.isInvoiceDetailsValid))
       .value;
 
   final _$selectClientIdAtom = Atom(name: '_InvoiceCreateStore.selectClientId');

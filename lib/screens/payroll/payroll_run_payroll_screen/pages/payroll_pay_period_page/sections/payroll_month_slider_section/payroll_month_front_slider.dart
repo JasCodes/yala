@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:yala/packages/utils.dart';
-import 'package:yala/screens/payroll/payroll_screen/store/payroll_store.dart';
+import 'package:yala/screens/payroll/payroll_run_payroll_screen/store/payroll_run_payroll_store.dart';
 import 'package:yala/widgets/scaffolds/status_text.dart';
 import 'package:yala/widgets/texts/tx.dart';
 
@@ -57,13 +57,16 @@ class PayrollMonthFrontSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = Provider.of<PayrollStore>(context);
+    final store = Provider.of<PayrollRunPayrollStore>(context);
 
     return ClipPath(
       clipper: CC(),
       child: IgnorePointer(
         child: PageView.builder(
           pageSnapping: false,
+          onPageChanged: (v) {
+            store.payrollMonth = getOffsetMonth(v - 10000);
+          },
           // physics: AlwaysScrollableScrollPhysics(),
           controller: store.frontPageController,
           itemBuilder: (context, index) {
