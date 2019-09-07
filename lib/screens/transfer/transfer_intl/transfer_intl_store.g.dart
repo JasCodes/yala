@@ -89,14 +89,14 @@ class TransferIntlStore extends _TransferIntlStore {
   final _$amountAtom = Atom(name: '_TransferIntlStore.amount');
 
   @override
-  FieldState<String> get amount {
+  FieldState<double> get amount {
     _$amountAtom.context.enforceReadPolicy(_$amountAtom);
     _$amountAtom.reportObserved();
     return super.amount;
   }
 
   @override
-  set amount(FieldState<String> value) {
+  set amount(FieldState<double> value) {
     _$amountAtom.context.conditionallyRunInAction(() {
       super.amount = value;
       _$amountAtom.reportChanged();

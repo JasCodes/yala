@@ -37,22 +37,23 @@ abstract class _TransferIntlStore {
   );
 
   @observable
-  var amount = FieldState<String>(
+  var amount = FieldState<double>(
     label: 'Invoice Amount',
-    value: "0",
+    value: 0,
     validationPolicy: ValidationPolicy.onChange,
     validator: (value, e) {
-      bool isValid = true;
-      var num = double.tryParse(value);
-      if (num != null) {
-        if (num <= 0) {
-          isValid = false;
-        }
-      } else {
-        isValid = false;
-      }
+      // bool isValid = true;
+      // var num = double.tryParse(value);
+      // if (num != null) {
+      //   if (num <= 0) {
+      //     isValid = false;
+      //   }
+      // } else {
+      //   isValid = false;
+      // }
       e.map({
-        "INVALID: Amount entered should be valid and positive number": !isValid,
+        "INVALID: Amount entered should be valid and positive number":
+            value > 0,
       });
     },
   );

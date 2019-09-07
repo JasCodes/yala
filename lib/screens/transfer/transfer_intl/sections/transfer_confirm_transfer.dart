@@ -73,7 +73,7 @@ class TransferConfirmTransfer extends StatelessWidget {
     var invoiceToEmail = client?.email;
     var desc = store.invoiceDesc.value;
     var currency = store.currency.value.toString();
-    var amount = Formatter.numC.format(double.parse(store.amount.value));
+    var amount = Formatter.numC.format(store.amount.value);
 
     return BottomPinScrollView(
       bottomMargin: 100,
@@ -283,7 +283,7 @@ class TransferConfirmTransfer extends StatelessWidget {
                 ..invoice_id = invoiceNumber
                 ..client = client
                 ..currencyCode = store.currency.value
-                ..amount = double.parse(store.amount.value)
+                ..amount = store.amount.value
                 ..status = InvoiceStatus.Pending);
               Navigator.of(context).pop();
             },

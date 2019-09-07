@@ -72,8 +72,7 @@ class PayrollEmployeeAddScreen extends StatelessWidget {
                 ..id = store.employeeNumber.value
                 ..name = store.employeeName.value
                 ..currencyCode = store.employeeCurrency.value
-                ..salary = double.parse(
-                    store.employeeSalary.value.replaceAll(',', ''));
+                ..salary = store.employeeSalary.value;
               user.employees.add(emp);
 
               //add to form

@@ -39,14 +39,14 @@ abstract class _PayrollEmployeeAddStore {
   );
 
   @observable
-  var employeeSalary = FieldState<String>(
+  var employeeSalary = FieldState<double>(
     label: 'Employee Salary',
-    value: '0.00',
-    // validator: (value, e) {
-    //   e.map({
-    //     'IN: Employee Salary should not be blank': value >= 0,
-    //   });
-    // },
+    value: 0,
+    validator: (value, e) {
+      e.map({
+        'INVALID: Employee Salary should not be zero': value >= 0,
+      });
+    },
     // validationPolicy: ValidationPolicy.onChange,
   );
 

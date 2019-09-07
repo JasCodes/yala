@@ -15,7 +15,7 @@ import 'package:yala/widgets/scaffolds/status_text.dart';
 class CurrencyAmountField extends HookWidget {
   static const double CURRENCY_WIDTH = 100;
   final FieldState<CurrencyCode> currencyState;
-  final FieldState<String> amountState;
+  final FieldState<double> amountState;
 
   final FieldState nextFocusField;
   final Color labelColor;
@@ -159,11 +159,14 @@ class CurrencyAmountField extends HookWidget {
     // final controller = new MoneyMaskedTextController(
     // decimalSeparator: '.', thousandSeparator: ',', initialValue: 0);
     final controller = AmountTextController();
+    controller.addListener(() {
+      amountState.value = controller.number;
+    });
     return TextField(
       controller: controller,
-      onChanged: (value) {
-        amountState.value = value;
-      },
+      // onChanged: (value) {
+      //   amountState.value = value;
+      // },
       // inputFormatters: [
       //   // formatter,
       //   // WhitelistingTextInputFormatter.digitsOnly,

@@ -3,20 +3,29 @@ import 'package:yala/static/formater.dart';
 
 class AmountTextController extends TextEditingController {
   final double initialValue;
-  int numValue;
-  String get getText {
-    var _num = numValue * 0.01;
-    return Formatter.numC.format(_num);
+  int _numInt;
+
+  double get number {
+    return _numInt * 0.01;
+  }
+
+  set number(double val) {
+    _numInt = (val * 100).round();
+  }
+
+  String get _getText {
+    return Formatter.numC.format(number);
   }
 
   // String prevText;
 
-  TextSelection get getSelection {
+  TextSelection get _getSelection {
     var offset = this.text.length;
     return TextSelection(baseOffset: offset, extentOffset: offset);
   }
 
-  int textToNum(String text) {
+  int _textToNum(String text) {
+    if (text.isEmpty) return 0;
     return int.parse(text.replaceAll(RegExp(r"[^0-9]*"), ''));
     // return int.parse(this.text.replaceAll(',', '').replaceAll('.', ''));
   }
@@ -26,14 +35,18 @@ class AmountTextController extends TextEditingController {
   //   return textToNum(sub);
   // }
 
+  _update() {
+    _numInt = _textToNum(this.text);
+    this.value = TextEditingValue(
+      text: _getText,
+      selection: _getSelection,
+      composing: TextRange.empty,
+    );
+  }
+
   AmountTextController({this.initialValue = 0}) {
-    numValue = (initialValue * 100).round();
-    // prevText = getText;
-    this.addListener(() {
-      numValue = textToNum(this.text);
-      this.value = TextEditingValue(
-          text: getText, selection: getSelection, composing: TextRange.empty);
-      // sel = getSubSelNum;
-    });
+    number = this.initialValue;
+    _update();
+    this.addListener(_update);
   }
 }

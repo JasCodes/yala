@@ -45,22 +45,25 @@ abstract class _InvoiceCreateStore {
   );
 
   @observable
-  var amount = FieldState<String>(
+  var amount = FieldState<double>(
     label: 'Invoice Amount',
-    value: "0",
+    value: 0,
     validationPolicy: ValidationPolicy.onChange,
     validator: (value, e) {
-      bool isValid = true;
-      var num = double.tryParse(value);
-      if (num != null) {
-        if (num <= 0) {
-          isValid = false;
-        }
-      } else {
-        isValid = false;
-      }
+      bool isValid = value > 0;
+      // bool isValid = true;
+      // print(value);
+      // var num = double.tryParse(value);
+      // print(num);
+      // if (num != null) {
+      //   if (num <= 0) {
+      //     isValid = false;
+      //   }
+      // } else {
+      //   isValid = false;
+      // }
       e.map({
-        "INVALID: Amount entered should be valid and positive number": !isValid,
+        "INVALID: Amount can't be zero": !isValid,
       });
     },
   );

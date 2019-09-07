@@ -76,14 +76,14 @@ class PayrollEmployeeAddStore extends _PayrollEmployeeAddStore {
       Atom(name: '_PayrollEmployeeAddStore.employeeSalary');
 
   @override
-  FieldState<String> get employeeSalary {
+  FieldState<double> get employeeSalary {
     _$employeeSalaryAtom.context.enforceReadPolicy(_$employeeSalaryAtom);
     _$employeeSalaryAtom.reportObserved();
     return super.employeeSalary;
   }
 
   @override
-  set employeeSalary(FieldState<String> value) {
+  set employeeSalary(FieldState<double> value) {
     _$employeeSalaryAtom.context.conditionallyRunInAction(() {
       super.employeeSalary = value;
       _$employeeSalaryAtom.reportChanged();
